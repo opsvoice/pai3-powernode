@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAI3 Power Node — Own Decentralized AI Infrastructure</title>
+    <meta name="description" content="A plug-and-play AI data center that earns tokens and keeps your data sovereign. Buy a PAI3 Power Node.">
+    
+    <!-- OpenGraph -->
+    <meta property="og:title" content="PAI3 Power Node — Own Decentralized AI Infrastructure">
+    <meta property="og:description" content="A plug-and-play AI data center that earns tokens and keeps your data sovereign.">
+    <meta property="og:image" content="https://storage.googleapis.com/msgsndr/YUbyXzjkUGA4p1Y44MUg/media/68b084cc0b7a453c1b284f64.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-black: #000000;
+            --text-white: #FFFFFF;
+            --text-secondary: #B8C1CC;
+            --primary-green: #00FF7F;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --hover-bg: rgba(0, 255, 127, 0.05);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-black);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .font-fira {
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Sticky Header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Fira Code', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+        
+        .inventory-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--primary-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--primary-green);
+        }
+        
+        .sticky-cta {
+            background: var(--primary-green);
+            color: var(--bg-black);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .sticky-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 127, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: var(--bg-black);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://storage.googleapis.com/msgsndr/YUbyXzjkUGA4p1Y44MUg/media/68b084ded7b73210c355a31d.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .price-pill {
+            display: inline-block;
+            background: var(--card-bg);
+            border: 2px solid var(--primary-green);
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-family: 'Fira Code', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 24px;
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .hero-ctas {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--primary-green);
+            color: var(--bg-black);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 127, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-green);
+            padding: 16px 32px;
+            border: 2px solid var(--primary-green);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--hover-bg);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-alt {
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .section h2 {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .problem-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .problem-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .problem-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .transition-text {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-top: 32px;
+        }
+        
+        /* Value Stack */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .value-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .value-item:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-4px);
+        }
+        
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--hover-bg);
+            border: 1px solid var(--primary-green);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+        
+        /* Specs Section */
+        .specs-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .specs-container:hover {
+            border-color: var(--primary-green);
+        }
+        
+        .specs-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .specs-toggle {
+            background: none;
+            border: none;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .specs-toggle.active {
+            transform: rotate(180deg);
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .specs-grid.active {
+            opacity: 1;
+            max-height: 500px;
+        }
+        
+        .spec-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 255, 127, 0.02);
+            border: 1px solid rgba(0, 255, 127, 0.1);
+            border-radius: 8px;
+        }
+        
+        .spec-label {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+        }
+        
+        .spec-value {
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        /* ROI Calculator */
+        .calculator {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-green);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 48px 0;
+        }
+        
+        .calculator h3 {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .calculator-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-green);
+        }
+        
+        .input-group input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--text-white);
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+        
+        .calculator-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .result-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--hover-bg);
+            border: 1px solid var(--primary-green);
+            border-radius: 8px;
+        }
+        
+        .result-value {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .legal-note {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: center;
+            font-style: italic;
+        }
+        
+        /* How It Works */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .step-item {
+            text-align: center;
+            padding: 32px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--primary-green);
+            color: var(--bg-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .demo-video {
+            margin-top: 48px;
+            text-align: center;
+        }
+        
+        .demo-video img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+        }
+        
+        /* Scarcity Section */
+        .scarcity {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-green);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .counter-pill {
+            display: inline-block;
+            background: var(--primary-green);
+            color: var(--bg-black);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+        
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin: 32px 0;
+            color: var(--text-secondary);
+        }
+        
+        .quote-author {
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+        
+        .recognition-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        
+        .recognition-badge {
+            background: var(--hover-bg);
+            border: 1px solid var(--primary-green);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--primary-green);
+        }
+        
+        /* Checklist */
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+        }
+        
+        .checklist-icon {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+        
+        /* Trust Section */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        
+        .trust-item {
+            text-align: center;
+            padding: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+        }
+        
+        .trust-item h4 {
+            color: var(--primary-green);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        /* Professional Node Comparison */
+        .node-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .node-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .node-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-4px);
+        }
+        
+        .node-card.featured {
+            border-color: var(--primary-green);
+            background: var(--hover-bg);
+        }
+        
+        .node-price {
+            font-family: 'Fira Code', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin: 16px 0;
+        }
+        
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            padding: 24px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: var(--hover-bg);
+        }
+        
+        .faq-icon {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-icon.active {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 24px 24px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            max-height: 200px;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-green);
+            border-radius: 16px;
+            padding: 48px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            margin-bottom: 24px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid var(--border-subtle);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-legal {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-subtle);
+            z-index: 999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .calculator {
+                padding: 24px;
+            }
+            
+            .final-cta {
+                padding: 32px 24px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(-20px) translateX(10px); }
+            66% { transform: translateY(10px) translateX(-5px); }
+        }
+        
+        /* Schema.org structured data will be added via script */
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">PAI3</div>
+                <div class="inventory-badge">
+                    <span id="inventory-count">2741</span> left today
+                </div>
+                <a href="/checkout" class="sticky-cta" onclick="trackEvent('cta_buy_clicked', 'sticky_header')">Buy a Power Node</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1>Own Your Piece of the<br>Decentralized AI Future.</h1>
+                <p class="hero-subtitle">A plug-and-play AI data center that earns tokens, powers the network, and keeps your data sovereign.</p>
+                
+                <div class="price-pill">$31,415</div>
+                
+                <div class="trust-badges">
+                    <span class="trust-badge">Top 5 @ Consensus 2025</span>
+                    <span class="trust-badge">Top 10 BNB Incubation Alliance</span>
+                </div>
+                
+                <div class="hero-ctas">
+                    <a href="/checkout" class="btn-primary" onclick="trackEvent('cta_buy_clicked', 'hero')">Buy a Power Node →</a>
+                    <a href="#how-it-works" class="btn-secondary" onclick="trackEvent('how_it_works_clicked', 'hero')">How it Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Now Section -->
+    <section class="section">
+        <div class="container">
+            <h2>AI is Powerful—But Centralized.</h2>
+            <div class="problem-grid">
+                <div class="problem-item">
+                    <span class="problem-icon">❌</span>
+                    <h3>Data leaves your control</h3>
+                    <p>Privacy & compliance risk with every query sent to Big Tech servers.</p>
+                </div>
+                <div class="problem-item">
+                    <span class="problem-icon">❌</span>
+                    <h3>No visibility or accountability</h3>
+                    <p>Hallucinations, bias, and errors with no recourse or explanation.</p>
+                </div>
+                <div class="problem-item">
+                    <span class="problem-icon">❌</span>
+                    <h3>Pros can't adopt safely</h3>
+                    <p>Healthcare, law, and finance professionals stuck with compliance nightmares.</p>
+                </div>
+            </div>
+            <p class="transition-text">PAI3 changes this with trust, sovereignty, and ownership.</p>
+        </div>
+    </section>
+
+    <!-- What You're Buying Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2>Your AI Data Center in a Box.</h2>
+            <div class="value-grid">
+                <div class="value-item">
+                    <div class="value-icon">🏠</div>
+                    <h3>Own the infrastructure</h3>
+                    <p>Hardware + token stake + reputation</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">💰</div>
+                    <h3>Earn on-chain</h3>
+                    <p>Token emissions, fees, compute leasing</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🔒</div>
+                    <h3>Stay private</h3>
+                    <p>Agents run where your data lives</p>
+                </div>
+            </div>
+            
+            <!-- Clickable Specs Box -->
+            <div class="specs-container" onclick="toggleSpecs()">
+                <div class="specs-header">
+                    <h3 class="font-fira">Technical Specifications</h3>
+                    <button class="specs-toggle" id="specs-toggle">▼</button>
+                </div>
+                <p>Click to view detailed hardware specifications</p>
+                
+                <div class="specs-grid" id="specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">CPU</div>
+                        <div class="spec-value">12-core</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">GPU</div>
+                        <div class="spec-value">20-core</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">RAM</div>
+                        <div class="spec-value">64 GB</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Storage</div>
+                        <div class="spec-value">5 TB SSD (RAID)</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Network</div>
+                        <div class="spec-value">Gigabit / Wi-Fi</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Power</div>
+                        <div class="spec-value">~$10/mo electricity</div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+                Pre-configured with LLMs + agent runtime. No cloud account. No DevOps.
+            </p>
+        </div>
+    </section>
+
+    <!-- ROI Calculator Section -->
+    <section class="section">
+        <div class="container">
+            <h2>How the Power Node Earns</h2>
+            
+            <div class="value-grid">
+                <div class="value-item">
+                    <div class="value-icon">🎯</div>
+                    <h3>150,000 guaranteed PAI3</h3>
+                    <p>Emitted daily over 3 years</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">📈</div>
+                    <h3>12% APR auto-staking</h3>
+                    <p>1-year lock (opt-in at purchase)</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🏢</div>
+                    <h3>Compute & cabinet leasing</h3>
+                    <p>Up to 25,000 cabinets; est. $2/cab/yr</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">⚡</div>
+                    <h3>Gas & transaction fees</h3>
+                    <p>From models + agents on your node</p>
+                </div>
+            </div>
+            
+            <div class="calculator">
+                <h3>ROI Calculator</h3>
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label for="token-price">Token Price ($)</label>
+                        <input type="range" id="token-price" min="0.21" max="10" step="0.01" value="0.21" oninput="updateCalculator()">
+                        <span id="token-price-display">$0.21</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="cabinets">Cabinets Leased</label>
+                        <input type="range" id="cabinets" min="0" max="25000" step="100" value="1000" oninput="updateCalculator()">
+                        <span id="cabinets-display">1,000</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="power-cost">Power Cost ($/kWh)</label>
+                        <input type="number" id="power-cost" min="0.05" max="0.50" step="0.01" value="0.12" oninput="updateCalculator()">
+                    </div>
+                    <div class="input-group">
+                        <label for="days-running">Days Running</label>
+                        <input type="number" id="days-running" min="1" max="1095" value="365" oninput="updateCalculator()">
+                    </div>
+                </div>
+                
+                <div class="calculator-results">
+                    <div class="result-item">
+                        <div class="result-value" id="daily-earnings">$12.50</div>
+                        <div class="result-label">Daily Earnings</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-value" id="monthly-earnings">$375</div>
+                        <div class="result-label">Monthly Earnings</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-value" id="yearly-earnings">$4,563</div>
+                        <div class="result-label">3-Year Projection</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-value" id="breakeven">2.3 years</div>
+                        <div class="result-label">Break-even</div>
+                    </div>
+                </div>
+                
+                <button onclick="resetCalculator()" class="btn-secondary" style="margin: 0 auto; display: block;">Reset</button>
+                
+                <p class="legal-note">
+                    Illustrative only. Not investment advice. Projections use TGE price $0.21 and sample parameters; actuals vary with network demand, token price, and usage.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section section-alt" id="how-it-works">
+        <div class="container">
+            <h2>Plug. Connect. Earn.</h2>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>Unbox & power the node</h3>
+                    <p>12-core CPU, 20-core GPU, 64 GB, 5 TB - enterprise-grade hardware ready to run.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>Connect to Wi-Fi</h3>
+                    <p>Guided setup walks you through network configuration in minutes.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>Manage in PAIneer</h3>
+                    <p>Monitor earnings, lease cabinets, and run agents through our web app.</p>
+                </div>
+            </div>
+            
+            <div class="demo-video">
+                <img src="https://storage.googleapis.com/msgsndr/YUbyXzjkUGA4p1Y44MUg/media/68b085056658396728977ce7.png" alt="Power Node setup demonstration" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Scarcity + Social Proof Section -->
+    <section class="section">
+        <div class="container">
+            <div class="scarcity">
+                <h2>Limited Supply, Early Reputation Advantage</h2>
+                <div class="counter-pill">Only 3,141 total. 25/day release.</div>
+                
+                <blockquote class="quote">
+                    "We're doing for AI what Bitcoin did for money."
+                    <br><span class="quote-author">— Wayne Marcel</span>
+                </blockquote>
+                
+                <div class="recognition-badges">
+                    <span class="recognition-badge">Consensus 2025 Top 5</span>
+                    <span class="recognition-badge">BNB Incubation Top 10</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Today Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2>Secure Your Stake in the AI Economy</h2>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <span class="checklist-icon">✅</span>
+                    <span>150,000 guaranteed tokens (3 years, daily emission)</span>
+                </div>
+                <div class="checklist-item">
+                    <span class="checklist-icon">✅</span>
+                    <span>12% APR auto-staking (1-yr lock)</span>
+                </div>
+                <div class="checklist-item">
+                    <span class="checklist-icon">✅</span>
+                    <span>Network fee share + leasing marketplace access</span>
+                </div>
+                <div class="checklist-item">
+                    <span class="checklist-icon">✅</span>
+                    <span>Governance rights (enhanced for Power Node owners)</span>
+                </div>
+                <div class="checklist-item">
+                    <span class="checklist-icon">✅</span>
+                    <span>3-year hardware warranty + support</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="/checkout" class="btn-primary" onclick="trackEvent('cta_buy_clicked', 'checklist')">Buy a Power Node →</a>
+                <p style="margin-top: 16px; color: var(--text-secondary); font-size: 0.9rem;">
+                    Secure checkout • Free worldwide shipping* • 30-day guarantee<br>
+                    <small>*Restricted countries list available at checkout</small>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust/Compliance Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Built for Privacy-Critical Work</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <h4>HIPAA-ready, GDPR-aligned</h4>
+                    <p>Designed for healthcare and regulated industries</p>
+                </div>
+                <div class="trust-item">
+                    <h4>Data stays on-node</h4>
+                    <p>Your information never leaves your premises</p>
+                </div>
+                <div class="trust-item">
+                    <h4>Transparent agent behavior</h4>
+                    <p>Full audit trails and explainable AI decisions</p>
+                </div>
+                <div class="trust-item">
+                    <h4>Community Risk Pool</h4>
+                    <p>Compensates for failures and misuse</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Node Comparison -->
+    <section class="section section-alt">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 32px;">
+                <h3>Need AI for your business without owning the infra?</h3>
+            </div>
+            
+            <div class="node-comparison">
+                <div class="node-card featured">
+                    <h3>Power Node</h3>
+                    <p><strong>Own Infrastructure</strong></p>
+                    <div class="node-price">$31,415</div>
+                    <p>Complete sovereignty and maximum earning potential.</p>
+                    <a href="/checkout" class="btn-primary" style="margin-top: 20px;">Buy Now</a>
+                </div>
+                
+                <div class="node-card">
+                    <h3>Professional Node</h3>
+                    <p><strong>Use AI, No Infra</strong></p>
+                    <div class="node-price">$314</div>
+                    <p>Best for regulated practices (law, healthcare, finance). AI as a service.</p>
+                    <a href="/pro-node-apply" class="btn-secondary" style="margin-top: 20px;">Apply →</a>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 24px; color: var(--text-secondary); font-size: 0.9rem;">
+                Pro Node availability by application. Power Node in open sale.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(0)">
+                    Why is the Power Node $31,415?
+                    <span class="faq-icon" id="faq-icon-0">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-0">
+                    This isn't just hardware—it's your stake in the AI economy. You get enterprise-grade equipment plus guaranteed tokens, emission rewards, and governance rights. Early adopters capture the most value as the network grows.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(1)">
+                    How much can I realistically earn?
+                    <span class="faq-icon" id="faq-icon-1">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-1">
+                    Beyond the 150,000 guaranteed tokens, you'll earn from network emissions, transaction fees, and cabinet leasing. Conservative estimates suggest $3,000-8,000 annually, but this grows with network adoption.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(2)">
+                    What makes this different from crypto mining?
+                    <span class="faq-icon" id="faq-icon-2">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-2">
+                    You're not just mining—you're providing AI infrastructure that professionals actually use. Your node earns from real economic activity: AI computations, data processing, and network services.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(3)">
+                    Do I need to be technical?
+                    <span class="faq-icon" id="faq-icon-3">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-3">
+                    No—plug & play, managed in PAIneer. Power Nodes come pre-configured with automatic updates. Our support team handles technical issues. Just plug it in and start earning.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(4)">
+                    Electricity & maintenance?
+                    <span class="faq-icon" id="faq-icon-4">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-4">
+                    ~$10/mo typical electricity cost. Designed for 24/7 operation with minimal maintenance. Token rewards easily cover operating costs with significant profit margin.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(5)">
+                    When does it ship / when profitable?
+                    <span class="faq-icon" id="faq-icon-5">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-5">
+                    25/day capacity; ships 2-3 weeks after order. You start earning tokens immediately upon activation. Full earning potential begins with network launch.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(6)">
+                    Bulk pricing?
+                    <span class="faq-icon" id="faq-icon-6">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-6">
+                    Yes—contact sales for 10+ nodes. Volume discounts available for enterprise deployments.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(7)">
+                    Affiliate program?
+                    <span class="faq-icon" id="faq-icon-7">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-7">
+                    $1,000 per Power Node sale. <a href="/affiliates" style="color: var(--primary-green);">Apply here</a> to join our affiliate program.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="final-cta">
+                <h2>Own the Future of AI Infrastructure.</h2>
+                <p>Join the decentralized AI revolution. Your Power Node awaits.</p>
+                
+                <div class="cta-buttons">
+                    <a href="/checkout" class="btn-primary" onclick="trackEvent('cta_buy_clicked', 'final')">Buy a Power Node</a>
+                    <a href="mailto:invest@pai3.ai" class="btn-secondary" onclick="trackEvent('talk_to_sales_clicked', 'final')">Talk to Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 PAI3. All rights reserved.</p>
+            <p style="margin-top: 16px; color: var(--text-secondary); font-size: 0.9rem;">
+                Questions? Email <a href="mailto:invest@pai3.ai" style="color: var(--primary-green);">invest@pai3.ai</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Legal Footer -->
+    <div class="footer-legal">
+        Nothing here is financial advice. Rewards are illustrative and depend on network activity, token price, and usage.
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Particle Animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Specs Toggle
+        function toggleSpecs() {
+            const grid = document.getElementById('specs-grid');
+            const toggle = document.getElementById('specs-toggle');
+            
+            grid.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+        
+        // ROI Calculator
+        function updateCalculator() {
+            const tokenPrice = parseFloat(document.getElementById('token-price').value);
+            const cabinets = parseInt(document.getElementById('cabinets').value);
+            const powerCost = parseFloat(document.getElementById('power-cost').value);
+            const daysRunning = parseInt(document.getElementById('days-running').value);
+            
+            // Update displays
+            document.getElementById('token-price-display').textContent = '$' + tokenPrice.toFixed(2);
+            document.getElementById('cabinets-display').textContent = cabinets.toLocaleString();
+            
+            // Calculate earnings (simplified model)
+            const guaranteedTokens = 150000;
+            const dailyEmissions = guaranteedTokens / 1095; // 3 years
+            const cabinetRevenue = cabinets * 2 / 365; // $2/cabinet/year
+            const powerCostDaily = 0.4 * 24 * powerCost; // 400W * 24h * cost per kWh
+            
+            const dailyEarnings = (dailyEmissions * tokenPrice) + cabinetRevenue - powerCostDaily;
+            const monthlyEarnings = dailyEarnings * 30;
+            const yearlyEarnings = dailyEarnings * daysRunning;
+            const breakeven = 31415 / (dailyEarnings * 365);
+            
+            document.getElementById('daily-earnings').textContent = '$' + Math.max(0, dailyEarnings).toFixed(2);
+            document.getElementById('monthly-earnings').textContent = '$' + Math.max(0, monthlyEarnings).toFixed(0);
+            document.getElementById('yearly-earnings').textContent = '$' + Math.max(0, yearlyEarnings).toFixed(0);
+            document.getElementById('breakeven').textContent = breakeven > 0 ? breakeven.toFixed(1) + ' years' : 'N/A';
+            
+            trackEvent('roi_calc_changed', 'calculator');
+        }
+        
+        function resetCalculator() {
+            document.getElementById('token-price').value = 0.21;
+            document.getElementById('cabinets').value = 1000;
+            document.getElementById('power-cost').value = 0.12;
+            document.getElementById('days-running').value = 365;
+            updateCalculator();
+        }
+        
+        // FAQ Toggle
+        function toggleFAQ(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            // Close all other FAQs
+            for (let i = 0; i < 8; i++) {
+                if (i !== index) {
+                    document.getElementById(`faq-answer-${i}`).classList.remove('active');
+                    document.getElementById(`faq-icon-${i}`).classList.remove('active');
+                }
+            }
+            
+            answer.classList.toggle('active');
+            icon.classList.toggle('active');
+            
+            if (answer.classList.contains('active')) {
+                trackEvent('faq_opened', `faq_${index}`);
+            }
+        }
+        
+        // Inventory Counter (simulated)
+        function updateInventory() {
+            const counter = document.getElementById('inventory-count');
+            let count = parseInt(counter.textContent);
+            if (Math.random() < 0.1) { // 10% chance to decrease
+                count = Math.max(2500, count - Math.floor(Math.random() * 3) - 1);
+                counter.textContent = count;
+            }
+        }
+        
+        // Event Tracking
+        function trackEvent(event, location) {
+            // Replace with your analytics tracking
+            console.log('Event:', event, 'Location:', location);
+            
+            // Example: Google Analytics 4
+            // gtag('event', event, {
+            //     'custom_parameter': location
+            // });
+        }
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            updateCalculator();
+            setInterval(updateInventory, 30000); // Update inventory every 30 seconds
+        });
+        
+        // Schema.org structured data for FAQ
+        const faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Why is the Power Node $31,415?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "This isn't just hardware—it's your stake in the AI economy. You get enterprise-grade equipment plus guaranteed tokens, emission rewards, and governance rights."
+                    }
+                },
+                {
+                    "@type": "Question", 
+                    "name": "How much can I realistically earn?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Beyond the 150,000 guaranteed tokens, you'll earn from network emissions, transaction fees, and cabinet leasing. Conservative estimates suggest $3,000-8,000 annually."
+                    }
+                }
+            ]
+        };
+        
+        // Add schema to page
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(faqSchema);
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>

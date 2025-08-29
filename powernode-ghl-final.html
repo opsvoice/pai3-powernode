@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAI3 Power Node - Own Your AI Future</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(50, 249, 50, 0.2);
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #32f932;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-weight: bold;
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .logo-text {
+            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .header-cta {
+            background: #32f932;
+            color: #000000;
+            padding: 8px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .header-cta:hover {
+            background: rgba(50, 249, 50, 0.8);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 0 80px 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #000000, #111111);
+        }
+        
+        .particle-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(50, 249, 50, 0.3);
+            border-radius: 50%;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: rgba(50, 249, 50, 0.1);
+            border: 1px solid rgba(50, 249, 50, 0.3);
+            border-radius: 25px;
+            color: #32f932;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
+        
+        .hero-title {
+            font-family: 'Courier New', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 32px;
+            line-height: 1.1;
+        }
+        
+        .hero-title .highlight {
+            color: #32f932;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .awards-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 48px;
+            font-size: 14px;
+            color: #CCCCCC;
+        }
+        
+        .award-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .award-icon {
+            width: 16px;
+            height: 16px;
+            color: #32f932;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 64px;
+        }
+        
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+        
+        .btn-primary {
+            background: #32f932;
+            color: #000000;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background: rgba(50, 249, 50, 0.8);
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            border: 2px solid #32f932;
+            color: #32f932;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: transparent;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(50, 249, 50, 0.1);
+        }
+        
+        /* Value Stack Section */
+        .value-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: 'Courier New', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .section-title .highlight {
+            color: #32f932;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #CCCCCC;
+            margin-bottom: 48px;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+        
+        .value-prop {
+            text-align: center;
+        }
+        
+        .value-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(50, 249, 50, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+            color: #32f932;
+            font-size: 32px;
+        }
+        
+        .value-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .value-subtitle {
+            color: #CCCCCC;
+        }
+        
+        /* Specs Section */
+        .specs-toggle {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .specs-button {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.3);
+            border-radius: 12px;
+            padding: 32px;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .specs-button:hover {
+            border-color: rgba(50, 249, 50, 0.5);
+        }
+        
+        .specs-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .specs-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: left;
+        }
+        
+        .specs-description {
+            color: #CCCCCC;
+            text-align: left;
+            margin-top: 8px;
+        }
+        
+        .chevron {
+            width: 24px;
+            height: 24px;
+            color: #32f932;
+            transition: transform 0.3s ease;
+        }
+        
+        .chevron.open {
+            transform: rotate(180deg);
+        }
+        
+        .specs-content {
+            margin-top: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(50, 249, 50, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            display: none;
+        }
+        
+        .specs-content.open {
+            display: block;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        
+        .spec-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(50, 249, 50, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #32f932;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .spec-details h4 {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .spec-value {
+            color: #32f932;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+        
+        .spec-detail {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+        }
+        
+        /* ROI Calculator Section */
+        .calculator-section {
+            padding: 80px 0;
+            background: rgba(17, 17, 17, 0.2);
+        }
+        
+        .earning-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .earning-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.2);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .earning-card-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #32f932;
+            margin-bottom: 8px;
+        }
+        
+        .earning-card-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .earning-card-subtitle {
+            font-size: 0.8rem;
+            color: #CCCCCC;
+            line-height: 1.4;
+        }
+        
+        .calculator-main {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.3);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .calculator-main-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .calculator-description {
+            color: #CCCCCC;
+            margin-bottom: 32px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .slider-container {
+            margin-bottom: 32px;
+        }
+        
+        .slider-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 8px;
+            background: #333333;
+            border-radius: 4px;
+            outline: none;
+            margin-bottom: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #32f932;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #32f932;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #CCCCCC;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .result-item {
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #32f932;
+            margin-bottom: 4px;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+            margin-bottom: 4px;
+        }
+        
+        .result-detail {
+            font-size: 0.75rem;
+            color: #999999;
+        }
+        
+        .reset-button {
+            background: rgba(50, 249, 50, 0.2);
+            color: #32f932;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .reset-button:hover {
+            background: rgba(50, 249, 50, 0.3);
+        }
+        
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #CCCCCC;
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(128, 128, 128, 0.1);
+            border-radius: 8px;
+            line-height: 1.4;
+        }
+        
+        .additional-earnings {
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(50, 249, 50, 0.05);
+            border: 1px solid rgba(50, 249, 50, 0.2);
+            border-radius: 8px;
+        }
+        
+        .additional-earnings h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #32f932;
+            margin-bottom: 8px;
+        }
+        
+        .additional-earnings p {
+            font-size: 0.9rem;
+            color: #DDDDDD;
+            line-height: 1.4;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 0;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 64px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        
+        .step-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(50, 249, 50, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #32f932;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            text-align: left;
+        }
+        
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .step-subtitle {
+            color: #CCCCCC;
+        }
+        
+        /* Scarcity Section */
+        .scarcity-section {
+            padding: 80px 0;
+            background: rgba(17, 17, 17, 0.2);
+        }
+        
+        .scarcity-badge {
+            background: rgba(50, 249, 50, 0.1);
+            border: 1px solid rgba(50, 249, 50, 0.3);
+            border-radius: 25px;
+            padding: 12px 24px;
+            display: inline-block;
+            margin-bottom: 32px;
+        }
+        
+        .scarcity-badge .highlight {
+            color: #32f932;
+            font-weight: 700;
+        }
+        
+        .quote {
+            font-size: 2rem;
+            color: #DDDDDD;
+            margin-bottom: 16px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .quote-author {
+            font-size: 1.1rem;
+            color: #CCCCCC;
+        }
+        
+        /* What You Get Section */
+        .checklist-section {
+            padding: 80px 0;
+        }
+        
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto 48px auto;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+        }
+        
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            color: #32f932;
+            flex-shrink: 0;
+        }
+        
+        .checklist-text {
+            color: #DDDDDD;
+        }
+        
+        .guarantee-text {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+            text-align: center;
+        }
+        
+        /* Trust Section */
+        .trust-section {
+            padding: 80px 0;
+            background: rgba(17, 17, 17, 0.2);
+        }
+        
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        
+        .trust-tile {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.2);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .trust-icon {
+            width: 32px;
+            height: 32px;
+            color: #32f932;
+            margin: 0 auto 16px auto;
+        }
+        
+        .trust-text {
+            color: #DDDDDD;
+        }
+        
+        /* Node Comparison Section */
+        .comparison-section {
+            padding: 80px 0;
+        }
+        
+        .comparison-container {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .power-node-column {
+            background: rgba(50, 249, 50, 0.05);
+            border-right: 1px solid rgba(50, 249, 50, 0.2);
+            padding: 32px;
+        }
+        
+        .professional-node-column {
+            padding: 32px;
+        }
+        
+        .node-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .node-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .power-node-title {
+            color: #32f932;
+        }
+        
+        .professional-node-title {
+            color: #CCCCCC;
+        }
+        
+        .node-subtitle {
+            color: #CCCCCC;
+        }
+        
+        .node-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 16px 0;
+        }
+        
+        .power-node-price {
+            color: #32f932;
+        }
+        
+        .professional-node-price {
+            color: #999999;
+            font-size: 1.1rem;
+        }
+        
+        .features-list {
+            margin-bottom: 32px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+        
+        .check-green {
+            color: #32f932;
+        }
+        
+        .x-red {
+            color: #EF4444;
+        }
+        
+        .partial-gray {
+            width: 20px;
+            height: 20px;
+            background: #666666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .partial-dot {
+            width: 8px;
+            height: 8px;
+            background: #CCCCCC;
+            border-radius: 50%;
+        }
+        
+        .feature-text {
+            font-size: 0.9rem;
+        }
+        
+        .power-feature-text {
+            color: #DDDDDD;
+        }
+        
+        .professional-feature-text {
+            color: #999999;
+        }
+        
+        .node-button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .power-node-button {
+            background: #32f932;
+            color: #000000;
+        }
+        
+        .power-node-button:hover {
+            background: rgba(50, 249, 50, 0.8);
+        }
+        
+        .professional-node-button {
+            border: 1px solid #999999;
+            color: #CCCCCC;
+            background: transparent;
+        }
+        
+        .professional-node-button:hover {
+            background: rgba(153, 153, 153, 0.1);
+        }
+        
+        .comparison-note {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+            margin-top: 32px;
+            text-align: center;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: rgba(17, 17, 17, 0.2);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.2);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: 24px;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: rgba(50, 249, 50, 0.05);
+        }
+        
+        .faq-icon {
+            color: #32f932;
+            font-size: 1.5rem;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        
+        .faq-answer {
+            padding: 0 24px 24px 24px;
+            color: #DDDDDD;
+            font-size: 1rem;
+            line-height: 1.6;
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        /* Final CTA Section */
+        .final-cta {
+            padding: 80px 0;
+        }
+        
+        .cta-container {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.3);
+            border-radius: 12px;
+            padding: 48px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-family: 'Courier New', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 32px;
+        }
+        
+        .cta-title .highlight {
+            color: #32f932;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        @media (min-width: 640px) {
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+        
+        .btn-large {
+            padding: 20px 48px;
+            font-size: 1.25rem;
+            border-radius: 12px;
+        }
+        
+        /* Legal Footer */
+        .legal-footer {
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid rgba(50, 249, 50, 0.2);
+            padding: 16px 0;
+        }
+        
+        .legal-text {
+            font-size: 0.75rem;
+            color: #CCCCCC;
+            text-align: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .quote {
+                font-size: 1.5rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .power-node-column {
+                border-right: none;
+                border-bottom: 1px solid rgba(50, 249, 50, 0.2);
+            }
+            
+            .earning-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .earning-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">P3</div>
+                <span class="logo-text">PAI3</span>
+            </div>
+            <a href="#buy" class="header-cta">Buy a Power Node</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="particle-bg">
+            <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; top: 80%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 80%; top: 30%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 70%; top: 70%; animation-delay: 0.5s;"></div>
+            <div class="particle" style="left: 30%; top: 10%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="left: 90%; top: 60%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 15%; top: 50%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 60%; top: 90%; animation-delay: 0.8s;"></div>
+            <div class="particle" style="left: 40%; top: 40%; animation-delay: 1.8s;"></div>
+            <div class="particle" style="left: 85%; top: 15%; animation-delay: 2.2s;"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="award-badge">
+                    🏆 Consensus 2025 Top 5 AI Innovation Award
+                </div>
+                
+                <h1 class="hero-title">
+                    Own Your Piece of the<br>
+                    <span class="highlight">Decentralized AI Future.</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    The world's first sovereign AI infrastructure that transforms your space into an intelligent data center, earning rewards while maintaining complete data sovereignty and professional-grade compliance.
+                </p>
+
+                <div class="awards-row">
+                    <div class="award-item">
+                        <span class="award-icon">🏆</span>
+                        <span>Top 5 @ Consensus 2025</span>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">🏆</span>
+                        <span>Top 10 BNB Incubation Alliance</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#buy" class="btn-primary">Buy a Power Node →</a>
+                    <button class="btn-secondary">How it Works</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Stack Section -->
+    <section class="value-section">
+        <div class="container">
+            <h2 class="section-title">
+                Your AI Data Center <span class="highlight">in a Box.</span>
+            </h2>
+            
+            <p class="section-subtitle">
+                Pre-configured with LLMs + agent runtime. No cloud account. No DevOps.
+            </p>
+            
+            <div class="value-props">
+                <div class="value-prop">
+                    <div class="value-icon">🖥️</div>
+                    <h3 class="value-title">Own the infrastructure</h3>
+                    <p class="value-subtitle">Hardware + token stake + reputation</p>
+                </div>
+                <div class="value-prop">
+                    <div class="value-icon">📊</div>
+                    <h3 class="value-title">Earn on-chain</h3>
+                    <p class="value-subtitle">Token emissions, fees, compute leasing</p>
+                </div>
+                <div class="value-prop">
+                    <div class="value-icon">🛡️</div>
+                    <h3 class="value-title">Stay private</h3>
+                    <p class="value-subtitle">Agents run where your data lives</p>
+                </div>
+            </div>
+
+            <!-- Clickable Specs Box -->
+            <div class="specs-toggle">
+                <button class="specs-button" onclick="toggleSpecs()">
+                    <div class="specs-header">
+                        <div>
+                            <h3 class="specs-title">Technical Specifications</h3>
+                            <p class="specs-description">Click to view detailed hardware specs</p>
+                        </div>
+                        <span class="chevron" id="specsChevron">▼</span>
+                    </div>
+                </button>
+                
+                <div class="specs-content" id="specsContent">
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-icon">🖥️</div>
+                            <div class="spec-details">
+                                <h4>CPU</h4>
+                                <div class="spec-value">12-Core AMD Ryzen</div>
+                                <div class="spec-detail">High-performance processing for AI workloads</div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">🎮</div>
+                            <div class="spec-details">
+                                <h4>GPU</h4>
+                                <div class="spec-value">20-Core NVIDIA RTX</div>
+                                <div class="spec-detail">Dedicated AI acceleration and compute</div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">💾</div>
+                            <div class="spec-details">
+                                <h4>RAM</h4>
+                                <div class="spec-value">64 GB DDR5</div>
+                                <div class="spec-detail">High-speed memory for large model inference</div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">💿</div>
+                            <div class="spec-details">
+                                <h4>Storage</h4>
+                                <div class="spec-value">5 TB SSD (RAID)</div>
+                                <div class="spec-detail">Enterprise-grade storage with redundancy</div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">🌐</div>
+                            <div class="spec-details">
+                                <h4>Network</h4>
+                                <div class="spec-value">Gigabit / Wi-Fi</div>
+                                <div class="spec-detail">High-speed connectivity options</div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">⚡</div>
+                            <div class="spec-details">
+                                <h4>Power</h4>
+                                <div class="spec-value">~$10/mo electricity</div>
+                                <div class="spec-detail">Typical residential power consumption</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">
+                How the Power Node <span class="highlight">Earns</span>
+            </h2>
+            
+            <div class="earning-cards">
+                <div class="earning-card">
+                    <div class="earning-card-value">150,000</div>
+                    <div class="earning-card-title">150,000 guaranteed $PAI3</div>
+                    <div class="earning-card-subtitle">over 3 years (≈50,000/year, ~137/day)</div>
+                </div>
+                <div class="earning-card">
+                    <div class="earning-card-value">12%</div>
+                    <div class="earning-card-title">12% APR auto-staking</div>
+                    <div class="earning-card-subtitle">compound your earnings automatically with network rewards</div>
+                </div>
+                <div class="earning-card">
+                    <div class="earning-card-value">$2/cabinet/yr</div>
+                    <div class="earning-card-title">Cabinet leasing potential</div>
+                    <div class="earning-card-subtitle">up to 25,000 cabinets available per node</div>
+                </div>
+                <div class="earning-card">
+                    <div class="earning-card-value">Variable</div>
+                    <div class="earning-card-title">Gas & transaction fees</div>
+                    <div class="earning-card-subtitle">from models + agents run on your node</div>
+                </div>
+            </div>
+
+            <div class="calculator-main">
+                <h3 class="calculator-main-title">Interactive ROI Calculator</h3>
+                <p class="calculator-description">
+                    At TGE price ($0.21), the guaranteed 150,000 tokens equal the $31,415 node cost after 3 years. 
+                    This effectively makes the hardware free at baseline.
+                </p>
+                
+                <div class="slider-container">
+                    <label class="slider-label">Token Price: $<span id="tokenPriceDisplay">0.21</span></label>
+                    <input
+                        type="range"
+                        min="0.21"
+                        max="10"
+                        step="0.01"
+                        value="0.21"
+                        class="slider"
+                        id="tokenPriceSlider"
+                    />
+                    <div class="slider-labels">
+                        <span>$0.21 (TGE)</span>
+                        <span>$1.00</span>
+                        <span>$5.00</span>
+                        <span>$10.00</span>
+                    </div>
+                </div>
+                
+                <div class="slider-container">
+                    <label class="slider-label">Cabinet Leasing: <span id="cabinetCountDisplay">0</span> cabinets ($<span id="cabinetRevenueDisplay">0</span>/year)</label>
+                    <input
+                        type="range"
+                        min="0"
+                        max="25000"
+                        step="1"
+                        value="0"
+                        class="slider"
+                        id="cabinetSlider"
+                    />
+                    <div class="slider-labels">
+                        <span>0 cabinets</span>
+                        <span>12,500 cabinets</span>
+                        <span>25,000 cabinets ($50K/year)</span>
+                    </div>
+                </div>
+                
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-value" id="dailyRewards">$28.77</div>
+                        <div class="result-label">Daily Rewards</div>
+                        <div class="result-detail" id="dailyDetail">~137 tokens/day</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-value" id="annualRewards">$10,500</div>
+                        <div class="result-label">Annual Rewards</div>
+                        <div class="result-detail" id="annualDetail">~50,000 tokens/year</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-value" id="threeYearRewards">$31,500</div>
+                        <div class="result-label">Total 3-Year Rewards</div>
+                        <div class="result-detail" id="threeYearDetail">150,000 tokens</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-value" id="breakEvenDays">1092</div>
+                        <div class="result-label">Break-Even (Days)</div>
+                        <div class="result-detail">Node cost ÷ daily rewards</div>
+                    </div>
+                </div>
+                
+                <button class="reset-button" onclick="resetCalculator()">
+                    Reset to Baseline
+                </button>
+                
+                <div class="disclaimer">
+                    <strong>Disclaimer:</strong> This is not financial advice. Rewards are projected based on token emissions schedule and TGE price. 
+                    Actual earnings may vary depending on network growth, fees, and token price.
+                </div>
+                
+                <div class="additional-earnings">
+                    <h4>Additional Potential Earnings</h4>
+                    <p>
+                        Cabinet leasing (up to 25,000 cabinets @ $2/year each = $50K max), staking APR (12%), and transaction/gas fees. 
+                        Cabinet revenue is included in calculations above when selected.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">
+                Plug. Connect. <span class="highlight">Earn.</span>
+            </h2>
+            
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-icon">📦</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Unbox & power the node</h3>
+                        <p class="step-subtitle">12-core CPU, 20-core GPU, 64 GB, 5 TB</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">📶</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Connect to Wi-Fi</h3>
+                        <p class="step-subtitle">guided setup</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">⚙️</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Manage in PAIneer</h3>
+                        <p class="step-subtitle">monitor earnings, lease cabinets, and run agents</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scarcity + Social Proof Section -->
+    <section class="scarcity-section">
+        <div class="container">
+            <h2 class="section-title">
+                Limited Supply, Early <span class="highlight">Reputation Advantage</span>
+            </h2>
+            
+            <div class="scarcity-badge">
+                <span class="highlight">2737 / 3141 nodes left.</span>
+            </div>
+            
+            <blockquote class="quote">
+                "We're doing for AI what Bitcoin did for money."
+            </blockquote>
+            <cite class="quote-author">-PAI3</cite>
+            
+            <div class="awards-row" style="margin-top: 48px;">
+                <div class="award-item">
+                    <span class="award-icon">🏆</span>
+                    <span>Consensus 2025 Top 5</span>
+                </div>
+                <div class="award-item">
+                    <span class="award-icon">🏆</span>
+                    <span>BNB Incubation Top 10</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Today Section -->
+    <section class="checklist-section">
+        <div class="container">
+            <h2 class="section-title">
+                Secure Your Stake in the <span class="highlight">AI Economy</span>
+            </h2>
+            
+            <div class="checklist-grid">
+                <div class="checklist-item">
+                    <span class="check-icon">✓</span>
+                    <span class="checklist-text">150,000 guaranteed tokens (3 years, daily emission)</span>
+                </div>
+                <div class="checklist-item">
+                    <span class="check-icon">✓</span>
+                    <span class="checklist-text">12% APR auto-staking (1-yr lock)</span>
+                </div>
+                <div class="checklist-item">
+                    <span class="check-icon">✓</span>
+                    <span class="checklist-text">Network fee share + leasing marketplace access</span>
+                </div>
+                <div class="checklist-item">
+                    <span class="check-icon">✓</span>
+                    <span class="checklist-text">Governance rights (enhanced for Power Node owners)</span>
+                </div>
+                <div class="checklist-item">
+                    <span class="check-icon">✓</span>
+                    <span class="checklist-text">3-year hardware warranty + support</span>
+                </div>
+            </div>
+            
+            <a href="#buy" class="btn-primary btn-large" style="margin-bottom: 16px;">
+                Buy a Power Node →
+            </a>
+            
+            <p class="guarantee-text">
+                Secure checkout • Free worldwide shipping* • 30-day guarantee<br>
+                *Restricted countries list available
+            </p>
+        </div>
+    </section>
+
+    <!-- Trust/Compliance Section -->
+    <section class="trust-section">
+        <div class="container">
+            <h2 class="section-title">
+                Built for <span class="highlight">Privacy-Critical Work</span>
+            </h2>
+            
+            <div class="trust-grid">
+                <div class="trust-tile">
+                    <div class="trust-icon">🛡️</div>
+                    <p class="trust-text">HIPAA-ready, GDPR-aligned</p>
+                </div>
+                <div class="trust-tile">
+                    <div class="trust-icon">🛡️</div>
+                    <p class="trust-text">Data stays on-node</p>
+                </div>
+                <div class="trust-tile">
+                    <div class="trust-icon">🛡️</div>
+                    <p class="trust-text">Transparent / auditable agent behavior</p>
+                </div>
+                <div class="trust-tile">
+                    <div class="trust-icon">🛡️</div>
+                    <p class="trust-text">Community Risk Pool (compensates for failures/misuse)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Node Comparison -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title">
+                Choose Your <span class="highlight">AI Infrastructure</span>
+            </h2>
+            
+            <div class="comparison-container">
+                <div class="comparison-grid">
+                    <!-- Power Node Column -->
+                    <div class="power-node-column">
+                        <div class="node-header">
+                            <h3 class="node-title power-node-title">Power Node</h3>
+                            <p class="node-subtitle">Own the Infrastructure</p>
+                            <div class="node-price power-node-price">$31,415</div>
+                        </div>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <span class="feature-icon check-green">✓</span>
+                                <span class="feature-text power-feature-text">Complete hardware ownership</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon check-green">✓</span>
+                                <span class="feature-text power-feature-text">150,000 guaranteed tokens over 3 years</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon check-green">✓</span>
+                                <span class="feature-text power-feature-text">Cabinet leasing revenue (up to $50K/year from 25,000 cabinets)</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon check-green">✓</span>
+                                <span class="feature-text power-feature-text">12% APR auto-staking rewards</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon check-green">✓</span>
+                                <span class="feature-text power-feature-text">Full governance voting rights</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon check-green">✓</span>
+                                <span class="feature-text power-feature-text">Transaction fee sharing</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon check-green">✓</span>
+                                <span class="feature-text power-feature-text">Enterprise-grade hardware (12-core CPU, 20-core GPU)</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon check-green">✓</span>
+                                <span class="feature-text power-feature-text">Maximum earning potential</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#buy" class="node-button power-node-button">
+                            Buy Power Node
+                        </a>
+                    </div>
+                    
+                    <!-- Professional Node Column -->
+                    <div class="professional-node-column">
+                        <div class="node-header">
+                            <h3 class="node-title professional-node-title">Professional Node</h3>
+                            <p class="node-subtitle">AI Service Only</p>
+                            <div class="node-price professional-node-price">Contact for Pricing</div>
+                        </div>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <span class="feature-icon x-red">✗</span>
+                                <span class="feature-text professional-feature-text">No hardware ownership</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="partial-gray">
+                                    <div class="partial-dot"></div>
+                                </div>
+                                <span class="feature-text professional-feature-text">Small token allocation (fraction of Power Node)</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon x-red">✗</span>
+                                <span class="feature-text professional-feature-text">No cabinet leasing revenue</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon x-red">✗</span>
+                                <span class="feature-text professional-feature-text">No staking rewards</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="partial-gray">
+                                    <div class="partial-dot"></div>
+                                </div>
+                                <span class="feature-text professional-feature-text">Limited governance rights</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon x-red">✗</span>
+                                <span class="feature-text professional-feature-text">No transaction fee sharing</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="partial-gray">
+                                    <div class="partial-dot"></div>
+                                </div>
+                                <span class="feature-text professional-feature-text">AI service access only</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon x-red">✗</span>
+                                <span class="feature-text professional-feature-text">Minimal earning potential</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#apply" class="node-button professional-node-button">
+                            Apply for Professional Node
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="comparison-note">
+                <strong>Power Node:</strong> Own the infrastructure, maximize earnings, full control<br>
+                <strong>Professional Node:</strong> AI service access only, minimal revenue potential
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">
+                Frequently Asked <span class="highlight">Questions</span>
+            </h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(0)">
+                        Why is the Power Node $31,415?
+                        <span class="faq-icon" id="icon0">+</span>
+                    </button>
+                    <div class="faq-answer" id="answer0">
+                        This isn't just hardware - it's your stake in the AI economy. You get enterprise-grade equipment plus 150,000 guaranteed tokens, emission rewards, and governance rights. Early pioneers capture the most value as the network grows.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(1)">
+                        How much can I realistically earn?
+                        <span class="faq-icon" id="icon1">+</span>
+                    </button>
+                    <div class="faq-answer" id="answer1">
+                        Beyond the 150,000 guaranteed tokens, you'll earn from network emissions (estimated 15-25% APY), transaction fees, and governance rewards.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(2)">
+                        What makes this different from crypto mining?
+                        <span class="faq-icon" id="icon2">+</span>
+                    </button>
+                    <div class="faq-answer" id="answer2">
+                        You're not just mining - you're providing AI infrastructure that professionals actually use. Your node earns from real economic activity: AI computations, data processing, and network services. It's productive capital, not speculative mining.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(3)">
+                        Do I need to be technical?
+                        <span class="faq-icon" id="icon3">+</span>
+                    </button>
+                    <div class="faq-answer" id="answer3">
+                        No—plug & play, managed in PAIneer. Power Nodes come pre-configured with automatic updates and monitoring. Our 24/7 support team handles technical issues. You just plug it in, connect to internet, and start earning.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(4)">
+                        Electricity & maintenance?
+                        <span class="faq-icon" id="icon4">+</span>
+                    </button>
+                    <div class="faq-answer" id="answer4">
+                        ~$10/mo typical. Power Nodes consume 400-600W (about $40-60/month in electricity). They're designed for 24/7 operation with minimal maintenance. The token rewards easily cover operating costs with significant profit margin.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(5)">
+                        When does it ship / when profitable?
+                        <span class="faq-icon" id="icon5">+</span>
+                    </button>
+                    <div class="faq-answer" id="answer5">
+                        25/day capacity; after order developed in 2-3 weeks. You start earning tokens immediately upon activation. Early pioneers get bonus emissions during the bootstrap phase.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(6)">
+                        Bulk pricing?
+                        <span class="faq-icon" id="icon6">+</span>
+                    </button>
+                    <div class="faq-answer" id="answer6">
+                        Yes—contact sales for 10+ nodes. Many pioneers are buying multiple nodes to maximize their network stake. Volume discounts available for enterprise deployments.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(7)">
+                        Affiliate program?
+                        <span class="faq-icon" id="icon7">+</span>
+                    </button>
+                    <div class="faq-answer" id="answer7">
+                        $1,000 per Power Node sale. Join our affiliate program and earn substantial commissions for every Power Node sale you refer. Apply at /affiliates.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-container">
+                <h2 class="cta-title">
+                    Own the Future of <span class="highlight">AI Infrastructure.</span>
+                </h2>
+                
+                <div class="cta-buttons">
+                    <a href="#buy" class="btn-primary btn-large">Buy a Power Node</a>
+                    <button class="btn-secondary btn-large">Talk to Sales</button>
+                </div>
+                
+                <p class="guarantee-text">
+                    Secure checkout • Free worldwide shipping • 30-day guarantee
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Footer -->
+    <div class="legal-footer">
+        <div class="container">
+            <p class="legal-text">
+                Nothing here is financial advice. Rewards are illustrative and depend on network activity, token price, and usage.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Calculator variables
+        const guaranteedTokens = 150000; // Total over 3 years
+        const tokensPerYear = guaranteedTokens / 3; // ~50,000/year
+        const tokensPerDay = guaranteedTokens / (3 * 365); // ~137/day
+        const nodeCost = 31415;
+        
+        // DOM elements
+        const tokenPriceSlider = document.getElementById('tokenPriceSlider');
+        const tokenPriceDisplay = document.getElementById('tokenPriceDisplay');
+        const cabinetSlider = document.getElementById('cabinetSlider');
+        const cabinetCountDisplay = document.getElementById('cabinetCountDisplay');
+        const cabinetRevenueDisplay = document.getElementById('cabinetRevenueDisplay');
+        
+        const dailyRewards = document.getElementById('dailyRewards');
+        const annualRewards = document.getElementById('annualRewards');
+        const threeYearRewards = document.getElementById('threeYearRewards');
+        const breakEvenDays = document.getElementById('breakEvenDays');
+        
+        const dailyDetail = document.getElementById('dailyDetail');
+        const annualDetail = document.getElementById('annualDetail');
+        const threeYearDetail = document.getElementById('threeYearDetail');
+        
+        function updateCalculator() {
+            const tokenPrice = parseFloat(tokenPriceSlider.value);
+            const cabinetCount = parseInt(cabinetSlider.value);
+            
+            // Update displays
+            tokenPriceDisplay.textContent = tokenPrice.toFixed(2);
+            cabinetCountDisplay.textContent = cabinetCount.toLocaleString();
+            cabinetRevenueDisplay.textContent = (cabinetCount * 2).toLocaleString();
+            
+            // Calculate rewards
+            const baseDailyRewards = tokensPerDay * tokenPrice;
+            const cabinetAnnualRevenue = cabinetCount * 2; // $2 per cabinet per year
+            const dailyRewardsTotal = baseDailyRewards + (cabinetAnnualRevenue / 365);
+            const annualRewardsTotal = tokensPerYear * tokenPrice + cabinetAnnualRevenue;
+            const totalThreeYearRewards = guaranteedTokens * tokenPrice + (cabinetAnnualRevenue * 3);
+            const breakEvenDaysCalc = nodeCost / dailyRewardsTotal;
+            
+            // Update results
+            dailyRewards.textContent = '$' + dailyRewardsTotal.toFixed(2);
+            annualRewards.textContent = '$' + annualRewardsTotal.toLocaleString();
+            threeYearRewards.textContent = '$' + totalThreeYearRewards.toLocaleString();
+            breakEvenDays.textContent = Math.ceil(breakEvenDaysCalc);
+            
+            // Update details
+            dailyDetail.textContent = `~137 tokens/day${cabinetCount > 0 ? ` + ${cabinetCount.toLocaleString()} cabinets` : ''}`;
+            annualDetail.textContent = `~50,000 tokens/year${cabinetCount > 0 ? ` + $${(cabinetCount * 2).toLocaleString()} cabinets` : ''}`;
+            threeYearDetail.textContent = `150,000 tokens${cabinetCount > 0 ? ` + 3yr cabinets` : ''}`;
+        }
+        
+        function resetCalculator() {
+            tokenPriceSlider.value = 0.21;
+            cabinetSlider.value = 0;
+            updateCalculator();
+        }
+        
+        function toggleSpecs() {
+            const content = document.getElementById('specsContent');
+            const chevron = document.getElementById('specsChevron');
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                chevron.textContent = '▼';
+            } else {
+                content.classList.add('open');
+                chevron.textContent = '▲';
+            }
+        }
+        
+        function toggleFAQ(index) {
+            const answer = document.getElementById('answer' + index);
+            const icon = document.getElementById('icon' + index);
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                // Close all other FAQs
+                for (let i = 0; i < 8; i++) {
+                    const otherAnswer = document.getElementById('answer' + i);
+                    const otherIcon = document.getElementById('icon' + i);
+                    if (otherAnswer && otherIcon) {
+                        otherAnswer.classList.remove('active');
+                        otherIcon.textContent = '+';
+                    }
+                }
+                
+                answer.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+        
+        // Event listeners
+        if (tokenPriceSlider && cabinetSlider) {
+            tokenPriceSlider.addEventListener('input', updateCalculator);
+            cabinetSlider.addEventListener('input', updateCalculator);
+            
+            // Initialize calculator
+            updateCalculator();
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

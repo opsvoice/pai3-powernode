@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAI3 Power Node ROI Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .calculator-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+        }
+        
+        .calculator-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .calculator-subtitle {
+            text-align: center;
+            color: #CCCCCC;
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .earning-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .earning-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.2);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .earning-card-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #32f932;
+            margin-bottom: 8px;
+        }
+        
+        .earning-card-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .earning-card-subtitle {
+            font-size: 0.8rem;
+            color: #CCCCCC;
+            line-height: 1.4;
+        }
+        
+        .calculator-main {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(50, 249, 50, 0.3);
+            border-radius: 12px;
+            padding: 32px;
+        }
+        
+        .calculator-main-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .calculator-description {
+            color: #CCCCCC;
+            margin-bottom: 32px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .slider-container {
+            margin-bottom: 32px;
+        }
+        
+        .slider-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 8px;
+            background: #333333;
+            border-radius: 4px;
+            outline: none;
+            margin-bottom: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #32f932;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #32f932;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #CCCCCC;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .result-item {
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #32f932;
+            margin-bottom: 4px;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+            margin-bottom: 4px;
+        }
+        
+        .result-detail {
+            font-size: 0.75rem;
+            color: #999999;
+        }
+        
+        .reset-button {
+            background: rgba(50, 249, 50, 0.2);
+            color: #32f932;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .reset-button:hover {
+            background: rgba(50, 249, 50, 0.3);
+        }
+        
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #CCCCCC;
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(128, 128, 128, 0.1);
+            border-radius: 8px;
+            line-height: 1.4;
+        }
+        
+        .additional-earnings {
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(50, 249, 50, 0.05);
+            border: 1px solid rgba(50, 249, 50, 0.2);
+            border-radius: 8px;
+        }
+        
+        .additional-earnings h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #32f932;
+            margin-bottom: 8px;
+        }
+        
+        .additional-earnings p {
+            font-size: 0.9rem;
+            color: #DDDDDD;
+            line-height: 1.4;
+        }
+        
+        .highlight {
+            color: #32f932;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-container {
+                padding: 20px;
+            }
+            
+            .calculator-title {
+                font-size: 2rem;
+            }
+            
+            .earning-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .earning-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h2 class="calculator-title">
+            How the Power Node <span class="highlight">Earns</span>
+        </h2>
+        
+        <div class="earning-cards">
+            <div class="earning-card">
+                <div class="earning-card-value">150,000</div>
+                <div class="earning-card-title">150,000 guaranteed $PAI3</div>
+                <div class="earning-card-subtitle">over 3 years (≈50,000/year, ~137/day)</div>
+            </div>
+            <div class="earning-card">
+                <div class="earning-card-value">12%</div>
+                <div class="earning-card-title">12% APR auto-staking</div>
+                <div class="earning-card-subtitle">compound your earnings automatically with network rewards</div>
+            </div>
+            <div class="earning-card">
+                <div class="earning-card-value">$2/cabinet/yr</div>
+                <div class="earning-card-title">Cabinet leasing potential</div>
+                <div class="earning-card-subtitle">up to 25,000 cabinets available per node</div>
+            </div>
+            <div class="earning-card">
+                <div class="earning-card-value">Variable</div>
+                <div class="earning-card-title">Gas & transaction fees</div>
+                <div class="earning-card-subtitle">from models + agents run on your node</div>
+            </div>
+        </div>
+
+        <div class="calculator-main">
+            <h3 class="calculator-main-title">Interactive ROI Calculator</h3>
+            <p class="calculator-description">
+                At TGE price ($0.21), the guaranteed 150,000 tokens equal the $31,415 node cost after 3 years. 
+                This effectively makes the hardware free at baseline.
+            </p>
+            
+            <div class="slider-container">
+                <label class="slider-label">Token Price: $<span id="tokenPriceDisplay">0.21</span></label>
+                <input
+                    type="range"
+                    min="0.21"
+                    max="10"
+                    step="0.01"
+                    value="0.21"
+                    class="slider"
+                    id="tokenPriceSlider"
+                />
+                <div class="slider-labels">
+                    <span>$0.21 (TGE)</span>
+                    <span>$1.00</span>
+                    <span>$5.00</span>
+                    <span>$10.00</span>
+                </div>
+            </div>
+            
+            <div class="slider-container">
+                <label class="slider-label">Cabinet Leasing: <span id="cabinetCountDisplay">0</span> cabinets ($<span id="cabinetRevenueDisplay">0</span>/year)</label>
+                <input
+                    type="range"
+                    min="0"
+                    max="25000"
+                    step="1"
+                    value="0"
+                    class="slider"
+                    id="cabinetSlider"
+                />
+                <div class="slider-labels">
+                    <span>0 cabinets</span>
+                    <span>12,500 cabinets</span>
+                    <span>25,000 cabinets ($50K/year)</span>
+                </div>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-value" id="dailyRewards">$28.77</div>
+                    <div class="result-label">Daily Rewards</div>
+                    <div class="result-detail" id="dailyDetail">~137 tokens/day</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="annualRewards">$10,500</div>
+                    <div class="result-label">Annual Rewards</div>
+                    <div class="result-detail" id="annualDetail">~50,000 tokens/year</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="threeYearRewards">$31,500</div>
+                    <div class="result-label">Total 3-Year Rewards</div>
+                    <div class="result-detail" id="threeYearDetail">150,000 tokens</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="breakEvenDays">1092</div>
+                    <div class="result-label">Break-Even (Days)</div>
+                    <div class="result-detail">Node cost ÷ daily rewards</div>
+                </div>
+            </div>
+            
+            <button class="reset-button" onclick="resetCalculator()">
+                Reset to Baseline
+            </button>
+            
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> This is not financial advice. Rewards are projected based on token emissions schedule and TGE price. 
+                Actual earnings may vary depending on network growth, fees, and token price.
+            </div>
+            
+            <div class="additional-earnings">
+                <h4>Additional Potential Earnings</h4>
+                <p>
+                    Cabinet leasing (up to 25,000 cabinets @ $2/year each = $50K max), staking APR (12%), and transaction/gas fees. 
+                    Cabinet revenue is included in calculations above when selected.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Calculator variables
+        const guaranteedTokens = 150000; // Total over 3 years
+        const tokensPerYear = guaranteedTokens / 3; // ~50,000/year
+        const tokensPerDay = guaranteedTokens / (3 * 365); // ~137/day
+        const nodeCost = 31415;
+        
+        // DOM elements
+        const tokenPriceSlider = document.getElementById('tokenPriceSlider');
+        const tokenPriceDisplay = document.getElementById('tokenPriceDisplay');
+        const cabinetSlider = document.getElementById('cabinetSlider');
+        const cabinetCountDisplay = document.getElementById('cabinetCountDisplay');
+        const cabinetRevenueDisplay = document.getElementById('cabinetRevenueDisplay');
+        
+        const dailyRewards = document.getElementById('dailyRewards');
+        const annualRewards = document.getElementById('annualRewards');
+        const threeYearRewards = document.getElementById('threeYearRewards');
+        const breakEvenDays = document.getElementById('breakEvenDays');
+        
+        const dailyDetail = document.getElementById('dailyDetail');
+        const annualDetail = document.getElementById('annualDetail');
+        const threeYearDetail = document.getElementById('threeYearDetail');
+        
+        function updateCalculator() {
+            const tokenPrice = parseFloat(tokenPriceSlider.value);
+            const cabinetCount = parseInt(cabinetSlider.value);
+            
+            // Update displays
+            tokenPriceDisplay.textContent = tokenPrice.toFixed(2);
+            cabinetCountDisplay.textContent = cabinetCount.toLocaleString();
+            cabinetRevenueDisplay.textContent = (cabinetCount * 2).toLocaleString();
+            
+            // Calculate rewards
+            const baseDailyRewards = tokensPerDay * tokenPrice;
+            const cabinetAnnualRevenue = cabinetCount * 2; // $2 per cabinet per year
+            const dailyRewardsTotal = baseDailyRewards + (cabinetAnnualRevenue / 365);
+            const annualRewardsTotal = tokensPerYear * tokenPrice + cabinetAnnualRevenue;
+            const totalThreeYearRewards = guaranteedTokens * tokenPrice + (cabinetAnnualRevenue * 3);
+            const breakEvenDaysCalc = nodeCost / dailyRewardsTotal;
+            
+            // Update results
+            dailyRewards.textContent = '$' + dailyRewardsTotal.toFixed(2);
+            annualRewards.textContent = '$' + annualRewardsTotal.toLocaleString();
+            threeYearRewards.textContent = '$' + totalThreeYearRewards.toLocaleString();
+            breakEvenDays.textContent = Math.ceil(breakEvenDaysCalc);
+            
+            // Update details
+            dailyDetail.textContent = `~137 tokens/day${cabinetCount > 0 ? ` + ${cabinetCount.toLocaleString()} cabinets` : ''}`;
+            annualDetail.textContent = `~50,000 tokens/year${cabinetCount > 0 ? ` + $${(cabinetCount * 2).toLocaleString()} cabinets` : ''}`;
+            threeYearDetail.textContent = `150,000 tokens${cabinetCount > 0 ? ` + 3yr cabinets` : ''}`;
+        }
+        
+        function resetCalculator() {
+            tokenPriceSlider.value = 0.21;
+            cabinetSlider.value = 0;
+            updateCalculator();
+        }
+        
+        // Event listeners
+        tokenPriceSlider.addEventListener('input', updateCalculator);
+        cabinetSlider.addEventListener('input', updateCalculator);
+        
+        // Initialize calculator
+        updateCalculator();
+    </script>
+</body>
+</html>
