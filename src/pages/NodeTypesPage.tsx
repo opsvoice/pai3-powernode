@@ -25,6 +25,7 @@ import {
 const NodeTypesPage = () => {
   const [fullComparisonOpen, setFullComparisonOpen] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [showWaitlist, setShowWaitlist] = useState(false);
   const [waitlistForm, setWaitlistForm] = useState({
     name: '',
     email: '',
@@ -51,7 +52,7 @@ const NodeTypesPage = () => {
     {
       feature: "Cost",
       power: "$31,415",
-      professional: "Details coming soon"
+      professional: "$314"
     },
     {
       feature: "Type",
@@ -76,6 +77,7 @@ const NodeTypesPage = () => {
     {
       feature: "Earnings",
       power: "Gas/tx fees + cabinet rentals",
+      power: "Agent, model and cabinet revenue",
       professional: "Agent publishing/usage; no direct compute earnings"
     },
     {
@@ -330,11 +332,11 @@ const NodeTypesPage = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">Power Node</h3>
-                      <p className="text-gray-400 text-sm">Investors, infra buyers</p>
+                      <p className="text-gray-400 text-sm">Professionals, SMEs, enterprises, infrastructure operators and Web3/AI leaders</p>
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    "For investors, infrastructure buyers, and those who want to be part of a scarce asset. AI revolution, Web3 growth, infrastructure boom - triple asset all in one investment."
+                    "For professionals, SMEs, enterprises, infrastructure operators and Web3/AI leaders who want to be part of a scarce asset. AI revolution, Web3 growth, infrastructure boom - triple asset all in one investment."
                   </p>
                 </div>
 
@@ -466,12 +468,95 @@ const NodeTypesPage = () => {
               
               <button 
                 className="w-full border-2 border-gray-500 text-gray-400 py-4 rounded-xl text-lg font-bold hover:bg-gray-500/10 transition-all"
-                onClick={() => {
-                  document.getElementById('pro-node-waitlist')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => setShowWaitlist(!showWaitlist)}
+                aria-expanded={showWaitlist}
+                aria-controls="pro-node-waitlist"
               >
                 Get Notified for Relaunch
               </button>
+              
+              {/* Inline Waitlist Form */}
+              {showWaitlist && (
+                <motion.div
+                  id="pro-node-waitlist"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-6 p-6 bg-gray-800/50 border border-gray-500/30 rounded-xl"
+                  role="region"
+                  aria-label="Professional Node waitlist signup"
+                >
+                  <h3 className="text-xl font-bold text-white mb-4">Professional Node — Next-Gen Coming Q4 2025</h3>
+                  <p className="text-gray-400 mb-6">
+                    We're developing the next generation of Professional Nodes. Enter your email to get first access when it launches.
+                  </p>
+                  
+                  {!waitlistForm.submitted ? (
+                    <form onSubmit={handleWaitlistSubmit} className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="relative">
+                          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                          <input
+                            type="text"
+                            placeholder="Your name"
+                            value={waitlistForm.name}
+                            onChange={(e) => setWaitlistForm(prev => ({ ...prev, name: e.target.value }))}
+                            className="w-full pl-12 pr-4 py-3 bg-black border border-gray-500/20 rounded-xl text-white placeholder-gray-400 focus:border-[#32f932] focus:ring-2 focus:ring-[#32f932]/20 focus:outline-none transition-colors"
+                            required
+                            aria-label="Your name"
+                          />
+                        </div>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                          <input
+                            type="email"
+                            placeholder="Your email"
+                            value={waitlistForm.email}
+                            onChange={(e) => setWaitlistForm(prev => ({ ...prev, email: e.target.value }))}
+                            className="w-full pl-12 pr-4 py-3 bg-black border border-gray-500/20 rounded-xl text-white placeholder-gray-400 focus:border-[#32f932] focus:ring-2 focus:ring-[#32f932]/20 focus:outline-none transition-colors"
+                            required
+                            aria-label="Your email address"
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start space-x-3">
+                        <input
+                          type="checkbox"
+                          id="consent-inline"
+                          checked={waitlistForm.consent}
+                          onChange={(e) => setWaitlistForm(prev => ({ ...prev, consent: e.target.checked }))}
+                          className="mt-1 h-4 w-4 text-[#32f932] bg-black border-gray-500/20 rounded focus:ring-[#32f932] focus:ring-2"
+                          required
+                        />
+                        <label htmlFor="consent-inline" className="text-sm text-gray-400 text-left">
+                          I agree to receive updates about Professional Node. We never sell your data.{' '}
+                          <a href="/privacy" className="text-[#32f932] hover:text-[#32f932]/80 underline">
+                            Privacy Policy
+                          </a>
+                        </label>
+                      </div>
+                      
+                      <button
+                        type="submit"
+                        disabled={waitlistForm.loading}
+                        className="w-full bg-gray-500 text-black py-3 rounded-xl text-lg font-bold hover:bg-gray-500/80 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {waitlistForm.loading ? 'Adding you to the list...' : 'Notify Me'}
+                      </button>
+                    </form>
+                  ) : (
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-[#32f932]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Check className="h-8 w-8 text-[#32f932]" />
+                      </div>
+                      <h4 className="text-xl font-bold text-[#32f932] mb-2">You're on the list!</h4>
+                      <p className="text-gray-400">We'll email you when Professional Nodes open.</p>
+                    </div>
+                  )}
+                </motion.div>
+              )}
             </motion.div>
           </div>
 
@@ -562,86 +647,6 @@ const NodeTypesPage = () => {
       )}
 
       {/* Professional Node Waitlist */}
-      <section id="pro-node-waitlist" className="py-20">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="bg-black/50 border border-gray-500/20 rounded-2xl p-8 text-center"
-          >
-            <h2 className="text-3xl font-bold text-white mb-6">Professional Node Next-Gen Coming Q4 2025</h2>
-            <p className="text-lg text-gray-400 mb-8">
-              We're developing the next generation of Professional Nodes. Enter your email to get first access when it launches.
-            </p>
-            
-            {!waitlistForm.submitted ? (
-              <form onSubmit={handleWaitlistSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Your name"
-                      value={waitlistForm.name}
-                      onChange={(e) => setWaitlistForm(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full pl-12 pr-4 py-4 bg-black border border-gray-500/20 rounded-xl text-white placeholder-gray-400 focus:border-[#32f932] focus:ring-2 focus:ring-[#32f932]/20 focus:outline-none transition-colors"
-                      required
-                      aria-label="Your name"
-                    />
-                  </div>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                    <input
-                      type="email"
-                      placeholder="Your email"
-                      value={waitlistForm.email}
-                      onChange={(e) => setWaitlistForm(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full pl-12 pr-4 py-4 bg-black border border-gray-500/20 rounded-xl text-white placeholder-gray-400 focus:border-[#32f932] focus:ring-2 focus:ring-[#32f932]/20 focus:outline-none transition-colors"
-                      required
-                      aria-label="Your email address"
-                    />
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <input
-                    type="checkbox"
-                    id="consent"
-                    checked={waitlistForm.consent}
-                    onChange={(e) => setWaitlistForm(prev => ({ ...prev, consent: e.target.checked }))}
-                    className="mt-1 h-4 w-4 text-[#32f932] bg-black border-gray-500/20 rounded focus:ring-[#32f932] focus:ring-2"
-                    required
-                  />
-                  <label htmlFor="consent" className="text-sm text-gray-400 text-left">
-                    I agree to receive updates about Professional Node. We never sell your data.{' '}
-                    <a href="/privacy" className="text-[#32f932] hover:text-[#32f932]/80 underline">
-                      Privacy Policy
-                    </a>
-                  </label>
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={waitlistForm.loading}
-                  className="w-full bg-gray-500 text-black py-4 rounded-xl text-lg font-bold hover:bg-gray-500/80 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {waitlistForm.loading ? 'Adding you to the list...' : 'Notify me'}
-                </button>
-              </form>
-            ) : (
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#32f932]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="h-8 w-8 text-[#32f932]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#32f932] mb-2">You're on the list!</h3>
-                <p className="text-gray-400">We'll email you when Professional Nodes open.</p>
-              </div>
-            )}
-          </motion.div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-20">
