@@ -293,7 +293,7 @@ const NodeTypesPage = () => {
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    "For investors, infrastructure buyers, and those who want to be part of a scarce asset in the AI revolution."
+                    "For investors, infrastructure buyers, and those who want to be part of a scarce asset. AI revolution, Web3 growth, infrastructure boom - triple asset all in one investment."
                   </p>
                 </div>
 
