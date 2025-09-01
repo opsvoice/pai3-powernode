@@ -11,29 +11,26 @@ const PowerNodePage = () => {
   const [showBreakdown, setShowBreakdown] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   
-  // Basic ROI inputs
-  const [tokenPrice, setTokenPrice] = useState(0.21);
-  const [cabinetCount, setCabinetCount] = useState(0);
-  const [agentMonthlyUSD, setAgentMonthlyUSD] = useState(500);
-  
-  // Advanced inputs  
-  const [gpuHourly, setGpuHourly] = useState(10);
-  const [gpuUtilization, setGpuUtilization] = useState(0.30);
-  const [stakingPct, setStakingPct] = useState(1.0);
+  // ROI inputs
+  const [pai3Price, setPai3Price] = useState(0.21);
+  const [cabinetCount, setCabinetCount] = useState(2500);
+  const [agentMonthlyUSD, setAgentMonthlyUSD] = useState(50);
+  const [modelUtilization, setModelUtilization] = useState(0.30);
+  const [modelHourlyUSD, setModelHourlyUSD] = useState(10);
+  const [stakingPct, setStakingPct] = useState(0.25);
 
   const { kpis, breakdown } = useMemo(
     () =>
       computeRoi({
-      tokenPrice,
+      pai3Price,
       cabinetCount,
       agentMonthlyUSD,
-      gpuHourly,
-      gpuUtilization,
+      modelUtilization,
+      modelHourlyUSD,
       stakingPct,
       apr: 0.12,
-      nodeCost: 31415,
       }),
-    [tokenPrice, cabinetCount, agentMonthlyUSD, gpuHourly, gpuUtilization, stakingPct]
+    [pai3Price, cabinetCount, agentMonthlyUSD, modelUtilization, modelHourlyUSD, stakingPct]
   );
 
 
