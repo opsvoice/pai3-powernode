@@ -360,6 +360,7 @@ const PowerNodePage = () => {
               <h3 className="text-2xl font-bold mb-4">Interactive ROI Calculator</h3>
               <p className="text-gray-400 mb-8 text-center">
                 Modeled projections based on baseline assumptions. Actual results vary with token price, utilization, and demand.
+              </p>
               
               {/* Basic Controls */}
               <div className="mb-8">
@@ -723,7 +724,7 @@ const PowerNodePage = () => {
                     </div>
                     
                     <p className="text-xs text-gray-400 mt-6 text-center">
-                      Token rewards and staking are guaranteed for the first 36 months.
+                      Token rewards and staking rewards are guaranteed for the first 36 months.
                     </p>
                   </div>
                 )}
@@ -733,7 +734,7 @@ const PowerNodePage = () => {
                 Power Node electricity ~ $10/month (US rates).
               </p>
               
-              <div className="mt-6 p-4 bg-gray-800/50 border border-gray-500/20 rounded-lg text-center">
+              <div className="mt-6 p-4 bg-gray-800/50 border border-gray-500/20 rounded-lg">
                 <p className="text-sm text-gray-400 text-center">
                   <strong>Disclaimer:</strong> These ROI estimates are modeled projections, not financial advice. They assume standard operating conditions.
                 </p>
