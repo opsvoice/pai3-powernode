@@ -11,6 +11,11 @@ const PowerNodePage = () => {
   const [showBreakdown, setShowBreakdown] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   
+  // Close tooltip when clicking outside
+  const handleTooltipToggle = (tooltipId: string) => {
+    setActiveTooltip(activeTooltip === tooltipId ? null : tooltipId);
+  };
+
   // ROI inputs
   const [pai3Price, setPai3Price] = useState(0.21);
   const [cabinetCount, setCabinetCount] = useState(2500);
@@ -359,7 +364,26 @@ const PowerNodePage = () => {
               
               {/* Basic Controls */}
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2">$PAI3 Price: ${pai3Price.toFixed(2)}</label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-medium">$PAI3 Price: ${pai3Price.toFixed(2)}</label>
+                  <div className="relative">
+                    <button
+                      type="button"
+                      className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                      onClick={() => handleTooltipToggle('pai3-price')}
+                    >
+                      i
+                    </button>
+                    {activeTooltip === 'pai3-price' && (
+                      <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                        <div className="text-sm text-white leading-relaxed">
+                          The projected market price of $PAI3 tokens. TGE (Token Generation Event) price is $0.21. Higher token prices increase the USD value of your rewards.
+                        </div>
+                        <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
+                      </div>
+                    )}
+                  </div>
+                </div>
                 <input
                   type="range"
                   min="0.21"
@@ -376,7 +400,26 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2 text-white">Cabinet Leasing: {cabinetCount.toLocaleString()} cabinets</label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-medium text-white">Cabinet Leasing: {cabinetCount.toLocaleString()} cabinets</label>
+                  <div className="relative">
+                    <button
+                      type="button"
+                      className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                      onClick={() => handleTooltipToggle('cabinet-leasing')}
+                    >
+                      i
+                    </button>
+                    {activeTooltip === 'cabinet-leasing' && (
+                      <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                        <div className="text-sm text-white leading-relaxed">
+                          Rent out encrypted data storage cabinets to other users at $2/cabinet/year. Each Power Node can host up to 25,000 cabinets, providing potential passive income.
+                        </div>
+                        <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
+                      </div>
+                    )}
+                  </div>
+                </div>
                 <input
                   type="range"
                   min="0"
@@ -395,7 +438,26 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2 text-white">Agent Income (per month): ${agentMonthlyUSD}</label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-medium text-white">Agent Income (per month): ${agentMonthlyUSD}</label>
+                  <div className="relative">
+                    <button
+                      type="button"
+                      className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                      onClick={() => handleTooltipToggle('agent-income')}
+                    >
+                      i
+                    </button>
+                    {activeTooltip === 'agent-income' && (
+                      <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                        <div className="text-sm text-white leading-relaxed">
+                          Monthly revenue from AI agents running on your node. This includes fees from agent execution, data processing, and specialized AI services you provide to the network.
+                        </div>
+                        <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
+                      </div>
+                    )}
+                  </div>
+                </div>
                 <input
                   type="range"
                   min="50"
@@ -413,26 +475,28 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2 text-white">
-                  Model utilization (scenario): {(modelUtilization * 100).toFixed(0)}%
-                  <div className="relative inline-block ml-2">
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-medium text-white">
+                    Model utilization (scenario): {(modelUtilization * 100).toFixed(0)}%
+                  </label>
+                  <div className="relative">
                     <button
                       type="button"
-                      className="w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
-                      onClick={() => setActiveTooltip(activeTooltip === 'utilization' ? null : 'utilization')}
+                      className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                      onClick={() => handleTooltipToggle('utilization')}
                     >
                       i
                     </button>
                     {activeTooltip === 'utilization' && (
-                      <div className="absolute z-50 bottom-6 left-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                      <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
                           Driven by (1) network demand (job distribution) and (2) reputation (age, uptime, history, stake).
                         </div>
-                        <div className="absolute -bottom-1 left-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
+                        <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                       </div>
                     )}
                   </div>
-                </label>
+                </div>
                 <input
                   type="range"
                   min="0.05"
@@ -521,7 +585,26 @@ const PowerNodePage = () => {
                     className="mt-6 space-y-6 p-6 bg-black/30 rounded-lg border border-[#32f932]/20"
                   >
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white">Model revenue ($/hr): ${modelHourlyUSD}</label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="text-sm font-medium text-white">Model revenue ($/hr): ${modelHourlyUSD}</label>
+                        <div className="relative">
+                          <button
+                            type="button"
+                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                            onClick={() => handleTooltipToggle('model-revenue')}
+                          >
+                            i
+                          </button>
+                          {activeTooltip === 'model-revenue' && (
+                            <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                              <div className="text-sm text-white leading-relaxed">
+                                Hourly revenue rate for AI model inference and compute services. Higher rates reflect premium models or specialized AI services your node provides.
+                              </div>
+                              <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                       <input
                         type="range"
                         min="10"
@@ -541,7 +624,26 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white">Staking % of rewards: {(stakingPct * 100).toFixed(1)}%</label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="text-sm font-medium text-white">Staking % of rewards: {(stakingPct * 100).toFixed(1)}%</label>
+                        <div className="relative">
+                          <button
+                            type="button"
+                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                            onClick={() => handleTooltipToggle('staking-pct')}
+                          >
+                            i
+                          </button>
+                          {activeTooltip === 'staking-pct' && (
+                            <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                              <div className="text-sm text-white leading-relaxed">
+                                Percentage of your token rewards automatically staked at 12% APR with 1-year lock periods. Higher staking percentages generate more compound growth.
+                              </div>
+                              <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                       <input
                         type="range"
                         min="0.25"
