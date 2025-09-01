@@ -160,7 +160,7 @@ const NodeTypesPage = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="font-mono text-5xl md:text-7xl font-bold mb-8 leading-tight">
-              Get to know <span className="text-[#00FF88]">PAI nodes</span>
+              Get to know <span className="text-[#32f932]">PAI3 Nodes</span>
             </h1>
             
             <div className="space-y-4 mb-8 text-xl md:text-2xl text-gray-300">
