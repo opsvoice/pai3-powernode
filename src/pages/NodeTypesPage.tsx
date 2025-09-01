@@ -379,19 +379,23 @@ const NodeTypesPage = () => {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Physical AI computer ("PAI in a box")</span>
+                  <span className="text-gray-300">Physical AI computer ("PAI3 in a box")</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Earning-ready: inference mining + token rewards</span>
+                  <span className="text-gray-300"><strong className="text-[#32f932]">150,000 PAI3 token rewards</strong> over 3 years</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">5TB storage with 25,000 data cabinet rentals</span>
+                  <span className="text-gray-300">Earning-ready: inference mining, fees, and cabinet rentals</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Scarce: 3,141 units</span>
+                  <span className="text-gray-300">25,000 rentable data cabinets (projected $50k/yr at $2 each)</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Scarce: only 3,141 units</span>
                 </li>
               </ul>
               
@@ -429,15 +433,27 @@ const NodeTypesPage = () => {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Software workspace for private AI</span>
+                  <span className="text-gray-300">Software workspace to build, run & manage AI agents</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Runs on your device/cloud or borrows compute</span>
+                  <span className="text-gray-300"><strong className="text-gray-400">1,500 PAI3 token rewards</strong> over 3 years (may phase out in future)</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">50GB storage with 250 data cabinets</span>
+                  <span className="text-gray-300">Runs on your device/cloud or borrows compute from Power Nodes</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Train & fine-tune agents for your business</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Verify agent behavior with audit tools</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">250 secure data cabinets (50GB)</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
