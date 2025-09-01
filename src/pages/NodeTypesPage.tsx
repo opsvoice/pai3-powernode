@@ -163,16 +163,9 @@ const NodeTypesPage = () => {
             <h1 className="font-mono text-5xl md:text-7xl font-bold mb-8 leading-tight">
               Get to know <span className="text-[#32f932]">PAI3 Nodes</span>
             </h1>
-            
-            <div className="space-y-4 mb-8 text-xl md:text-2xl text-gray-300">
-              <p>PAI3 node makes AI personal</p>
-              <p className="text-[#32f932] font-semibold">PAI3 Node</p>
-              <p>Personal, business and sharing</p>
-              <p>Secure your data on the node</p>
-              <p>Allow agents to run on your node</p>
-            </div>
-            
+
             <p className="text-lg text-gray-400 mb-12 max-w-4xl mx-auto">
+              PAI3 node makes AI personal.
               Choose between high-performance infrastructure (Power Node) or a software workspace for private AI workflows (Professional Node).
             </p>
             
@@ -185,24 +178,7 @@ const NodeTypesPage = () => {
             >
               <AnimatedNodeGraphic />
             </motion.div>
-            
-            {/* Feature descriptions */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12"
-            >
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-[#32f932] mb-3">Secure your data on the node</h3>
-                <p className="text-gray-400">Your sensitive information stays completely private and under your control</p>
-              </div>
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-[#32f932] mb-3">Allow agents to run on your node</h3>
-                <p className="text-gray-400">Deploy AI agents that work with your data without compromising security</p>
-              </div>
-            </motion.div>
-            
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link 
                 to="/nodes"
