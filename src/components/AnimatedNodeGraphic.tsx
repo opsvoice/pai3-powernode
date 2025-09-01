@@ -98,16 +98,12 @@ const AnimatedNodeGraphic = () => {
           {/* Central Node Cube */}
           <motion.div
             className="relative mx-8"
-            initial={{ scale: 0, rotateY: 0 }}
-            animate={{ scale: 1, rotateY: 360 }}
-            transition={{ 
-              scale: { duration: 1, ease: "easeOut", delay: 0.3 },
-              rotateY: { duration: 20, repeat: Infinity, ease: "linear", delay: 1 }
-            }}
-            style={{ transformStyle: "preserve-3d" }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
           >
             <motion.div
-              className="relative w-32 h-32 md:w-40 md:h-40"
+              className="relative w-48 h-48 md:w-64 md:h-64"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
@@ -134,7 +130,7 @@ const AnimatedNodeGraphic = () => {
 
             {/* Your Node Label */}
             <motion.div
-              className="absolute -top-12 left-1/2 transform -translate-x-1/2"
+              className="absolute -top-16 left-1/2 transform -translate-x-1/2"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}

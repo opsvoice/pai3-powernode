@@ -164,11 +164,6 @@ const NodeTypesPage = () => {
               Get to know <span className="text-[#32f932]">PAI3 Nodes</span>
             </h1>
 
-            <p className="text-lg text-gray-400 mb-12 max-w-4xl mx-auto">
-              PAI3 node makes AI personal.
-              Choose between high-performance infrastructure (Power Node) or a software workspace for private AI workflows (Professional Node).
-            </p>
-            
             {/* Animated Node Graphic */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -178,6 +173,11 @@ const NodeTypesPage = () => {
             >
               <AnimatedNodeGraphic />
             </motion.div>
+
+            <p className="text-lg text-gray-400 mb-12 max-w-4xl mx-auto">
+              PAI3 node makes AI personal.
+              Choose between high-performance infrastructure (Power Node) or a software workspace for private AI workflows (Professional Node).
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link 
