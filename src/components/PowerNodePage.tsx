@@ -342,9 +342,10 @@ const PowerNodePage = () => {
                   className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
                 />
                 <div className="flex justify-between text-xs text-gray-400 mt-1">
-                  <span>$0.21 (TGE)</span>
-                  <span>$1.00</span>
-                  <span>$5.00</span>
+                  <span>$0.21</span>
+                  <span>$2.60</span>
+                  <span>$5.10</span>
+                  <span>$7.60</span>
                   <span>$10.00</span>
                 </div>
               </div>
