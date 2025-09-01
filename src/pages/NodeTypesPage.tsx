@@ -281,133 +281,18 @@ const NodeTypesPage = () => {
                 onTap={() => setCubeHovered(!cubeHovered)}
                 whileHover={{ scale: 1.02 }}
               >
-                {/* Central Animated Cube */}
+                {/* Hero Image */}
                 <motion.div
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32"
-                  initial={{ opacity: 0, scale: 0 }}
+                  className="w-full h-full flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
                 >
-                  {/* Cube Container */}
-                  <div 
-                    className="relative w-full h-full"
-                    style={{ 
-                      transformStyle: "preserve-3d",
-                      transform: "rotateX(-15deg) rotateY(25deg)"
-                    }}
-                  >
-                    {/* Front face - Your Node */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-[#32f932]/30 to-[#32f932]/10 border-2 border-[#32f932]/60 rounded-lg flex items-center justify-center backdrop-blur-sm"
-                      style={{ transform: "translateZ(32px)" }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 1 }}
-                    >
-                      <span className="text-sm font-bold text-[#32f932]" style={{ fontFamily: 'Fira Code, monospace' }}>
-                        Your Node
-                      </span>
-                    </motion.div>
-                    
-                    {/* Left face - Your Data */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-[#32f932]/20 to-[#32f932]/5 border-2 border-[#32f932]/40 rounded-lg flex items-center justify-center backdrop-blur-sm"
-                      style={{ transform: "rotateY(-90deg) translateZ(32px)" }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 1.2 }}
-                    >
-                      <span className="text-xs font-bold text-[#32f932]/80" style={{ fontFamily: 'Fira Code, monospace' }}>
-                        Your Data
-                      </span>
-                    </motion.div>
-                    
-                    {/* Right face - Your Agents */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-[#32f932]/20 to-[#32f932]/5 border-2 border-[#32f932]/40 rounded-lg flex items-center justify-center backdrop-blur-sm"
-                      style={{ transform: "rotateY(90deg) translateZ(32px)" }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 1.4 }}
-                    >
-                      <span className="text-xs font-bold text-[#32f932]/80" style={{ fontFamily: 'Fira Code, monospace' }}>
-                        Your Agents
-                      </span>
-                    </motion.div>
-                  </div>
-                </motion.div>
-                
-                {/* Connecting Lines and Circles */}
-                {/* Top Circle - Secure your data */}
-                <motion.div
-                  className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1.6 }}
-                >
-                  <div className="relative">
-                    {/* Connection line */}
-                    <motion.div
-                      className="absolute top-8 left-1/2 w-px h-24 bg-gradient-to-b from-[#32f932]/60 to-transparent transform -translate-x-1/2"
-                      initial={{ scaleY: 0 }}
-                      animate={{ scaleY: 1 }}
-                      transition={{ duration: 0.8, delay: 1.8 }}
-                    />
-                    {/* Circle */}
-                    <div className="w-24 h-24 bg-gradient-to-br from-[#32f932]/20 to-[#32f932]/10 border-2 border-[#32f932]/60 rounded-full flex items-center justify-center backdrop-blur-sm">
-                      <span className="text-xs font-bold text-[#32f932] text-center leading-tight" style={{ fontFamily: 'Fira Code, monospace' }}>
-                        Secure<br />your data
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-                
-                {/* Bottom Left Circle - Run agents */}
-                <motion.div
-                  className="absolute bottom-0 left-8 transform translate-y-1/2"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 2 }}
-                >
-                  <div className="relative">
-                    {/* Connection line */}
-                    <motion.div
-                      className="absolute bottom-8 right-4 w-20 h-px bg-gradient-to-r from-transparent to-[#32f932]/60 transform rotate-45 origin-right"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.8, delay: 2.2 }}
-                    />
-                    {/* Circle */}
-                    <div className="w-24 h-24 bg-gradient-to-br from-[#32f932]/20 to-[#32f932]/10 border-2 border-[#32f932]/60 rounded-full flex items-center justify-center backdrop-blur-sm">
-                      <span className="text-xs font-bold text-[#32f932] text-center leading-tight" style={{ fontFamily: 'Fira Code, monospace' }}>
-                        Run<br />agents
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-                
-                {/* Bottom Right Circle - Earn rewards */}
-                <motion.div
-                  className="absolute bottom-0 right-8 transform translate-y-1/2"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 2.4 }}
-                >
-                  <div className="relative">
-                    {/* Connection line */}
-                    <motion.div
-                      className="absolute bottom-8 left-4 w-20 h-px bg-gradient-to-l from-transparent to-[#32f932]/60 transform -rotate-45 origin-left"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.8, delay: 2.6 }}
-                    />
-                    {/* Circle */}
-                    <div className="w-24 h-24 bg-gradient-to-br from-[#32f932]/20 to-[#32f932]/10 border-2 border-[#32f932]/60 rounded-full flex items-center justify-center backdrop-blur-sm">
-                      <span className="text-xs font-bold text-[#32f932] text-center leading-tight" style={{ fontFamily: 'Fira Code, monospace' }}>
-                        Earn<br />rewards
-                      </span>
-                    </div>
-                  </div>
+                  <img 
+                    src="/Gemini_Generated_Image_h9w7lwh9w7lwh9w7.png" 
+                    alt="PAI3 Node Ecosystem" 
+                    className="w-full h-full object-contain drop-shadow-2xl"
+                  />
                 </motion.div>
                 
                 {/* Hover overlay text */}
@@ -419,13 +304,13 @@ const NodeTypesPage = () => {
                     className="absolute -top-32 left-1/2 transform -translate-x-1/2 text-2xl font-bold text-[#32f932] whitespace-nowrap z-50"
                     style={{ fontFamily: 'Fira Code, monospace' }}
                   >
-                    Own your node. Own your future.
+                    Own your node, own your future.
                   </motion.div>
                 )}
                 
                 {/* Pulsing glow effect */}
                 <motion.div
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-lg"
+                  className="absolute inset-0 rounded-lg"
                   style={{
                     background: "radial-gradient(circle, rgba(50, 249, 50, 0.1) 0%, transparent 70%)",
                     filter: "blur(20px)"
