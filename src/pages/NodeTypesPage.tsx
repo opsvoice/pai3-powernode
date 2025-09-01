@@ -263,36 +263,36 @@ const NodeTypesPage = () => {
       </section>
 
       {/* Why own a PAI3 Node Section */}
-      <section className="py-20 bg-[#0F1620]">
+      <section className="py-12 bg-[#0F1620]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'Fira Code, monospace' }}>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Fira Code, monospace' }}>
               Why own a <span className="text-[#32f932]">PAI3 Node?</span>
             </h2>
           </motion.div>
 
           {/* Universal Benefits - 2x2 Grid */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="bg-black/30 border border-[#32f932]/20 rounded-2xl p-8 text-center hover:border-[#32f932]/40 transition-all"
+              className="bg-black/30 border border-[#32f932]/20 rounded-xl p-4 text-center hover:border-[#32f932]/40 transition-all"
             >
-              <div className="w-16 h-16 bg-[#32f932]/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Shield className="h-8 w-8 text-[#32f932]" />
+              <div className="w-10 h-10 bg-[#32f932]/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <Shield className="h-5 w-5 text-[#32f932]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'Fira Code, monospace' }}>
+              <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: 'Fira Code, monospace' }}>
                 Protect Data
               </h3>
-              <p className="text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
+              <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
                 Your data stays private and under your control
               </p>
             </motion.div>
@@ -302,15 +302,15 @@ const NodeTypesPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-black/30 border border-[#32f932]/20 rounded-2xl p-8 text-center hover:border-[#32f932]/40 transition-all"
+              className="bg-black/30 border border-[#32f932]/20 rounded-xl p-4 text-center hover:border-[#32f932]/40 transition-all"
             >
-              <div className="w-16 h-16 bg-[#32f932]/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Server className="h-8 w-8 text-[#32f932]" />
+              <div className="w-10 h-10 bg-[#32f932]/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <Server className="h-5 w-5 text-[#32f932]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'Fira Code, monospace' }}>
+              <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: 'Fira Code, monospace' }}>
                 Run Agents
               </h3>
-              <p className="text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
+              <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
                 Execute AI agents securely on your own node
               </p>
             </motion.div>
@@ -320,15 +320,15 @@ const NodeTypesPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="bg-black/30 border border-[#32f932]/20 rounded-2xl p-8 text-center hover:border-[#32f932]/40 transition-all"
+              className="bg-black/30 border border-[#32f932]/20 rounded-xl p-4 text-center hover:border-[#32f932]/40 transition-all"
             >
-              <div className="w-16 h-16 bg-[#32f932]/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Database className="h-8 w-8 text-[#32f932]" />
+              <div className="w-10 h-10 bg-[#32f932]/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <Database className="h-5 w-5 text-[#32f932]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'Fira Code, monospace' }}>
+              <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: 'Fira Code, monospace' }}>
                 Share Data
               </h3>
-              <p className="text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
+              <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
                 Securely share or monetize data through encrypted cabinets
               </p>
             </motion.div>
@@ -338,15 +338,15 @@ const NodeTypesPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-black/30 border border-[#32f932]/20 rounded-2xl p-8 text-center hover:border-[#32f932]/40 transition-all"
+              className="bg-black/30 border border-[#32f932]/20 rounded-xl p-4 text-center hover:border-[#32f932]/40 transition-all"
             >
-              <div className="w-16 h-16 bg-[#32f932]/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <DollarSign className="h-8 w-8 text-[#32f932]" />
+              <div className="w-10 h-10 bg-[#32f932]/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <DollarSign className="h-5 w-5 text-[#32f932]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'Fira Code, monospace' }}>
+              <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: 'Fira Code, monospace' }}>
                 Earn Tokens
               </h3>
-              <p className="text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
+              <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
                 Earn PAI3 tokens by running or contributing your node to the network
               </p>
             </motion.div>
