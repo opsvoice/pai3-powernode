@@ -816,6 +816,7 @@ const NodeTypesPage = () => {
           </div>
         </div>
       </section>
+      </motion.div>
     </div>
   );
 };
