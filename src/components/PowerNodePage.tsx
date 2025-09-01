@@ -19,28 +19,22 @@ const PowerNodePage = () => {
   // Advanced inputs  
   const [gpuUtilization, setGpuUtilization] = useState(0.30);
   const [stakingPct, setStakingPct] = useState(1.0);
-  const [serviceRevenueTokens, setServiceRevenueTokens] = useState(0);
-  const [deflationPct, setDeflationPct] = useState(0.30);
 
   const { kpis, breakdown } = useMemo(
-    () => computeRoi({
+    () =>
+      computeRoi({
       tokenPrice,
       cabinetCount,
       agentMonthlyUSD,
-      gpuHourly: 10,
       gpuUtilization,
       stakingPct,
+      gpuHourly: 10,
       apr: 0.12,
       nodeCost: 31415,
-    }),
+      }),
     [tokenPrice, cabinetCount, agentMonthlyUSD, gpuUtilization, stakingPct]
   );
 
-  const roiResult = useMemo(() => {
-    const net3yr = kpis.total3yr * (1 - deflationPct);
-    const breakEvenDays = net3yr > 0 ? (31415 / (net3yr / (3 * 365))) : Infinity;
-    return { net3yr, breakEvenDays };
-  }, [kpis.total3yr, deflationPct]);
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -327,7 +321,7 @@ const PowerNodePage = () => {
             </h2>
             
             <p className="text-gray-400 mb-8 text-center">
-              <strong>Disclaimer:</strong> Baseline expectations under normal operation. Actual results vary with token price, utilization, and demand.
+              Disclaimer: Baseline expectations under normal operation. Actual results vary with token price, utilization, and demand.
             </p>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
@@ -481,99 +475,37 @@ const PowerNodePage = () => {
                     
                     <div>
                       <label className="block text-sm font-medium mb-2 text-white">
-                        Extra Jobs Income: {serviceRevenueTokens.toLocaleString()} tokens/month
+                        Staking % of Rewards: {(stakingPct * 100).toFixed(0)}%
                         <button
                           className="ml-1 text-xs text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                          onClick={() => setActiveTooltip(activeTooltip === 'jobs' ? null : 'jobs')}
+                          onClick={() => setActiveTooltip(activeTooltip === 'staking' ? null : 'staking')}
                         >
                           ℹ️
                         </button>
                       </label>
-                      {activeTooltip === 'jobs' && (
+                      {activeTooltip === 'staking' && (
                         <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-xs text-gray-300">
-                          Tokens you can earn each month from extra jobs like hosting AI agents, providing storage, or running inference.
+                          Portion of monthly token emissions you restake. 12% APR, monthly compounding. Includes one extra month on the final deposit.
                         </div>
                       )}
                       <input
                         type="range"
-                        min="0"
-                        max="10000"
-                        step="100"
-                        value={serviceRevenueTokens}
-                        onChange={(e) => setServiceRevenueTokens(parseInt(e.target.value))}
+                        min="0.2"
+                        max="1.0"
+                        step="0.1"
+                        value={stakingPct}
+                        onChange={(e) => setStakingPct(parseFloat(e.target.value))}
                         className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
                       />
                       <div className="flex justify-between text-xs text-gray-400 mt-1">
-                        <span>0 tokens</span>
-                        <span>5,000 tokens</span>
-                        <span>10,000 tokens</span>
-                      </div>
-                      <div className="text-xs text-gray-300 mt-2 p-2 bg-gray-800/50 rounded">
-                        Converts to $ = tokens × 36 × token price
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium mb-2 text-white">
-                        Network Fees & Locks: {(deflationPct * 100).toFixed(0)}%
-                        <button
-                          className="ml-1 text-xs text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                          onClick={() => setActiveTooltip(activeTooltip === 'fees' ? null : 'fees')}
-                        >
-                          ℹ️
-                        </button>
-                      </label>
-                      {activeTooltip === 'fees' && (
-                        <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-xs text-gray-300">
-                          The network burns 5% and time-locks 25% of revenue. That means ~70% is immediately available.
-                        </div>
-                      )}
-                      <input
-                        type="range"
-                        min="0"
-                        max="0.5"
-                        step="0.05"
-                        value={deflationPct}
-                        onChange={(e) => setDeflationPct(parseFloat(e.target.value))}
-                        className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
-                      />
-                      <div className="flex justify-between text-xs text-gray-400 mt-1">
-                        <span>0%</span>
-                        <span>13%</span>
-                        <span>25%</span>
-                        <span>38%</span>
+                        <span>20%</span>
                         <span>50%</span>
+                        <span>80%</span>
+                        <span>100%</span>
                       </div>
                     </div>
                   </motion.div>
                 )}
-              </div>
-              
-              <div className="grid md:grid-cols-4 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-[#32f932]">${(roiResult.net3yr / (3 * 365)).toFixed(2)}</div>
-                  <div className="text-sm text-gray-400">Daily Earnings</div>
-                  <div className="text-xs text-gray-500">
-                    after network fees & locks
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-[#32f932]">${(roiResult.net3yr / 3).toLocaleString()}</div>
-                  <div className="text-sm text-gray-400">Yearly Earnings</div>
-                  <div className="text-xs text-gray-500">
-                    net annual average • cabinets + compute included
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-[#32f932]">${roiResult.net3yr.toLocaleString()}</div>
-                  <div className="text-sm text-gray-400">Total (3-Year)</div>
-                  <div className="text-xs text-gray-500">net after network fees & locks</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-[#32f932]">{Number.isFinite(roiResult.breakEvenDays) ? Math.ceil(roiResult.breakEvenDays) : "—"}</div>
-                  <div className="text-sm text-gray-400">Break-Even (Days)</div>
-                  <div className="text-xs text-gray-500">node cost ÷ daily earnings</div>
-                </div>
               </div>
               
               {/* Collapsible Breakdown */}
@@ -587,7 +519,7 @@ const PowerNodePage = () => {
                 
                 {showBreakdown && (
                   <div className="mt-4 p-6 bg-black/30 border border-[#32f932]/20 rounded-xl">
-                    <h4 className="text-lg font-semibold text-[#32f932] mb-4 text-center">Earnings Breakdown (3 Years, Gross)</h4>
+                    <h4 className="text-lg font-semibold text-[#32f932] mb-4 text-center">Earnings Breakdown (3 Years)</h4>
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">{formatCurrency(breakdown?.baseToken3yr || 0)}</div>
@@ -637,14 +569,14 @@ const PowerNodePage = () => {
               </button>
               
               <p className="text-xs text-gray-400 mt-6 p-4 bg-gray-800/50 rounded-lg">
-                <strong>Disclaimer:</strong> This is not financial advice. Rewards are projected based on token emissions schedule and TGE price. 
+                Disclaimer: This is not financial advice. Rewards are projected based on token emissions schedule and TGE price. 
                 Actual earnings may vary depending on network growth, fees, and token price.
               </p>
               
               {/* Big Takeaways */}
               <div className="mt-8 p-6 bg-[#32f932]/5 border border-[#32f932]/20 rounded-lg">
                 <h4 className="text-2xl font-semibold text-[#32f932] mb-6 text-center">Big Takeaways</h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
                   <div>
                     <div className="text-3xl font-bold text-white">{formatCurrency(kpis.daily)}</div>
                     <div className="text-sm text-gray-400">Daily</div>
@@ -660,6 +592,10 @@ const PowerNodePage = () => {
                   <div>
                     <div className="text-3xl font-bold text-white">{formatCurrency(kpis.total3yr)}</div>
                     <div className="text-sm text-gray-400">3-Year Total</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-white">{kpis.roiPct.toFixed(1)}%</div>
+                    <div className="text-sm text-gray-400">ROI %</div>
                   </div>
                 </div>
               </div>

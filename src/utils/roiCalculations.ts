@@ -40,7 +40,6 @@ export function computeRoi({
   apr = 0.12,
   nodeCost = 31415,
 }: RoiInputs): RoiOutput {
-  // Emissions
   const guaranteedTokens = 150_000;
   const months = 36;
   const E = guaranteedTokens / months;  // monthly tokens
@@ -52,26 +51,23 @@ export function computeRoi({
   // Cabinets (3 yrs) @ $2/year
   const cabinets3yr = cabinetCount * 2 * 3;
 
-  // Agent/CPU income (3 yrs)
+  // Agent/CPU income (3 yrs) — flat $
   const agent3yr = agentMonthlyUSD * months;
 
   // GPU compute (3 yrs): $10 × 24 × utilization × 365 × 3
   const gpuAnnual = gpuHourly * 24 * gpuUtilization * 365;
   const gpu3yr = gpuAnnual * 3;
 
-  // Staking (12% APR monthly comp), scaled by stakingPct and with one extra month on final deposit.
-  // Deposit s*E at end of each month; FV at month n+1:
-  // FV_total = s*E * (1+i) * [((1+i)^n - 1)/i]
-  // Principal = s*E*n; Extra tokens = FV_total - Principal
+  // Staking (12% APR monthly comp), scaled by stakingPct, with +1 extra compounding month.
   const s = Math.max(0, Math.min(1, stakingPct));
   const n = months;
   const annuityFactor = (((1 + i) ** n) - 1) / i;
-  const fvTotalTokens = s * E * (1 + i) * annuityFactor;
+  const fvTotalTokens = s * E * (1 + i) * annuityFactor; // deposits at month-end, evaluated at n+1
   const principalTokens = s * E * n;
   const extraTokensFromStaking = Math.max(0, fvTotalTokens - principalTokens);
   const staking3yrUSD = extraTokensFromStaking * tokenPrice;
 
-  // 3-year TOTAL (no fees/locks)
+  // 3-year TOTAL (gross)
   const total3yr =
     baseToken3yr +
     cabinets3yr +
@@ -79,7 +75,7 @@ export function computeRoi({
     gpu3yr +
     staking3yrUSD;
 
-  // Averages
+  // Averages (gross)
   const daily = total3yr / (3 * 365);
   const monthly = total3yr / months;
   const yearly = total3yr / 3;
