@@ -363,7 +363,7 @@ const NodeTypesPage = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
-                    className="absolute -top-16 left-1/2 transform -translate-x-1/2 text-2xl font-bold text-[#32f932] whitespace-nowrap"
+                    className="absolute -top-20 left-1/2 transform -translate-x-1/2 text-2xl font-bold text-[#32f932] whitespace-nowrap z-50"
                     style={{ fontFamily: 'Fira Code, monospace' }}
                   >
                     Own your node. Own your future.
