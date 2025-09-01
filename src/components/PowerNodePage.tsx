@@ -315,22 +315,44 @@ const PowerNodePage = () => {
             className="text-center mb-16"
           >
             <h2 className="font-mono text-4xl md:text-5xl font-bold mb-12">
-              How the Power Node <span className="text-[#32f932]">Earns</span>
+              ROI <span className="text-[#32f932]">Estimates</span>
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               {earningCards.map((card, index) => (
-                <div key={index} className="bg-black/50 border border-[#32f932]/20 p-6 rounded-lg">
+                <div key={index} className="bg-black/50 border border-[#32f932]/20 p-6 rounded-lg relative">
                   <div className="text-2xl font-bold text-[#32f932] mb-2">{card.value}</div>
                   <h3 className="font-semibold mb-2">{card.title}</h3>
                   <p className="text-sm text-gray-400">{card.subtitle}</p>
+                  
+                  {/* Info icon and tooltip */}
+                  <div className="absolute top-4 right-4">
+                    <button
+                      type="button"
+                      className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                      onClick={() => setActiveTooltip(activeTooltip === `card-${index}` ? null : `card-${index}`)}
+                    >
+                      i
+                    </button>
+                    {activeTooltip === `card-${index}` && (
+                      <div className="absolute z-50 top-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                        <div className="text-sm text-white leading-relaxed">
+                          {index === 0 && "Fixed token allocation distributed daily over 36 months. This is guaranteed regardless of network performance."}
+                          {index === 1 && "Automatic compounding of your token rewards at 12% APR with 1-year lock periods for maximum growth."}
+                          {index === 2 && "Rent out encrypted data storage cabinets to other users at $2/cabinet/year. Up to 25,000 cabinets per node."}
+                          {index === 3 && "Revenue from AI model inference and agent execution fees. Varies based on network usage and demand."}
+                        </div>
+                        <div className="absolute -top-1 right-2 w-2 h-2 bg-black border-l border-t border-[#32f932]/30 transform rotate-45"></div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* ROI Calculator */}
             <div className="bg-black/50 border border-[#32f932]/30 rounded-lg p-8 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold mb-4">ROI Estimates (3-Year Model)</h3>
+              <h3 className="text-2xl font-bold mb-4">Interactive ROI Calculator</h3>
               <p className="text-gray-400 mb-8 text-center">
                 Modeled projections based on baseline assumptions. Actual results vary with token price, utilization, and demand.
               </p>
@@ -611,6 +633,12 @@ const PowerNodePage = () => {
               <p className="text-xs text-gray-400 text-center">
                 Power Node electricity ~ $10/month (US rates).
               </p>
+              
+              <div className="mt-6 p-4 bg-gray-800/50 border border-gray-500/20 rounded-lg">
+                <p className="text-sm text-gray-400 text-center">
+                  <strong>Disclaimer:</strong> These ROI estimates are modeled projections, not financial advice. They assume standard operating conditions.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
