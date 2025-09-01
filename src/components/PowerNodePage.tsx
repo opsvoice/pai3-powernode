@@ -408,37 +408,6 @@ const PowerNodePage = () => {
                   >
                     <div>
                       <label className="block text-sm font-medium mb-2 text-white">
-                        Performance Bonus: {reputationMultiplier.toFixed(1)}x
-                        <button
-                          className="ml-1 text-xs text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                          onClick={() => setActiveTooltip(activeTooltip === 'reputation' ? null : 'reputation')}
-                        >
-                          ℹ️
-                        </button>
-                      </label>
-                      {activeTooltip === 'reputation' && (
-                        <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-xs text-gray-300">
-                          Extra bonus tokens if your node earns high reputation. A top score can double your guaranteed rewards.
-                        </div>
-                      )}
-                      <input
-                        type="range"
-                        min="1.0"
-                        max="2.0"
-                        step="0.1"
-                        value={reputationMultiplier}
-                        onChange={(e) => setReputationMultiplier(parseFloat(e.target.value))}
-                        className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
-                      />
-                      <div className="flex justify-between text-xs text-gray-400 mt-1">
-                        <span>1.0x (base)</span>
-                        <span>1.5x</span>
-                        <span>2.0x (max)</span>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium mb-2 text-white">
                         Extra Jobs Income: {serviceRevenueTokens.toLocaleString()} tokens/month
                         <button
                           className="ml-1 text-xs text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
@@ -565,106 +534,26 @@ const PowerNodePage = () => {
                         )}
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-bold text-white">${roiResult.breakdown.reputationBonusValue.toLocaleString()}</div>
-                        <div className="text-xs text-gray-400 flex items-center justify-center">
-                          Performance Bonus
-                          <button
-                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                            onClick={() => setActiveTooltip(activeTooltip === 'performance' ? null : 'performance')}
-                          >
-                            ℹ️
-                          </button>
-                        </div>
-                        {activeTooltip === 'performance' && (
-                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
-                            Extra bonus tokens if your node achieves high reputation (up to 2×)
-                          </div>
-                        )}
-                      </div>
-                      <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.serviceRevenueValue.toLocaleString()}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           Extra Jobs Income
-                          <button
-                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                            onClick={() => setActiveTooltip(activeTooltip === 'jobs-breakdown' ? null : 'jobs-breakdown')}
-                          >
-                            ℹ️
-                          </button>
                         </div>
-                        {activeTooltip === 'jobs-breakdown' && (
-                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
-                            Tokens earned each month from hosting agents, storage, or inference workloads
-                          </div>
-                        )}
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.cabinets3yr.toLocaleString()}</div>
-                        <div className="text-xs text-gray-400 flex items-center justify-center">
-                          Cabinets
-                          <button
-                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                            onClick={() => setActiveTooltip(activeTooltip === 'cabinets-breakdown' ? null : 'cabinets-breakdown')}
-                          >
-                            ℹ️
-                          </button>
-                        </div>
-                        {activeTooltip === 'cabinets-breakdown' && (
-                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
-                            Each cabinet generates $2/year. Power Nodes support up to 25,000 cabinets
-                          </div>
-                        )}
+                        <div className="text-xs text-gray-400">Cabinets</div>
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.compute3yr.toLocaleString()}</div>
-                        <div className="text-xs text-gray-400 flex items-center justify-center">
-                          Compute
-                          <button
-                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                            onClick={() => setActiveTooltip(activeTooltip === 'compute' ? null : 'compute')}
-                          >
-                            ℹ️
-                          </button>
-                        </div>
-                        {activeTooltip === 'compute' && (
-                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
-                            Revenue from GPU ($10/hr baseline) + CPU ($500/mo). Defaults assume 50% GPU utilization
-                          </div>
-                        )}
+                        <div className="text-xs text-gray-400">Compute</div>
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.tx3yr.toLocaleString()}</div>
-                        <div className="text-xs text-gray-400 flex items-center justify-center">
-                          TX Boost
-                          <button
-                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                            onClick={() => setActiveTooltip(activeTooltip === 'tx' ? null : 'tx')}
-                          >
-                            ℹ️
-                          </button>
-                        </div>
-                        {activeTooltip === 'tx' && (
-                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
-                            Modeled as a % of token value representing transaction/network activity
-                          </div>
-                        )}
+                        <div className="text-xs text-gray-400">TX Boost</div>
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.stakingValue3yr.toLocaleString()}</div>
-                        <div className="text-xs text-gray-400 flex items-center justify-center">
-                          Staking
-                          <button
-                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                            onClick={() => setActiveTooltip(activeTooltip === 'staking' ? null : 'staking')}
-                          >
-                            ℹ️
-                          </button>
-                        </div>
-                        {activeTooltip === 'staking' && (
-                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
-                            12% APR auto-compounded monthly over 36 months adds ~29,500 tokens
-                          </div>
-                        )}
+                        <div className="text-xs text-gray-400">Staking</div>
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-[#32f932]">${roiResult.gross3yr.toLocaleString()}</div>
@@ -685,7 +574,6 @@ const PowerNodePage = () => {
                   setTokenPrice(0.21);
                   setCabinetCount(0);
                   setServiceRevenueTokens(0);
-                  setDeflationPct(0.30);
                 }}
                 className="bg-[#32f932]/20 text-[#32f932] px-4 py-2 rounded-lg text-sm hover:bg-[#32f932]/30 transition-colors"
               >
