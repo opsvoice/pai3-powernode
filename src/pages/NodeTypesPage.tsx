@@ -399,6 +399,83 @@ const NodeTypesPage = () => {
                 </li>
               </ul>
               
+              <Link 
+                to="/nodes"
+                className="w-full bg-[#32f932] text-black py-4 rounded-xl text-lg font-bold hover:bg-[#32f932]/80 transition-all text-center block"
+              >
+                Explore Power Node
+              </Link>
+            </motion.div>
+
+            {/* Professional Node Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-black/50 border border-gray-500/20 rounded-2xl p-8 hover:border-gray-500/40 transition-all"
+            >
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-16 bg-gray-500/20 rounded-2xl flex items-center justify-center">
+                  <Laptop className="h-8 w-8 text-gray-500" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Professional Node</h3>
+                  <p className="text-gray-400">Software</p>
+                </div>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start space-x-3">
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Software workspace for AI agents</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">1,500 PAI3 token rewards over 3 years</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Train, verify, and run custom AI agents</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">250 data cabinets for secure storage</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Ideal for privacy-critical businesses</span>
+                </li>
+              </ul>
+              
+              <button 
+                className="w-full bg-gray-500 text-black py-4 rounded-xl text-lg font-bold hover:bg-gray-500/80 transition-all"
+                onClick={() => {
+                  document.getElementById('pro-node-waitlist')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Notify me when available
+              </button>
+            </motion.div>
+          </div>
+
+          {/* Comparison Toggle */}
+          <div className="text-center">
+            <button
+              onClick={() => setFullComparisonOpen(!fullComparisonOpen)}
+              className="inline-flex items-center space-x-2 bg-black/50 border border-gray-500/20 text-gray-400 px-6 py-3 rounded-xl hover:border-[#32f932]/20 hover:text-[#32f932] transition-all"
+            >
+              <span>See detailed comparison</span>
+              {fullComparisonOpen ? (
+                <ChevronUp className="h-5 w-5" />
+              ) : (
+                <ChevronDown className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Full Comparison Accordion */}
       {fullComparisonOpen && (
         <motion.section
