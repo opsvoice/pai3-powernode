@@ -368,13 +368,16 @@ const PowerNodePage = () => {
               </div>
               
               {/* Advanced Settings */}
-              <div className="mb-8">
+              <div className="mb-8 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg p-6">
                 <button
                   onClick={() => setAdvancedOpen(!advancedOpen)}
-                  className="w-full flex items-center justify-between text-left text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                  className="w-full flex items-center justify-between text-left hover:bg-[#32f932]/5 transition-colors p-2 rounded-lg"
                 >
-                  <span>Advanced Settings</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform ${advancedOpen ? 'rotate-180' : ''}`} />
+                  <div>
+                    <span className="text-lg font-semibold text-[#32f932]">⚙️ Advanced Earnings Settings</span>
+                    <p className="text-sm text-gray-300 mt-1">Customize your node's earning potential</p>
+                  </div>
+                  <ChevronDown className={`h-6 w-6 text-[#32f932] transition-transform ${advancedOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {advancedOpen && (
@@ -382,10 +385,16 @@ const PowerNodePage = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-4 space-y-6 p-4 bg-gray-800/30 rounded-lg border border-[#32f932]/10"
+                    className="mt-6 space-y-6 p-6 bg-black/30 rounded-lg border border-[#32f932]/20"
                   >
                     <div>
-                      <label className="block text-sm font-medium mb-2">Reputation Multiplier: {reputationMultiplier.toFixed(1)}x</label>
+                      <label className="block text-sm font-medium mb-2 text-white">
+                        Performance Bonus: {reputationMultiplier.toFixed(1)}x
+                        <span
+                          className="ml-2 text-xs text-gray-400 cursor-help"
+                          title="Extra bonus tokens if your node earns high reputation. A top score can double your guaranteed rewards."
+                        >ℹ️</span>
+                      </label>
                       <input
                         type="range"
                         min="1.0"
@@ -393,7 +402,7 @@ const PowerNodePage = () => {
                         step="0.1"
                         value={reputationMultiplier}
                         onChange={(e) => setReputationMultiplier(parseFloat(e.target.value))}
-                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                        className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
                       />
                       <div className="flex justify-between text-xs text-gray-400 mt-1">
                         <span>1.0x (base)</span>
@@ -403,7 +412,13 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2">Service Revenue: {serviceRevenueTokens.toLocaleString()} tokens/month</label>
+                      <label className="block text-sm font-medium mb-2 text-white">
+                        Extra Jobs Income: {serviceRevenueTokens.toLocaleString()} tokens/month
+                        <span
+                          className="ml-2 text-xs text-gray-400 cursor-help"
+                          title="Tokens you can earn each month from extra jobs like hosting AI agents, providing storage, or running inference."
+                        >ℹ️</span>
+                      </label>
                       <input
                         type="range"
                         min="0"
@@ -411,20 +426,26 @@ const PowerNodePage = () => {
                         step="100"
                         value={serviceRevenueTokens}
                         onChange={(e) => setServiceRevenueTokens(parseInt(e.target.value))}
-                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                        className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
                       />
                       <div className="flex justify-between text-xs text-gray-400 mt-1">
                         <span>0 tokens</span>
                         <span>5,000 tokens</span>
                         <span>10,000 tokens</span>
                       </div>
-                      <div className="text-xs text-gray-400 mt-1">
+                      <div className="text-xs text-gray-300 mt-2 p-2 bg-gray-800/50 rounded">
                         Converts to $ = tokens × 36 × token price
                       </div>
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2">Deflation Rate: {(deflationPct * 100).toFixed(0)}%</label>
+                      <label className="block text-sm font-medium mb-2 text-white">
+                        Network Fees & Locks: {(deflationPct * 100).toFixed(0)}%
+                        <span
+                          className="ml-2 text-xs text-gray-400 cursor-help"
+                          title="The network burns 5% and time-locks 25% of revenue. That means ~70% is immediately available."
+                        >ℹ️</span>
+                      </label>
                       <input
                         type="range"
                         min="0"
@@ -432,7 +453,7 @@ const PowerNodePage = () => {
                         step="0.05"
                         value={deflationPct}
                         onChange={(e) => setDeflationPct(parseFloat(e.target.value))}
-                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                        className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
                       />
                       <div className="flex justify-between text-xs text-gray-400 mt-1">
                         <span>0% (no deflation)</span>
@@ -447,33 +468,33 @@ const PowerNodePage = () => {
               <div className="grid md:grid-cols-4 gap-6 mb-8">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#32f932]">${(roiResult.net3yr / (3 * 365)).toFixed(2)}</div>
-                  <div className="text-sm text-gray-400">Daily Rewards</div>
+                  <div className="text-sm text-gray-400">Daily Earnings</div>
                   <div className="text-xs text-gray-500">
-                    Net after deflation{cabinetCount > 0 ? ` + cabinets` : ''}
+                    after network fees & locks
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#32f932]">${(roiResult.net3yr / 3).toLocaleString()}</div>
-                  <div className="text-sm text-gray-400">Annual Rewards</div>
+                  <div className="text-sm text-gray-400">Yearly Earnings</div>
                   <div className="text-xs text-gray-500">
-                    Net annual average{cabinetCount > 0 ? ` + cabinets` : ''}
+                    net annual average • cabinets + compute included
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#32f932]">${roiResult.net3yr.toLocaleString()}</div>
-                  <div className="text-sm text-gray-400">Total 3-Year Rewards</div>
-                  <div className="text-xs text-gray-500">Net after {(deflationPct * 100).toFixed(0)}% deflation</div>
+                  <div className="text-sm text-gray-400">Total (3-Year)</div>
+                  <div className="text-xs text-gray-500">net after network fees & locks</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#32f932]">{Number.isFinite(roiResult.breakEvenDays) ? Math.ceil(roiResult.breakEvenDays) : "—"}</div>
                   <div className="text-sm text-gray-400">Break-Even (Days)</div>
-                  <div className="text-xs text-gray-500">Node cost ÷ daily rewards</div>
+                  <div className="text-xs text-gray-500">node cost ÷ daily earnings</div>
                 </div>
               </div>
               
               {/* Revenue Breakdown */}
               <div className="mb-8 p-4 bg-gray-800/30 rounded-lg">
-                <h4 className="text-lg font-semibold text-[#32f932] mb-4 text-center">Revenue Breakdown (3 Years)</h4>
+                <h4 className="text-lg font-semibold text-[#32f932] mb-4 text-center">Earnings Breakdown (3 Years)</h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   <div className="text-center">
                     <div className="text-lg font-bold text-white">${roiResult.breakdown.baseTokenValue.toLocaleString()}</div>
@@ -481,11 +502,11 @@ const PowerNodePage = () => {
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-white">${roiResult.breakdown.reputationBonusValue.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">Reputation Bonus</div>
+                    <div className="text-xs text-gray-400">Performance Bonus</div>
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-white">${roiResult.breakdown.serviceRevenueValue.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">Service Revenue</div>
+                    <div className="text-xs text-gray-400">Extra Jobs Income</div>
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-white">${roiResult.breakdown.cabinets3yr.toLocaleString()}</div>
@@ -529,11 +550,11 @@ const PowerNodePage = () => {
               </p>
               
               <div className="mt-4 p-4 bg-[#32f932]/5 border border-[#32f932]/20 rounded-lg">
-                <h4 className="text-lg font-semibold text-[#32f932] mb-2">Advanced Revenue Sources</h4>
+                <h4 className="text-lg font-semibold text-[#32f932] mb-2">Additional Earning Sources</h4>
                 <p className="text-sm text-gray-300">
                   Includes GPU compute revenue (${(10 * 24 * 0.5 * 365 * 3).toLocaleString()}/3yr), CPU services (${(500 * 12 * 3).toLocaleString()}/3yr), 
-                  12% APR staking rewards, transaction fee boosts, and reputation multipliers. 
-                  Net values account for {(deflationPct * 100).toFixed(0)}% deflation (burns + locks).
+                  12% APR staking rewards, transaction fee boosts, and performance multipliers. 
+                  Net values account for {(deflationPct * 100).toFixed(0)}% network fees & locks.
                 </p>
               </div>
             </div>
