@@ -419,8 +419,6 @@ const PowerNodePage = () => {
                       {activeTooltip === 'reputation' && (
                         <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-xs text-gray-300">
                           Extra bonus tokens if your node earns high reputation. A top score can double your guaranteed rewards.
-                        </div>
-                      )}
                       <input
                         type="range"
                         min="1.0"
