@@ -3,7 +3,6 @@ export type RoiInputs = {
   cabinetCount: number;        // existing slider (0..25000)
 
   // new but defaulted; you can keep them hidden at first:
-  reputationMultiplier?: number;   // default 1.0 (1x..2x)
   serviceRevenueTokens?: number;   // default 0 (tokens/month)
   deflationPct?: number;           // default 0.30
 
@@ -22,7 +21,6 @@ export type RoiOutput = {
   breakEvenDays: number;
   breakdown: {
     baseTokenValue: number;
-    reputationBonusValue: number;
     serviceRevenueValue: number;
     cabinets3yr: number;
     compute3yr: number;
@@ -36,7 +34,6 @@ export function computeRoi(input: RoiInputs): RoiOutput {
     tokenPrice,
     cabinetCount,
 
-    reputationMultiplier = 1.0,
     serviceRevenueTokens = 0,
     deflationPct = 0.30,
 
@@ -55,9 +52,6 @@ export function computeRoi(input: RoiInputs): RoiOutput {
   const tokensPerYear = guaranteedTokens / 3;
   const baseAnnualTokenValue = tokensPerYear * tokenPrice;
   const baseTokenValue = guaranteedTokens * tokenPrice;
-
-  // rep bonus (1x..2x; value on top of base)
-  const reputationBonusValue = baseTokenValue * (reputationMultiplier - 1);
 
   // service revenue (tokens/month)
   const serviceRevenueValue = serviceRevenueTokens * 36 * tokenPrice;
@@ -90,7 +84,6 @@ export function computeRoi(input: RoiInputs): RoiOutput {
   // gross 3-yr cash value
   const gross3yr =
     baseTokenValue +
-    reputationBonusValue +
     serviceRevenueValue +
     cabinets3yr +
     compute3yr +
@@ -111,7 +104,6 @@ export function computeRoi(input: RoiInputs): RoiOutput {
     breakEvenDays,
     breakdown: {
       baseTokenValue,
-      reputationBonusValue,
       serviceRevenueValue,
       cabinets3yr,
       compute3yr,

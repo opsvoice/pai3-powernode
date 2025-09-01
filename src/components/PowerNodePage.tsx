@@ -14,7 +14,6 @@ const PowerNodePage = () => {
   const [cabinetCount, setCabinetCount] = useState(0);
   
   // Advanced inputs
-  const [reputationMultiplier, setReputationMultiplier] = useState(1.0);
   const [serviceRevenueTokens, setServiceRevenueTokens] = useState(0);
   const [deflationPct, setDeflationPct] = useState(0.30);
 
@@ -22,7 +21,6 @@ const PowerNodePage = () => {
   const roiInputs: RoiInputs = {
     tokenPrice,
     cabinetCount,
-    reputationMultiplier,
     serviceRevenueTokens,
     deflationPct,
   };
@@ -31,7 +29,6 @@ const PowerNodePage = () => {
     () => computeRoi({
       tokenPrice,
       cabinetCount,
-      reputationMultiplier,
       serviceRevenueTokens,
       deflationPct,
       // defaults (no UI change yet)
@@ -42,7 +39,7 @@ const PowerNodePage = () => {
       apr: 0.12,
       txBoostPct: 0.05,
     }),
-    [tokenPrice, cabinetCount, reputationMultiplier, serviceRevenueTokens, deflationPct]
+    [tokenPrice, cabinetCount, serviceRevenueTokens, deflationPct]
   );
 
   const specs = [
