@@ -17,6 +17,7 @@ const PowerNodePage = () => {
   const [agentMonthlyUSD, setAgentMonthlyUSD] = useState(500);
   
   // Advanced inputs  
+  const [gpuHourly, setGpuHourly] = useState(10);
   const [gpuUtilization, setGpuUtilization] = useState(0.30);
   const [stakingPct, setStakingPct] = useState(1.0);
 
@@ -26,13 +27,13 @@ const PowerNodePage = () => {
       tokenPrice,
       cabinetCount,
       agentMonthlyUSD,
+      gpuHourly,
       gpuUtilization,
       stakingPct,
-      gpuHourly: 10,
       apr: 0.12,
       nodeCost: 31415,
       }),
-    [tokenPrice, cabinetCount, agentMonthlyUSD, gpuUtilization, stakingPct]
+    [tokenPrice, cabinetCount, agentMonthlyUSD, gpuHourly, gpuUtilization, stakingPct]
   );
 
 
@@ -357,11 +358,11 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-sm font-medium mb-2 text-white">
                   Cabinet Leasing @ $2/year: {cabinetCount.toLocaleString()} cabinets
                   <span 
                     title="Each cabinet contributes $2 per year. Power Nodes support up to 25,000 cabinets." 
-                    className="ml-1 cursor-help"
+                    className="ml-1 cursor-help text-gray-400"
                   >
                     ℹ️
                   </span>
@@ -383,11 +384,11 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-sm font-medium mb-2 text-white">
                   Agent Income (per month): ${agentMonthlyUSD.toLocaleString()}
                   <span 
                     title="Income from CPU/agent services. Flat monthly amount." 
-                    className="ml-1 cursor-help"
+                    className="ml-1 cursor-help text-gray-400"
                   >
                     ℹ️
                   </span>
@@ -416,6 +417,7 @@ const PowerNodePage = () => {
                     setTokenPrice(0.21); 
                     setCabinetCount(0); 
                     setAgentMonthlyUSD(500);
+                    setGpuHourly(10);
                     setGpuUtilization(0.30); 
                     setStakingPct(1.0);
                   }}
@@ -429,6 +431,7 @@ const PowerNodePage = () => {
                     setTokenPrice(1.00); 
                     setCabinetCount(5000); 
                     setAgentMonthlyUSD(1000);
+                    setGpuHourly(15);
                     setGpuUtilization(0.50); 
                     setStakingPct(1.0);
                   }}
@@ -442,6 +445,7 @@ const PowerNodePage = () => {
                     setTokenPrice(5.00); 
                     setCabinetCount(15000); 
                     setAgentMonthlyUSD(2500);
+                    setGpuHourly(20);
                     setGpuUtilization(0.75); 
                     setStakingPct(1.0);
                   }}
@@ -472,10 +476,42 @@ const PowerNodePage = () => {
                   >
                     <div>
                       <label className="block text-sm font-medium mb-2 text-white">
-                        GPU Utilization (fixed rate: $10/hr): {(gpuUtilization * 100).toFixed(0)}%
+                        GPU Price ($/hr): ${gpuHourly}
                         <span 
-                          title="GPU revenue = $10 × 24 × utilization × 365" 
-                          className="ml-1 cursor-help"
+                          title="Conservative baseline is $10/hr (L40 ballpark). Higher-demand workloads can clear $15–$50/hr depending on hardware class and market." 
+                          className="ml-1 cursor-help text-gray-400"
+                        >
+                          ℹ️
+                        </span>
+                      </label>
+                      <input
+                        type="range"
+                        min="10"
+                        max="50"
+                        step="1"
+                        value={gpuHourly}
+                        onChange={(e) => setGpuHourly(parseInt(e.target.value))}
+                        className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                      />
+                      <div className="flex justify-between text-xs text-gray-400 mt-1">
+                        <span>$10</span>
+                        <span>$15</span>
+                        <span>$20</span>
+                        <span>$30</span>
+                        <span>$40</span>
+                        <span>$50</span>
+                      </div>
+                      <div className="text-xs mt-1 text-gray-300">
+                        ≈ ${Math.round(gpuHourly * 24 * gpuUtilization * 365).toLocaleString()} / year at {Math.round(gpuUtilization*100)}% utilization
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium mb-2 text-white">
+                        GPU Utilization: {(gpuUtilization * 100).toFixed(0)}%
+                        <span 
+                          title="GPU revenue = ($/hr) × 24 × utilization × 365. Utilization reflects demand; reputation (age, uptime, stake, history) helps over time." 
+                          className="ml-1 cursor-help text-gray-400"
                         >
                           ℹ️
                         </span>
@@ -503,7 +539,7 @@ const PowerNodePage = () => {
                         Staking % of Rewards: {(stakingPct * 100).toFixed(0)}%
                         <span 
                           title="Portion of monthly token emissions you restake. 12% APR, monthly compounding. Includes one extra month on the final deposit." 
-                          className="ml-1 cursor-help"
+                          className="ml-1 cursor-help text-gray-400"
                         >
                           ℹ️
                         </span>
@@ -530,35 +566,35 @@ const PowerNodePage = () => {
               
               {/* ROI Estimates */}
               <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg">
-                <h3 className="text-[#32f932] font-semibold text-lg">ROI Estimates (3-Year Model)</h3>
-                <p className="text-xs opacity-70 -mt-1 mb-6">
-                  Modeled projections based on baseline assumptions. Actual results vary with token price, utilization, and demand.
+                <h3 className="text-[#32f932] font-semibold text-lg">ROI Estimates</h3>
+                <p className="text-xs opacity-70 -mt-1 mb-4">
+                  Projected earnings based on current settings. Actual results vary with token price, utilization, and demand.
                 </p>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
                   <div>
-                    <div className="text-4xl font-bold text-white">${Math.round(kpis.daily).toLocaleString()}</div>
+                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.daily).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Daily Earnings</div>
-                    <div className="text-xs text-gray-500 mt-1">Average daily revenue (gross, over 3 years)</div>
+                    <div className="text-xs text-gray-500 mt-1">Average daily revenue</div>
                   </div>
                   <div>
-                    <div className="text-4xl font-bold text-white">${Math.round(kpis.monthly).toLocaleString()}</div>
+                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Monthly Earnings</div>
-                    <div className="text-xs text-gray-500 mt-1">Average monthly revenue (gross, over 3 years)</div>
+                    <div className="text-xs text-gray-500 mt-1">Average monthly revenue</div>
                   </div>
                   <div>
-                    <div className="text-4xl font-bold text-white">${Math.round(kpis.yearly).toLocaleString()}</div>
+                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Yearly Earnings</div>
-                    <div className="text-xs text-gray-500 mt-1">Average annual revenue (gross)</div>
+                    <div className="text-xs text-gray-500 mt-1">Average annual revenue</div>
                   </div>
                   <div>
-                    <div className="text-4xl font-bold text-white">${Math.round(kpis.total3yr).toLocaleString()}</div>
+                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">3-Year Total</div>
-                    <div className="text-xs text-gray-500 mt-1">Combined token + cabinet + agent + GPU + staking</div>
+                    <div className="text-xs text-gray-500 mt-1">Total projected earnings</div>
                   </div>
                   <div>
-                    <div className="text-4xl font-bold text-white">{kpis.roiPct.toFixed(1)}%</div>
+                    <div className="text-2xl font-bold text-[#32f932]">{kpis.roiPct.toFixed(1)}%</div>
                     <div className="text-sm text-gray-400">ROI %</div>
-                    <div className="text-xs text-gray-500 mt-1">(3-Year Total − Node Cost) ÷ Node Cost</div>
+                    <div className="text-xs text-gray-500 mt-1">Return on investment</div>
                   </div>
                 </div>
               </div>
@@ -610,7 +646,7 @@ const PowerNodePage = () => {
               </div>
               
               <p className="text-xs text-gray-400 p-4 bg-gray-800/50 rounded-lg">
-                Disclaimer: These ROI estimates are modeled projections, not financial advice. They assume standard operating conditions and may vary based on network growth, token price fluctuations, and actual utilization rates.
+                Disclaimer: These ROI estimates are modeled projections, not financial advice. They assume standard operating conditions.
               </p>
             </div>
           </motion.div>
