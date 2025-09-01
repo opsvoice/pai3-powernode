@@ -154,61 +154,6 @@ const NodeTypesPage = () => {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Extended Grid Background */}
-        <div className="absolute inset-0">
-          <svg className="w-full h-full opacity-20" viewBox="0 0 800 600">
-            <defs>
-              <pattern id="heroGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#32f932" strokeWidth="0.5" opacity="0.6"/>
-              </pattern>
-              <linearGradient id="heroGridGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#32f932" stopOpacity="0.1" />
-                <stop offset="50%" stopColor="#32f932" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#32f932" stopOpacity="0.1" />
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#heroGrid)" />
-            <rect width="100%" height="100%" fill="url(#heroGridGlow)" />
-          </svg>
-          
-          {/* Animated grid lines across full hero */}
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-full h-px bg-gradient-to-r from-transparent via-[#32f932]/40 to-transparent"
-              style={{ top: `${8.33 * (i + 1)}%` }}
-              animate={{
-                opacity: [0.2, 0.6, 0.2],
-                scaleX: [0.8, 1.2, 0.8],
-              }}
-              transition={{
-                duration: 4,
-                delay: i * 0.2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-          
-          {[...Array(16)].map((_, i) => (
-            <motion.div
-              key={`v-${i}`}
-              className="absolute h-full w-px bg-gradient-to-b from-transparent via-[#32f932]/40 to-transparent"
-              style={{ left: `${6.25 * (i + 1)}%` }}
-              animate={{
-                opacity: [0.2, 0.6, 0.2],
-                scaleY: [0.8, 1.2, 0.8],
-              }}
-              transition={{
-                duration: 4,
-                delay: i * 0.15,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-        </div>
-        
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -238,11 +183,6 @@ const NodeTypesPage = () => {
               <Link 
                 to="/nodes"
                 className="bg-[#32f932] text-black px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#32f932]/80 transition-all transform hover:scale-105 shadow-2xl shadow-[#32f932]/25"
-                onClick={() => {
-                  if (typeof window !== 'undefined' && (window as any).gtag) {
-                    (window as any).gtag('event', 'click', { event_category: 'hero_cta', event_label: 'explore_power_node' });
-                  }
-                }}
               >
                 Explore Power Node
               </Link>
@@ -250,9 +190,6 @@ const NodeTypesPage = () => {
                 className="border-2 border-[#32f932] text-[#32f932] px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#32f932]/10 transition-all"
                 onClick={() => {
                   document.getElementById('pro-node-waitlist')?.scrollIntoView({ behavior: 'smooth' });
-                  if (typeof window !== 'undefined' && (window as any).gtag) {
-                    (window as any).gtag('event', 'click', { event_category: 'hero_cta', event_label: 'professional_node_notify' });
-                  }
                 }}
               >
                 Professional Node – notify me
@@ -816,7 +753,8 @@ const NodeTypesPage = () => {
             </div>
           </div>
         </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
