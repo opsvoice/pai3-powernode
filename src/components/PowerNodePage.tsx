@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, HardDrive, Zap, Server, ChevronDown, ChevronUp, Check, Award, Calculator, Box, Wifi, Settings, Shield } from 'lucide-react';
-import { computeRoi, type RoiInputs } from '../utils/roiCalculations';
+import { computeRoi } from '../utils/roiCalculations';
 
 const PowerNodePage = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -10,38 +10,38 @@ const PowerNodePage = () => {
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [showBreakdown, setShowBreakdown] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+  
+  // Basic ROI inputs
   const [tokenPrice, setTokenPrice] = useState(0.21);
   const [cabinetCount, setCabinetCount] = useState(0);
-  const [reputationMultiplier, setReputationMultiplier] = useState(1.0);
+  const [agentMonthlyUSD, setAgentMonthlyUSD] = useState(500);
   
-  // Advanced inputs
-  const [serviceRevenueTokens, setServiceRevenueTokens] = useState(0);
-  const [deflationPct, setDeflationPct] = useState(0.30);
+  // Advanced inputs  
+  const [gpuUtilization, setGpuUtilization] = useState(0.30);
+  const [stakingPct, setStakingPct] = useState(1.0);
 
-  // Compute ROI using new advanced logic
-  const roiInputs: RoiInputs = {
-    tokenPrice,
-    cabinetCount,
-    serviceRevenueTokens,
-    deflationPct,
-  };
-  
-  const roiResult = useMemo(
+  const { kpis, breakdown } = useMemo(
     () => computeRoi({
       tokenPrice,
       cabinetCount,
-      serviceRevenueTokens,
-      deflationPct,
-      // defaults (no UI change yet)
+      agentMonthlyUSD,
       gpuHourly: 10,
-      gpuUtilization: 0.5,
-      cpuMonthly: 500,
-      stakingOn: true,
+      gpuUtilization,
+      stakingPct,
       apr: 0.12,
-      txBoostPct: 0.05,
+      nodeCost: 31415,
     }),
-    [tokenPrice, cabinetCount, serviceRevenueTokens, deflationPct]
+    [tokenPrice, cabinetCount, agentMonthlyUSD, gpuUtilization, stakingPct]
   );
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
 
   const specs = [
     { icon: Cpu, label: "CPU", value: "12-Core AMD Ryzen", detail: "High-performance processing for AI workloads" },
@@ -284,8 +284,8 @@ const PowerNodePage = () => {
                   className="mt-4 bg-black/30 border border-[#32f932]/20 rounded-lg p-6"
                 >
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {specs.map((spec, index) => (
-                      <div key={index} className="flex items-start space-x-4">
+                    <label className="block text-sm font-medium mb-2 text-white">
+                      GPU Utilization: {(gpuUtilization * 100).toFixed(0)}%
                         <div className="w-12 h-12 bg-[#32f932]/20 rounded-lg flex items-center justify-center flex-shrink-0">
                           <spec.icon className="h-6 w-6 text-[#32f932]" />
                         </div>
@@ -318,6 +318,10 @@ const PowerNodePage = () => {
               How the Power Node <span className="text-[#32f932]">Earns</span>
             </h2>
             
+            <p className="text-gray-400 mb-8 text-center">
+              <strong>Disclaimer:</strong> Baseline expectations under normal operation. Actual results vary with token price, utilization, and demand.
+            </p>
+            
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               {earningCards.map((card, index) => (
                 <div key={index} className="bg-black/50 border border-[#32f932]/20 p-6 rounded-lg">
@@ -331,11 +335,8 @@ const PowerNodePage = () => {
             {/* ROI Calculator */}
             <div className="bg-black/50 border border-[#32f932]/30 rounded-lg p-8 max-w-4xl mx-auto">
               <h3 className="text-2xl font-bold mb-4">Interactive ROI Calculator</h3>
-              <p className="text-gray-400 mb-8">
-                At TGE price ($0.21), the guaranteed 150,000 tokens equal the $31,415 node cost after 3 years. 
-                This effectively makes the hardware free at baseline.
-              </p>
               
+              {/* Basic Controls */}
               <div className="mb-8">
                 <label className="block text-sm font-medium mb-2">Token Price: ${tokenPrice.toFixed(2)}</label>
                 <input
@@ -357,7 +358,7 @@ const PowerNodePage = () => {
               
               <div className="mb-8">
                 <label className="block text-sm font-medium mb-2">
-                  Cabinet Leasing: {cabinetCount.toLocaleString()} cabinets (${(cabinetCount * 2).toLocaleString()}/year)
+                  Cabinet Leasing: {cabinetCount.toLocaleString()} cabinets @ $2/year
                   <button
                     className="ml-2 text-sm text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
                     onClick={() => setActiveTooltip(activeTooltip === 'cabinets' ? null : 'cabinets')}
@@ -383,6 +384,37 @@ const PowerNodePage = () => {
                   <span>0 cabinets</span>
                   <span>12,500 cabinets</span>
                   <span>25,000 cabinets ($50K/year)</span>
+                </div>
+              </div>
+              
+              <div className="mb-8">
+                <label className="block text-sm font-medium mb-2">
+                  Agent Income (per month): ${agentMonthlyUSD.toLocaleString()}
+                  <button
+                    className="ml-2 text-sm text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                    onClick={() => setActiveTooltip(activeTooltip === 'agent' ? null : 'agent')}
+                  >
+                    ℹ️
+                  </button>
+                </label>
+                {activeTooltip === 'agent' && (
+                  <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-sm text-gray-300">
+                    Income from CPU/agent services. Flat monthly.
+                  </div>
+                )}
+                <input
+                  type="range"
+                  min="500"
+                  max="5000"
+                  step="100"
+                  value={agentMonthlyUSD}
+                  onChange={(e) => setAgentMonthlyUSD(parseInt(e.target.value))}
+                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                />
+                <div className="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>$500</span>
+                  <span>$2,750</span>
+                  <span>$5,000</span>
                 </div>
               </div>
               
@@ -514,50 +546,31 @@ const PowerNodePage = () => {
                 
                 {showBreakdown && (
                   <div className="mt-4 p-6 bg-black/30 border border-[#32f932]/20 rounded-xl">
-                    <h4 className="text-lg font-semibold text-[#32f932] mb-4 text-center">Earnings Breakdown (3 Years)</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <h4 className="text-lg font-semibold text-[#32f932] mb-4 text-center">Earnings Breakdown (3 Years, Gross)</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                       <div className="text-center">
-                        <div className="text-lg font-bold text-white">${roiResult.breakdown.baseTokenValue.toLocaleString()}</div>
+                        <div className="text-lg font-bold text-white">{formatCurrency(breakdown?.baseToken3yr || 0)}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           Base Tokens
-                          <button
-                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
-                            onClick={() => setActiveTooltip(activeTooltip === 'base' ? null : 'base')}
-                          >
-                            ℹ️
-                          </button>
                         </div>
-                        {activeTooltip === 'base' && (
-                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
-                            Guaranteed 150,000 tokens over 36 months (≈4,167/month)
-                          </div>
-                        )}
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-bold text-white">${roiResult.breakdown.serviceRevenueValue.toLocaleString()}</div>
+                        <div className="text-lg font-bold text-white">{formatCurrency(breakdown?.cabinets3yr || 0)}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
-                          Extra Jobs Income
+                          Cabinets
                         </div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-bold text-white">${roiResult.breakdown.cabinets3yr.toLocaleString()}</div>
-                        <div className="text-xs text-gray-400">Cabinets</div>
+                        <div className="text-lg font-bold text-white">{formatCurrency(breakdown?.agent3yr || 0)}</div>
+                        <div className="text-xs text-gray-400">Agent Income</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-bold text-white">${roiResult.breakdown.compute3yr.toLocaleString()}</div>
-                        <div className="text-xs text-gray-400">Compute</div>
+                        <div className="text-lg font-bold text-white">{formatCurrency(breakdown?.gpu3yr || 0)}</div>
+                        <div className="text-xs text-gray-400">GPU Compute</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-bold text-white">${roiResult.breakdown.tx3yr.toLocaleString()}</div>
-                        <div className="text-xs text-gray-400">TX Boost</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-white">${roiResult.breakdown.stakingValue3yr.toLocaleString()}</div>
+                        <div className="text-lg font-bold text-white">{formatCurrency(breakdown?.staking3yrUSD || 0)}</div>
                         <div className="text-xs text-gray-400">Staking</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-[#32f932]">${roiResult.gross3yr.toLocaleString()}</div>
-                        <div className="text-xs text-gray-400">Gross Total</div>
                       </div>
                     </div>
                     
@@ -573,7 +586,9 @@ const PowerNodePage = () => {
                 onClick={() => {
                   setTokenPrice(0.21);
                   setCabinetCount(0);
-                  setServiceRevenueTokens(0);
+                  setAgentMonthlyUSD(500);
+                  setGpuUtilization(0.30);
+                  setStakingPct(1.0);
                 }}
                 className="bg-[#32f932]/20 text-[#32f932] px-4 py-2 rounded-lg text-sm hover:bg-[#32f932]/30 transition-colors"
               >
@@ -585,13 +600,27 @@ const PowerNodePage = () => {
                 Actual earnings may vary depending on network growth, fees, and token price.
               </p>
               
-              <div className="mt-4 p-4 bg-[#32f932]/5 border border-[#32f932]/20 rounded-lg">
-                <h4 className="text-lg font-semibold text-[#32f932] mb-2">Additional Earning Sources</h4>
-                <p className="text-sm text-gray-300">
-                  Includes GPU compute revenue (${(10 * 24 * 0.5 * 365 * 3).toLocaleString()}/3yr), CPU services (${(500 * 12 * 3).toLocaleString()}/3yr), 
-                  12% APR staking rewards, transaction fee boosts, and performance multipliers. 
-                  Net values account for {(deflationPct * 100).toFixed(0)}% network fees & locks.
-                </p>
+              {/* Big Takeaways */}
+              <div className="mt-8 p-6 bg-[#32f932]/5 border border-[#32f932]/20 rounded-lg">
+                <h4 className="text-2xl font-semibold text-[#32f932] mb-6 text-center">Big Takeaways</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                  <div>
+                    <div className="text-3xl font-bold text-white">{formatCurrency(kpis.daily)}</div>
+                    <div className="text-sm text-gray-400">Daily</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-white">{formatCurrency(kpis.monthly)}</div>
+                    <div className="text-sm text-gray-400">Monthly</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-white">{formatCurrency(kpis.yearly)}</div>
+                    <div className="text-sm text-gray-400">Yearly</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-white">{formatCurrency(kpis.total3yr)}</div>
+                    <div className="text-sm text-gray-400">3-Year Total</div>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -610,51 +639,57 @@ const PowerNodePage = () => {
           >
             <h2 className="font-mono text-4xl md:text-5xl font-bold mb-12">
               Frequently Asked <span className="text-[#32f932]">Questions</span>
-            </h2>
-            
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <div key={index} className="bg-black/50 border border-green-500/20 rounded-lg overflow-hidden">
-                  <button
+                      min="0.02"
+                      max="1.0"
+                      step="0.01"
+                      value={gpuUtilization}
+                      onChange={(e) => setGpuUtilization(parseFloat(e.target.value))}
+                        onClick={() => setActiveTooltip(activeTooltip === 'gpu' ? null : 'gpu')}
                     onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                     className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-green-500/5 transition-colors"
-                  >
-                    <span className="font-semibold">{faq.question}</span>
-                    {openFAQ === index ? (
+                      <span>2%</span>
+                      <span>25%</span>
+                      <span>50%</span>
+                      <span>75%</span>
+                      <span>100%</span>
                       <ChevronUp className="h-5 w-5 text-green-500" />
-                    ) : (
-                      <ChevronDown className="h-5 w-5 text-green-500" />
-                    )}
-                  </button>
-                  
+                  </div>
                   {openFAQ === index && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
+            {/* KPI Cards */}
+            <div className="grid md:grid-cols-5 gap-6 mb-8">
                       className="px-6 pb-4"
-                    >
+                <div className="text-2xl font-bold text-[#32f932]">{formatCurrency(kpis.daily)}</div>
                       <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                     </motion.div>
-                  )}
+                  gross (avg over 3 years)
                 </div>
               ))}
             </div>
-          </motion.div>
-        </div>
+                <div className="text-2xl font-bold text-[#32f932]">{formatCurrency(kpis.monthly)}</div>
+                <div className="text-sm text-gray-400">Monthly Earnings</div>
       </section>
-
+                  gross
       {/* Final CTA */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+                <div className="text-2xl font-bold text-[#32f932]">{formatCurrency(kpis.yearly)}</div>
+                <div className="text-sm text-gray-400">Yearly Earnings</div>
+                <div className="text-xs text-gray-500">
+                  gross average
+                </div>
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-black/50 border border-green-500/30 rounded-lg p-12 text-center"
-          >
-            <h2 className="font-mono text-3xl md:text-4xl font-bold mb-8">
+                <div className="text-2xl font-bold text-[#32f932]">{formatCurrency(kpis.total3yr)}</div>
+                <div className="text-sm text-gray-400">Total (3-Year)</div>
+                <div className="text-xs text-gray-500">gross</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-[#32f932]">{kpis.roiPct.toFixed(1)}%</div>
+                <div className="text-sm text-gray-400">ROI %</div>
+                <div className="text-xs text-gray-500">(3-year total − node cost) ÷ node cost</div>
               Own the Future of <span className="text-green-500">AI Infrastructure.</span>
             </h2>
             
