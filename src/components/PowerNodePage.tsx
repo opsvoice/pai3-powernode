@@ -358,14 +358,19 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2 text-white flex items-center">
+                <label className="block text-sm font-medium mb-2 text-white">
                   Cabinet Leasing @ $2/year: {cabinetCount.toLocaleString()} cabinets
-                  <span
-                    className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                  <button
+                    type="button"
+                    className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
                     title="Each cabinet contributes $2 per year. Power Nodes support up to 25,000 cabinets."
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert("Each cabinet contributes $2 per year. Power Nodes support up to 25,000 cabinets.");
+                    }}
                   >
                     i
-                  </span>
+                  </button>
                 </label>
                 <input
                   type="range"
@@ -384,14 +389,19 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2 text-white flex items-center">
+                <label className="block text-sm font-medium mb-2 text-white">
                   Agent Income (per month): ${agentMonthlyUSD.toLocaleString()}
-                  <span
-                    className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                  <button
+                    type="button"
+                    className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
                     title="Income from CPU/agent services. Flat monthly amount."
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert("Income from CPU/agent services. Flat monthly amount.");
+                    }}
                   >
                     i
-                  </span>
+                  </button>
                 </label>
                 <input
                   type="range"
@@ -475,14 +485,19 @@ const PowerNodePage = () => {
                     className="mt-4 space-y-4 p-4 bg-black/30 rounded-lg border border-[#32f932]/20"
                   >
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white flex items-center">
+                      <label className="block text-sm font-medium mb-2 text-white">
                         GPU Price ($/hr): ${gpuHourly}
-                        <span
-                          className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                        <button
+                          type="button"
+                          className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
                           title="Conservative baseline is $10/hr (L40 ballpark). Higher-demand workloads can clear $15–$50/hr depending on hardware class and market."
+                          onClick={(e) => {
+                            e.preventDefault();
+                            alert("Conservative baseline is $10/hr (L40 ballpark). Higher-demand workloads can clear $15–$50/hr depending on hardware class and market.");
+                          }}
                         >
                           i
-                        </span>
+                        </button>
                       </label>
                       <input
                         type="range"
@@ -507,14 +522,19 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white flex items-center">
+                      <label className="block text-sm font-medium mb-2 text-white">
                         GPU Utilization: {(gpuUtilization * 100).toFixed(0)}%
-                        <span
-                          className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                        <button
+                          type="button"
+                          className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
                           title="GPU revenue = ($/hr) × 24 × utilization × 365. Utilization reflects demand; reputation (age, uptime, stake, history) helps over time."
+                          onClick={(e) => {
+                            e.preventDefault();
+                            alert("GPU revenue = ($/hr) × 24 × utilization × 365. Utilization reflects demand; reputation (age, uptime, stake, history) helps over time.");
+                          }}
                         >
                           i
-                        </span>
+                        </button>
                       </label>
                       <input
                         type="range"
@@ -535,14 +555,19 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white flex items-center">
+                      <label className="block text-sm font-medium mb-2 text-white">
                         Staking % of Rewards: {(stakingPct * 100).toFixed(0)}%
-                        <span
-                          className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                        <button
+                          type="button"
+                          className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
                           title="Portion of monthly token emissions you restake. 12% APR, monthly compounding. Includes one extra month on the final deposit."
+                          onClick={(e) => {
+                            e.preventDefault();
+                            alert("Portion of monthly token emissions you restake. 12% APR, monthly compounding. Includes one extra month on the final deposit.");
+                          }}
                         >
                           i
-                        </span>
+                        </button>
                       </label>
                       <input
                         type="range"
@@ -572,27 +597,27 @@ const PowerNodePage = () => {
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.daily).toLocaleString()}</div>
+                    <div className="text-4xl font-bold text-[#32f932]">${Math.round(kpis.daily).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Daily Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average daily revenue</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
+                    <div className="text-4xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Monthly Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average monthly revenue</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
+                    <div className="text-4xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Yearly Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average annual revenue</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
+                    <div className="text-4xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">3-Year Total</div>
                     <div className="text-xs text-gray-500 mt-1">Total projected earnings</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">{kpis.roiPct.toFixed(1)}%</div>
+                    <div className="text-4xl font-bold text-[#32f932]">{kpis.roiPct.toFixed(1)}%</div>
                     <div className="text-sm text-gray-400">ROI %</div>
                     <div className="text-xs text-gray-500 mt-1">Return on investment</div>
                   </div>
