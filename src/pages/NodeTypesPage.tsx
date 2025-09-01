@@ -235,8 +235,6 @@ const NodeTypesPage = () => {
             <p className="text-lg text-gray-400 mb-12 max-w-4xl mx-auto" style={{ fontFamily: 'Fira Code, monospace' }}>
               Choose between high-performance infrastructure (Power Node) or a software workspace for private AI workflows (Professional Node).
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           </motion.div>
         </div>
       </section>
