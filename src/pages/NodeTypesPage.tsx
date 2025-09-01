@@ -116,11 +116,6 @@ const NodeTypesPage = () => {
       feature: "Scarcity",
       power: "3,141 max",
       professional: "314,159 max (reduced by 100 per Power Node sold)"
-    },
-    {
-      feature: "Conversion",
-      power: "Power Node NFT → 100 Professional Node NFTs",
-      professional: "Reverse not supported"
     }
   ];
 
