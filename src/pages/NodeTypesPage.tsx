@@ -175,7 +175,6 @@ const NodeTypesPage = () => {
             </motion.div>
 
             <p className="text-lg text-gray-400 mb-12 max-w-4xl mx-auto" style={{ fontFamily: 'Fira Code, monospace' }}>
-              PAI3 node makes AI personal.
               Choose between high-performance infrastructure (Power Node) or a software workspace for private AI workflows (Professional Node).
             </p>
 
@@ -294,7 +293,7 @@ const NodeTypesPage = () => {
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    "The Power Node is a triple-exposure investment: the AI revolution, the Web3 economy, and the infrastructure boom — all in one scarce asset."
+                    "For investors, infrastructure buyers, and those who want to be part of a scarce asset in the AI revolution."
                   </p>
                 </div>
 
