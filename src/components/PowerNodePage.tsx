@@ -726,7 +726,7 @@ const PowerNodePage = () => {
                     </div>
                     
                     <p className="text-xs text-gray-400 mt-6 text-center">
-                      Token rewards and staking are guaranteed for the first 36 months.
+                      Token rewards and staking rewards are guaranteed for the first 36 months.
                     </p>
                   </div>
                 )}
