@@ -159,26 +159,26 @@ const NodeTypesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+            <h1 className="font-mono text-5xl md:text-7xl font-bold mb-8 leading-tight">
               Get to know <span className="text-[#00FF88]">PAI nodes</span>
             </h1>
             
-            <div className="space-y-4 mb-8 text-xl md:text-2xl text-[#9BB0C0]">
+            <div className="space-y-4 mb-8 text-xl md:text-2xl text-gray-300">
               <p>PAI3 node makes AI personal</p>
-              <p className="text-[#00FF88] font-semibold">PAI3 Node</p>
+              <p className="text-[#32f932] font-semibold">PAI3 Node</p>
               <p>Personal, business and sharing</p>
               <p>Secure your data on the node</p>
               <p>Allow agents to run on your node</p>
             </div>
             
-            <p className="text-lg text-[#9BB0C0] mb-12 max-w-4xl mx-auto">
+            <p className="text-lg text-gray-400 mb-12 max-w-4xl mx-auto">
               Choose between high-performance infrastructure (Power Node) or a software workspace for private AI workflows (Professional Node).
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link 
                 to="/nodes"
-                className="bg-[#00FF88] text-[#0A0F14] px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#00D974] transition-all transform hover:scale-105 shadow-2xl shadow-[#00FF88]/25"
+                className="bg-[#32f932] text-black px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#32f932]/80 transition-all transform hover:scale-105 shadow-2xl shadow-[#32f932]/25"
                 onClick={() => {
                   if (typeof window !== 'undefined' && (window as any).gtag) {
                     (window as any).gtag('event', 'click', { event_category: 'hero_cta', event_label: 'explore_power_node' });
@@ -188,7 +188,7 @@ const NodeTypesPage = () => {
                 Explore Power Node
               </Link>
               <button 
-                className="border-2 border-[#00FF88] text-[#00FF88] px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#00FF88]/10 transition-all"
+                className="border-2 border-[#32f932] text-[#32f932] px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#32f932]/10 transition-all"
                 onClick={() => {
                   document.getElementById('pro-node-waitlist')?.scrollIntoView({ behavior: 'smooth' });
                   if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -213,40 +213,40 @@ const NodeTypesPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-[#0F1620] border border-[#00FF88]/20 rounded-2xl p-8 hover:border-[#00FF88]/40 transition-all hover:shadow-2xl hover:shadow-[#00FF88]/10"
+              className="bg-black/50 border border-[#32f932]/20 rounded-2xl p-8 hover:border-[#32f932]/40 transition-all hover:shadow-2xl hover:shadow-[#32f932]/10"
             >
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-[#00FF88]/20 rounded-2xl flex items-center justify-center">
-                  <Server className="h-8 w-8 text-[#00FF88]" />
+                <div className="w-16 h-16 bg-[#32f932]/20 rounded-2xl flex items-center justify-center">
+                  <Server className="h-8 w-8 text-[#32f932]" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white">Power Node</h3>
-                  <p className="text-[#9BB0C0]">Hardware</p>
+                  <p className="text-gray-400">Hardware</p>
                 </div>
               </div>
               
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start space-x-3">
-                  <Check className="h-5 w-5 text-[#00FF88] mt-0.5 flex-shrink-0" />
-                  <span className="text-[#9BB0C0]">Physical AI computer ("PAI in a box")</span>
+                  <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Physical AI computer ("PAI in a box")</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <Check className="h-5 w-5 text-[#00FF88] mt-0.5 flex-shrink-0" />
-                  <span className="text-[#9BB0C0]">Earning-ready: inference mining + token rewards</span>
+                  <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Earning-ready: inference mining + token rewards</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <Check className="h-5 w-5 text-[#00FF88] mt-0.5 flex-shrink-0" />
-                  <span className="text-[#9BB0C0]">5TB storage with cabinet rentals</span>
+                  <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">5TB storage with cabinet rentals</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <Check className="h-5 w-5 text-[#00FF88] mt-0.5 flex-shrink-0" />
-                  <span className="text-[#9BB0C0]">Scarce: 3,141 units</span>
+                  <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Scarce: 3,141 units</span>
                 </li>
               </ul>
               
               <Link 
                 to="/nodes"
-                className="w-full bg-[#00FF88] text-[#0A0F14] py-4 rounded-xl text-lg font-bold hover:bg-[#00D974] transition-all block text-center"
+                className="w-full bg-[#32f932] text-black py-4 rounded-xl text-lg font-bold hover:bg-[#32f932]/80 transition-all block text-center"
                 onClick={() => {
                   if (typeof window !== 'undefined' && (window as any).gtag) {
                     (window as any).gtag('event', 'click', { event_category: 'node_card', event_label: 'buy_power_node' });
@@ -263,39 +263,39 @@ const NodeTypesPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-[#0F1620] border border-[#9BB0C0]/20 rounded-2xl p-8 hover:border-[#9BB0C0]/40 transition-all"
+              className="bg-black/50 border border-gray-500/20 rounded-2xl p-8 hover:border-gray-500/40 transition-all"
             >
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-[#9BB0C0]/20 rounded-2xl flex items-center justify-center">
-                  <Laptop className="h-8 w-8 text-[#9BB0C0]" />
+                <div className="w-16 h-16 bg-gray-500/20 rounded-2xl flex items-center justify-center">
+                  <Laptop className="h-8 w-8 text-gray-500" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white">Professional Node</h3>
-                  <p className="text-[#9BB0C0]">Software</p>
+                  <p className="text-gray-400">Software</p>
                 </div>
               </div>
               
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start space-x-3">
-                  <Check className="h-5 w-5 text-[#9BB0C0] mt-0.5 flex-shrink-0" />
-                  <span className="text-[#9BB0C0]">Software workspace for private AI</span>
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Software workspace for private AI</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <Check className="h-5 w-5 text-[#9BB0C0] mt-0.5 flex-shrink-0" />
-                  <span className="text-[#9BB0C0]">Runs on your device/cloud or borrows compute</span>
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Runs on your device/cloud or borrows compute</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <Check className="h-5 w-5 text-[#9BB0C0] mt-0.5 flex-shrink-0" />
-                  <span className="text-[#9BB0C0]">Data cabinets + enterprise connectors</span>
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Data cabinets + enterprise connectors</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <Check className="h-5 w-5 text-[#9BB0C0] mt-0.5 flex-shrink-0" />
-                  <span className="text-[#9BB0C0]">Sales returning soon</span>
+                  <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Sales returning soon</span>
                 </li>
               </ul>
               
               <button 
-                className="w-full border border-[#9BB0C0] text-[#9BB0C0] py-4 rounded-xl text-lg font-bold hover:bg-[#9BB0C0]/10 transition-all"
+                className="w-full border border-gray-500 text-gray-400 py-4 rounded-xl text-lg font-bold hover:bg-gray-500/10 transition-all"
                 onClick={() => {
                   document.getElementById('pro-node-waitlist')?.scrollIntoView({ behavior: 'smooth' });
                   if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -317,7 +317,7 @@ const NodeTypesPage = () => {
                   (window as any).gtag('event', 'click', { event_category: 'comparison', event_label: 'see_full_comparison' });
                 }
               }}
-              className="inline-flex items-center space-x-2 text-[#00FF88] hover:text-[#00D974] transition-colors text-lg font-semibold"
+              className="inline-flex items-center space-x-2 text-[#32f932] hover:text-[#32f932]/80 transition-colors text-lg font-semibold"
             >
               <span>{fullComparisonOpen ? 'Collapse comparison' : 'See full comparison'}</span>
               {fullComparisonOpen ? (
@@ -344,31 +344,31 @@ const NodeTypesPage = () => {
             
             {/* Desktop Table */}
             <div className="hidden lg:block overflow-x-auto">
-              <table className="w-full bg-[#0F1620] border border-[rgba(255,255,255,0.08)] rounded-2xl overflow-hidden">
+              <table className="w-full bg-black/50 border border-gray-500/20 rounded-2xl overflow-hidden">
                 <caption className="sr-only">Comparison between Power Node and Professional Node features</caption>
-                <thead className="bg-[#0A0F14] sticky top-0">
+                <thead className="bg-black sticky top-0">
                   <tr>
-                    <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-[#9BB0C0] uppercase tracking-wider">
+                    <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-gray-400 uppercase tracking-wider">
                       Feature
                     </th>
-                    <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-[#00FF88] uppercase tracking-wider">
+                    <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-[#32f932] uppercase tracking-wider">
                       Power Node
                     </th>
-                    <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-[#9BB0C0] uppercase tracking-wider">
+                    <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-gray-400 uppercase tracking-wider">
                       Professional Node
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[rgba(255,255,255,0.08)]">
+                <tbody className="divide-y divide-gray-500/20">
                   {comparisonData.map((row, index) => (
-                    <tr key={index} className={index % 2 === 0 ? 'bg-[#0F1620]' : 'bg-[#0A0F14]'}>
+                    <tr key={index} className={index % 2 === 0 ? 'bg-black/50' : 'bg-black'}>
                       <th scope="row" className="px-6 py-4 text-sm font-medium text-white">
                         {row.feature}
                       </th>
-                      <td className="px-6 py-4 text-sm text-[#9BB0C0]">
+                      <td className="px-6 py-4 text-sm text-gray-300">
                         {row.power}
                       </td>
-                      <td className="px-6 py-4 text-sm text-[#9BB0C0]">
+                      <td className="px-6 py-4 text-sm text-gray-300">
                         {row.professional}
                       </td>
                     </tr>
@@ -380,16 +380,16 @@ const NodeTypesPage = () => {
             {/* Mobile Stacked Cards */}
             <div className="lg:hidden space-y-6">
               {comparisonData.map((row, index) => (
-                <div key={index} className="bg-[#0F1620] border border-[rgba(255,255,255,0.08)] rounded-xl p-6">
+                <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-white mb-4">{row.feature}</h3>
                   <div className="space-y-3">
                     <div>
-                      <div className="text-sm font-medium text-[#00FF88] mb-1">Power Node</div>
-                      <div className="text-sm text-[#9BB0C0]">{row.power}</div>
+                      <div className="text-sm font-medium text-[#32f932] mb-1">Power Node</div>
+                      <div className="text-sm text-gray-300">{row.power}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-[#9BB0C0] mb-1">Professional Node</div>
-                      <div className="text-sm text-[#9BB0C0]">{row.professional}</div>
+                      <div className="text-sm font-medium text-gray-400 mb-1">Professional Node</div>
+                      <div className="text-sm text-gray-300">{row.professional}</div>
                     </div>
                   </div>
                 </div>
@@ -397,9 +397,9 @@ const NodeTypesPage = () => {
             </div>
             
             {/* Conversion Note */}
-            <div className="mt-8 p-6 bg-[#00FF88]/10 border border-[#00FF88]/20 rounded-xl">
-              <p className="text-sm text-[#9BB0C0] leading-relaxed">
-                <strong className="text-[#00FF88]">Note:</strong> A Power Node NFT can be "blown up" into 100 Professional Node NFTs. 
+            <div className="mt-8 p-6 bg-[#32f932]/10 border border-[#32f932]/20 rounded-xl">
+              <p className="text-sm text-gray-300 leading-relaxed">
+                <strong className="text-[#32f932]">Note:</strong> A Power Node NFT can be "blown up" into 100 Professional Node NFTs. 
                 Pooling 100 Professional Nodes into a Power Node is no longer offered due to hardware logistics.
               </p>
             </div>
@@ -415,10 +415,10 @@ const NodeTypesPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-[#0F1620] border border-[#9BB0C0]/20 rounded-2xl p-8 text-center"
+            className="bg-black/50 border border-gray-500/20 rounded-2xl p-8 text-center"
           >
             <h2 className="text-3xl font-bold text-white mb-6">Professional Node is returning soon</h2>
-            <p className="text-lg text-[#9BB0C0] mb-8">
+            <p className="text-lg text-gray-400 mb-8">
               We're finalizing how Professional Node will relaunch. Enter your email to get first access when it opens.
             </p>
             
@@ -426,25 +426,25 @@ const NodeTypesPage = () => {
               <form onSubmit={handleWaitlistSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[#9BB0C0]" />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                     <input
                       type="text"
                       placeholder="Your name"
                       value={waitlistForm.name}
                       onChange={(e) => setWaitlistForm(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full pl-12 pr-4 py-4 bg-[#0A0F14] border border-[rgba(255,255,255,0.08)] rounded-xl text-white placeholder-[#9BB0C0] focus:border-[#00FF88] focus:ring-2 focus:ring-[#00FF88]/20 focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-4 bg-black border border-gray-500/20 rounded-xl text-white placeholder-gray-400 focus:border-[#32f932] focus:ring-2 focus:ring-[#32f932]/20 focus:outline-none transition-colors"
                       required
                       aria-label="Your name"
                     />
                   </div>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[#9BB0C0]" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                     <input
                       type="email"
                       placeholder="Your email"
                       value={waitlistForm.email}
                       onChange={(e) => setWaitlistForm(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full pl-12 pr-4 py-4 bg-[#0A0F14] border border-[rgba(255,255,255,0.08)] rounded-xl text-white placeholder-[#9BB0C0] focus:border-[#00FF88] focus:ring-2 focus:ring-[#00FF88]/20 focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-4 bg-black border border-gray-500/20 rounded-xl text-white placeholder-gray-400 focus:border-[#32f932] focus:ring-2 focus:ring-[#32f932]/20 focus:outline-none transition-colors"
                       required
                       aria-label="Your email address"
                     />
@@ -457,12 +457,12 @@ const NodeTypesPage = () => {
                     id="consent"
                     checked={waitlistForm.consent}
                     onChange={(e) => setWaitlistForm(prev => ({ ...prev, consent: e.target.checked }))}
-                    className="mt-1 h-4 w-4 text-[#00FF88] bg-[#0A0F14] border-[rgba(255,255,255,0.08)] rounded focus:ring-[#00FF88] focus:ring-2"
+                    className="mt-1 h-4 w-4 text-[#32f932] bg-black border-gray-500/20 rounded focus:ring-[#32f932] focus:ring-2"
                     required
                   />
-                  <label htmlFor="consent" className="text-sm text-[#9BB0C0] text-left">
+                  <label htmlFor="consent" className="text-sm text-gray-400 text-left">
                     I agree to receive updates about Professional Node. We never sell your data.{' '}
-                    <a href="/privacy" className="text-[#00FF88] hover:text-[#00D974] underline">
+                    <a href="/privacy" className="text-[#32f932] hover:text-[#32f932]/80 underline">
                       Privacy Policy
                     </a>
                   </label>
@@ -471,18 +471,18 @@ const NodeTypesPage = () => {
                 <button
                   type="submit"
                   disabled={waitlistForm.loading}
-                  className="w-full bg-[#9BB0C0] text-[#0A0F14] py-4 rounded-xl text-lg font-bold hover:bg-[#9BB0C0]/80 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gray-500 text-black py-4 rounded-xl text-lg font-bold hover:bg-gray-500/80 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {waitlistForm.loading ? 'Adding you to the list...' : 'Notify me'}
                 </button>
               </form>
             ) : (
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#00FF88]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="h-8 w-8 text-[#00FF88]" />
+                <div className="w-16 h-16 bg-[#32f932]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Check className="h-8 w-8 text-[#32f932]" />
                 </div>
-                <h3 className="text-xl font-bold text-[#00FF88] mb-2">You're on the list!</h3>
-                <p className="text-[#9BB0C0]">We'll email you when Professional Nodes open.</p>
+                <h3 className="text-xl font-bold text-[#32f932] mb-2">You're on the list!</h3>
+                <p className="text-gray-400">We'll email you when Professional Nodes open.</p>
               </div>
             )}
           </motion.div>
@@ -500,48 +500,48 @@ const NodeTypesPage = () => {
             className="text-center"
           >
             <h2 className="text-4xl font-bold text-white mb-12">
-              Power Node: <span className="text-[#00FF88]">Ready to Earn</span>
+              Power Node: <span className="text-[#32f932]">Ready to Earn</span>
             </h2>
             
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#00FF88]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Zap className="h-6 w-6 text-[#00FF88]" />
+                <div className="w-12 h-12 bg-[#32f932]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Zap className="h-6 w-6 text-[#32f932]" />
                 </div>
                 <div className="text-left">
                   <h3 className="font-semibold text-white mb-2">Plug-and-play AI infra</h3>
-                  <p className="text-sm text-[#9BB0C0]">(no DevOps/Kubernetes)</p>
+                  <p className="text-sm text-gray-400">(no DevOps/Kubernetes)</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#00FF88]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Cpu className="h-6 w-6 text-[#00FF88]" />
+                <div className="w-12 h-12 bg-[#32f932]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Cpu className="h-6 w-6 text-[#32f932]" />
                 </div>
                 <div className="text-left">
                   <h3 className="font-semibold text-white mb-2">Preloaded LLMs</h3>
-                  <p className="text-sm text-[#9BB0C0]">+ PAI3 agent runtime</p>
+                  <p className="text-sm text-gray-400">+ PAI3 agent runtime</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#00FF88]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="h-6 w-6 text-[#00FF88]" />
+                <div className="w-12 h-12 bg-[#32f932]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <DollarSign className="h-6 w-6 text-[#32f932]" />
                 </div>
                 <div className="text-left">
                   <h3 className="font-semibold text-white mb-2">Earning-ready</h3>
-                  <p className="text-sm text-[#9BB0C0]">via inference mining, fees, and cabinets</p>
+                  <p className="text-sm text-gray-400">via inference mining, fees, and cabinets</p>
                 </div>
               </div>
             </div>
             
-            <p className="text-sm text-[#9BB0C0] mb-8">
+            <p className="text-sm text-gray-400 mb-8">
               Projected cabinet rental revenue from 25,000 cabinets at $2/year.
             </p>
             
             <Link 
               to="/nodes"
-              className="bg-[#00FF88] text-[#0A0F14] px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#00D974] transition-all transform hover:scale-105 shadow-2xl shadow-[#00FF88]/25 inline-block mb-8"
+              className="bg-[#32f932] text-black px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#32f932]/80 transition-all transform hover:scale-105 shadow-2xl shadow-[#32f932]/25 inline-block mb-8"
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).gtag) {
                   (window as any).gtag('event', 'click', { event_category: 'power_node_cta', event_label: 'buy_power_node' });
@@ -552,13 +552,13 @@ const NodeTypesPage = () => {
             </Link>
             
             {/* Affiliate Tile */}
-            <div className="bg-[#00FF88]/10 border border-[#00FF88]/20 rounded-xl p-6 max-w-2xl mx-auto">
-              <p className="text-[#00FF88] font-semibold mb-2">
+            <div className="bg-[#32f932]/10 border border-[#32f932]/20 rounded-xl p-6 max-w-2xl mx-auto">
+              <p className="text-[#32f932] font-semibold mb-2">
                 Earn $1,000 per Power Node referral. Buy 10, get 1 free.
               </p>
               <a 
                 href="/affiliates" 
-                className="text-sm text-[#9BB0C0] hover:text-[#00FF88] transition-colors inline-flex items-center space-x-1"
+                className="text-sm text-gray-400 hover:text-[#32f932] transition-colors inline-flex items-center space-x-1"
               >
                 <span>Learn more about our affiliate program</span>
                 <ExternalLink className="h-4 w-4" />
@@ -579,23 +579,23 @@ const NodeTypesPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-12">
-              Frequently Asked <span className="text-[#00FF88]">Questions</span>
+              Frequently Asked <span className="text-[#32f932]">Questions</span>
             </h2>
             
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-[#0F1620] border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden">
+                <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl overflow-hidden">
                   <button
                     onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                    className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-[#00FF88]/5 transition-colors focus:outline-none focus:ring-2 focus:ring-[#00FF88]/20"
+                    className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-[#32f932]/5 transition-colors focus:outline-none focus:ring-2 focus:ring-[#32f932]/20"
                     aria-expanded={openFAQ === index}
                     aria-controls={`faq-answer-${index}`}
                   >
                     <span className="font-semibold text-white">{faq.question}</span>
                     {openFAQ === index ? (
-                      <ChevronUp className="h-5 w-5 text-[#00FF88]" />
+                      <ChevronUp className="h-5 w-5 text-[#32f932]" />
                     ) : (
-                      <ChevronDown className="h-5 w-5 text-[#00FF88]" />
+                      <ChevronDown className="h-5 w-5 text-[#32f932]" />
                     )}
                   </button>
                   
@@ -608,7 +608,7 @@ const NodeTypesPage = () => {
                       transition={{ duration: 0.3 }}
                       className="px-6 pb-4"
                     >
-                      <p className="text-[#9BB0C0] leading-relaxed">{faq.answer}</p>
+                      <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                     </motion.div>
                   )}
                 </div>
@@ -622,18 +622,18 @@ const NodeTypesPage = () => {
       <section className="py-12 bg-[#0A0F14] border-t border-[rgba(255,255,255,0.08)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-            <div className="text-lg text-[#9BB0C0]">Still choosing?</div>
+            <div className="text-lg text-gray-400">Still choosing?</div>
             <div className="flex space-x-4">
               <a 
                 href="mailto:support@pai3.ai"
-                className="inline-flex items-center space-x-2 bg-[#0F1620] border border-[rgba(255,255,255,0.08)] text-[#9BB0C0] px-6 py-3 rounded-xl hover:border-[#00FF88]/20 hover:text-[#00FF88] transition-all"
+                className="inline-flex items-center space-x-2 bg-black/50 border border-gray-500/20 text-gray-400 px-6 py-3 rounded-xl hover:border-[#32f932]/20 hover:text-[#32f932] transition-all"
               >
                 <Users className="h-5 w-5" />
                 <span>Talk to an expert</span>
               </a>
               <a 
                 href="/docs"
-                className="inline-flex items-center space-x-2 bg-[#0F1620] border border-[rgba(255,255,255,0.08)] text-[#9BB0C0] px-6 py-3 rounded-xl hover:border-[#00FF88]/20 hover:text-[#00FF88] transition-all"
+                className="inline-flex items-center space-x-2 bg-black/50 border border-gray-500/20 text-gray-400 px-6 py-3 rounded-xl hover:border-[#32f932]/20 hover:text-[#32f932] transition-all"
               >
                 <Globe className="h-5 w-5" />
                 <span>Read the docs</span>
