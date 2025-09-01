@@ -289,7 +289,7 @@ const NodeTypesPage = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">Power Node</h3>
-                      <p className="text-gray-400 text-sm">Crypto/Web3 investors, infra buyers</p>
+                      <p className="text-gray-400 text-sm">Investors, infra buyers</p>
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
