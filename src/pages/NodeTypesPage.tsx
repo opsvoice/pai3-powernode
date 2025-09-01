@@ -336,7 +336,6 @@ const NodeTypesPage = () => {
                     </motion.div>
                   </div>
                 </motion.div>
-                </motion.div>
                 
                 {/* Connecting Lines and Circles */}
                 {/* Top Circle - Secure your data */}
