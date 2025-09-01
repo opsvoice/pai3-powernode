@@ -682,7 +682,6 @@ const PowerNodePage = () => {
                 onClick={() => {
                   setTokenPrice(0.21);
                   setCabinetCount(0);
-                  setReputationMultiplier(1.0);
                   setServiceRevenueTokens(0);
                   setDeflationPct(0.30);
                 }}
