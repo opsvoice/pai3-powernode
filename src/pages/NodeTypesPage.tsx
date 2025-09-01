@@ -237,21 +237,6 @@ const NodeTypesPage = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link 
-                to="/nodes"
-                className="bg-[#32f932] text-black px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#32f932]/80 transition-all transform hover:scale-105 shadow-2xl shadow-[#32f932]/25"
-              >
-                Explore Power Node
-              </Link>
-              <button 
-                className="border-2 border-[#32f932] text-[#32f932] px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#32f932]/10 transition-all"
-                onClick={() => {
-                  document.getElementById('pro-node-waitlist')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Professional Node – notify me
-              </button>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -421,12 +406,17 @@ const NodeTypesPage = () => {
                 </li>
               </ul>
               
-              <Link 
-                to="/nodes"
-                className="w-full bg-[#32f932] text-black py-4 rounded-xl text-lg font-bold hover:bg-[#32f932]/80 transition-all text-center block"
-              >
-                Explore Power Node
-              </Link>
+              <div className="grid grid-cols-2 gap-3">
+                <button className="bg-[#32f932] text-black py-4 rounded-xl text-lg font-bold hover:bg-[#32f932]/80 transition-all">
+                  Buy Now
+                </button>
+                <Link 
+                  to="/nodes"
+                  className="border-2 border-[#32f932] text-[#32f932] py-4 rounded-xl text-lg font-bold hover:bg-[#32f932]/10 transition-all text-center flex items-center justify-center"
+                >
+                  Learn More
+                </Link>
+              </div>
             </motion.div>
 
             {/* Professional Node Card */}
@@ -443,8 +433,14 @@ const NodeTypesPage = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white">Professional Node</h3>
-                  <p className="text-gray-400">Software</p>
+                  <p className="text-gray-400">(Next-Gen Coming Q4 2025)</p>
                 </div>
+              </div>
+              
+              <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-4 mb-6">
+                <p className="text-gray-300 text-sm">
+                  Sales are paused until the next-gen release. Current operators and users remain fully supported with no interruptions.
+                </p>
               </div>
               
               <ul className="space-y-4 mb-8">
@@ -471,12 +467,12 @@ const NodeTypesPage = () => {
               </ul>
               
               <button 
-                className="w-full bg-gray-500 text-black py-4 rounded-xl text-lg font-bold hover:bg-gray-500/80 transition-all"
+                className="w-full border-2 border-gray-500 text-gray-400 py-4 rounded-xl text-lg font-bold hover:bg-gray-500/10 transition-all"
                 onClick={() => {
                   document.getElementById('pro-node-waitlist')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Notify me when available
+                Get Notified for Relaunch
               </button>
             </motion.div>
           </div>
@@ -577,9 +573,9 @@ const NodeTypesPage = () => {
             viewport={{ once: true }}
             className="bg-black/50 border border-gray-500/20 rounded-2xl p-8 text-center"
           >
-            <h2 className="text-3xl font-bold text-white mb-6">Professional Node is returning soon</h2>
+            <h2 className="text-3xl font-bold text-white mb-6">Professional Node Next-Gen Coming Q4 2025</h2>
             <p className="text-lg text-gray-400 mb-8">
-              We're finalizing how Professional Node will relaunch. Enter your email to get first access when it opens.
+              We're developing the next generation of Professional Nodes. Enter your email to get first access when it launches.
             </p>
             
             {!waitlistForm.submitted ? (
