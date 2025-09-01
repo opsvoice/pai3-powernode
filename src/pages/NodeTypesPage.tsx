@@ -153,12 +153,70 @@ const NodeTypesPage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden w-full">
+      <section className="relative pt-32 pb-20 overflow-hidden w-full bg-[#0A0F14]">
+        {/* Green Grid Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <svg className="w-full h-full opacity-40" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <pattern id="heroGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#32f932" strokeWidth="0.8" opacity="0.6"/>
+              </pattern>
+              <linearGradient id="heroGridGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#32f932" stopOpacity="0.1" />
+                <stop offset="50%" stopColor="#32f932" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#32f932" stopOpacity="0.1" />
+              </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#heroGrid)" />
+            <rect width="100%" height="100%" fill="url(#heroGridGlow)" />
+          </svg>
+          
+          {/* Animated grid lines */}
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-full h-px bg-gradient-to-r from-transparent via-[#32f932]/50 to-transparent animate-pulse"
+              style={{ 
+                top: `${12.5 * (i + 1)}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${3 + Math.random() * 2}s`
+              }}
+            />
+          ))}
+          
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={`v-${i}`}
+              className="absolute h-full w-px bg-gradient-to-b from-transparent via-[#32f932]/50 to-transparent animate-pulse"
+              style={{ 
+                left: `${8.33 * (i + 1)}%`,
+                animationDelay: `${i * 0.2}s`,
+                animationDuration: `${4 + Math.random() * 2}s`
+              }}
+            />
+          ))}
+          
+          {/* Glowing nodes at intersections */}
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={`node-${i}`}
+              className="absolute w-2 h-2 bg-[#32f932] rounded-full animate-pulse opacity-60"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 2}s`
+              }}
+            />
+          ))}
+        </div>
+
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="relative z-10"
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight" style={{ fontFamily: 'Fira Code, monospace' }}>
               Get to know <span className="text-[#32f932]">PAI3 Nodes</span>
