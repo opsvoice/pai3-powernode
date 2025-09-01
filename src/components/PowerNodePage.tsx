@@ -565,6 +565,23 @@ const PowerNodePage = () => {
                         )}
                       </div>
                       <div className="text-center">
+                        <div className="text-lg font-bold text-white">${roiResult.breakdown.reputationBonusValue.toLocaleString()}</div>
+                        <div className="text-xs text-gray-400 flex items-center justify-center">
+                          Performance Bonus
+                          <button
+                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                            onClick={() => setActiveTooltip(activeTooltip === 'performance' ? null : 'performance')}
+                          >
+                            ℹ️
+                          </button>
+                        </div>
+                        {activeTooltip === 'performance' && (
+                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
+                            Extra bonus tokens if your node achieves high reputation (up to 2×)
+                          </div>
+                        )}
+                      </div>
+                      <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.serviceRevenueValue.toLocaleString()}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           Extra Jobs Income
@@ -669,7 +686,6 @@ const PowerNodePage = () => {
                   setCabinetCount(0);
                   setServiceRevenueTokens(0);
                   setDeflationPct(0.30);
-                  setReputationMultiplier(1.0);
                 }}
                 className="bg-[#32f932]/20 text-[#32f932] px-4 py-2 rounded-lg text-sm hover:bg-[#32f932]/30 transition-colors"
               >
