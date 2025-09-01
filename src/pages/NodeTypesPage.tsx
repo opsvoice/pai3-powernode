@@ -277,8 +277,8 @@ const NodeTypesPage = () => {
             </h2>
           </motion.div>
 
-          {/* Universal Benefits - First Row */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {/* Universal Benefits - 2x2 Grid */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -293,7 +293,7 @@ const NodeTypesPage = () => {
                 Protect Data
               </h3>
               <p className="text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
-                Your data stays on your node, never leaves your control
+                Your data stays private and under your control
               </p>
             </motion.div>
 
@@ -311,7 +311,7 @@ const NodeTypesPage = () => {
                 Run Agents
               </h3>
               <p className="text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
-                Execute AI agents privately on your own infrastructure
+                Execute AI agents securely on your own node
               </p>
             </motion.div>
 
@@ -329,110 +329,27 @@ const NodeTypesPage = () => {
                 Share Data
               </h3>
               <p className="text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
-                Securely share data through encrypted cabinet system
+                Securely share or monetize data through encrypted cabinets
               </p>
             </motion.div>
-          </div>
 
-          {/* Node-Specific Benefits - Second Row */}
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Power Node Extras */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-black/20 border border-[#32f932]/30 rounded-2xl p-8"
+              className="bg-black/30 border border-[#32f932]/20 rounded-2xl p-8 text-center hover:border-[#32f932]/40 transition-all"
             >
-              <h3 className="text-2xl font-bold text-[#32f932] mb-8 text-center" style={{ fontFamily: 'Fira Code, monospace' }}>
-                Power Node Extras
-              </h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-[#32f932]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <DollarSign className="h-6 w-6 text-[#32f932]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white" style={{ fontFamily: 'Fira Code, monospace' }}>Earn Tokens</h4>
-                    <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>150,000 guaranteed tokens + network rewards</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-[#32f932]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Users className="h-6 w-6 text-[#32f932]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white" style={{ fontFamily: 'Fira Code, monospace' }}>Share Node</h4>
-                    <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>Rent compute power to other users</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-[#32f932]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Globe className="h-6 w-6 text-[#32f932]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white" style={{ fontFamily: 'Fira Code, monospace' }}>Earn Reputation</h4>
-                    <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>Build network reputation for higher rewards</p>
-                  </div>
-                </div>
+              <div className="w-16 h-16 bg-[#32f932]/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <DollarSign className="h-8 w-8 text-[#32f932]" />
               </div>
-            </motion.div>
-
-            {/* Professional Node Extras */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="bg-black/20 border border-gray-500/30 rounded-2xl p-8"
-            >
-              <h3 className="text-2xl font-bold text-gray-400 mb-8 text-center" style={{ fontFamily: 'Fira Code, monospace' }}>
-                Professional Node Extras
+              <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'Fira Code, monospace' }}>
+                Earn Tokens
               </h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gray-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Zap className="h-6 w-6 text-gray-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white" style={{ fontFamily: 'Fira Code, monospace' }}>Train Agents</h4>
-                    <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>Custom AI agent training and fine-tuning</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gray-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Check className="h-6 w-6 text-gray-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white" style={{ fontFamily: 'Fira Code, monospace' }}>Verify Agents</h4>
-                    <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>Audit and certify AI agent behavior</p>
-                  </div>
-                </div>
-              </div>
+              <p className="text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
+                Earn PAI3 tokens by running or contributing your node to the network
+              </p>
             </motion.div>
-          </div>
-
-          {/* Subtle connector lines background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-            <svg className="w-full h-full" viewBox="0 0 1200 800">
-              <defs>
-                <linearGradient id="connectorGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#32f932" stopOpacity="0.2" />
-                  <stop offset="50%" stopColor="#32f932" stopOpacity="0.1" />
-                  <stop offset="100%" stopColor="#32f932" stopOpacity="0.2" />
-                </linearGradient>
-              </defs>
-              <path d="M200,200 Q400,100 600,200 T1000,200" stroke="url(#connectorGlow)" strokeWidth="1" fill="none" />
-              <path d="M100,400 Q350,300 600,400 T1100,400" stroke="url(#connectorGlow)" strokeWidth="1" fill="none" />
-              <circle cx="200" cy="200" r="2" fill="#32f932" opacity="0.4" />
-              <circle cx="600" cy="200" r="2" fill="#32f932" opacity="0.4" />
-              <circle cx="1000" cy="200" r="2" fill="#32f932" opacity="0.4" />
-            </svg>
           </div>
         </div>
       </section>
