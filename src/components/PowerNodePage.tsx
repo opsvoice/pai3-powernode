@@ -19,6 +19,8 @@ const PowerNodePage = () => {
   // Advanced inputs  
   const [gpuUtilization, setGpuUtilization] = useState(0.30);
   const [stakingPct, setStakingPct] = useState(1.0);
+  const [serviceRevenueTokens, setServiceRevenueTokens] = useState(0);
+  const [deflationPct, setDeflationPct] = useState(0.30);
 
   const { kpis, breakdown } = useMemo(
     () => computeRoi({
@@ -33,6 +35,12 @@ const PowerNodePage = () => {
     }),
     [tokenPrice, cabinetCount, agentMonthlyUSD, gpuUtilization, stakingPct]
   );
+
+  const roiResult = useMemo(() => {
+    const net3yr = kpis.total3yr * (1 - deflationPct);
+    const breakEvenDays = net3yr > 0 ? (31415 / (net3yr / (3 * 365))) : Infinity;
+    return { net3yr, breakEvenDays };
+  }, [kpis.total3yr, deflationPct]);
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -284,8 +292,8 @@ const PowerNodePage = () => {
                   className="mt-4 bg-black/30 border border-[#32f932]/20 rounded-lg p-6"
                 >
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <label className="block text-sm font-medium mb-2 text-white">
-                      GPU Utilization: {(gpuUtilization * 100).toFixed(0)}%
+                    {specs.map((spec, index) => (
+                      <div key={index} className="flex items-start space-x-3">
                         <div className="w-12 h-12 bg-[#32f932]/20 rounded-lg flex items-center justify-center flex-shrink-0">
                           <spec.icon className="h-6 w-6 text-[#32f932]" />
                         </div>
@@ -438,6 +446,39 @@ const PowerNodePage = () => {
                     exit={{ opacity: 0, height: 0 }}
                     className="mt-4 space-y-4 p-4 bg-black/30 rounded-lg border border-[#32f932]/20"
                   >
+                    <div>
+                      <label className="block text-sm font-medium mb-2 text-white">
+                        GPU Utilization: {(gpuUtilization * 100).toFixed(0)}%
+                        <button
+                          className="ml-1 text-xs text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                          onClick={() => setActiveTooltip(activeTooltip === 'gpu' ? null : 'gpu')}
+                        >
+                          ℹ️
+                        </button>
+                      </label>
+                      {activeTooltip === 'gpu' && (
+                        <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-xs text-gray-300">
+                          Percentage of time your GPU is actively processing compute jobs. Higher utilization = more earnings.
+                        </div>
+                      )}
+                      <input
+                        type="range"
+                        min="0.02"
+                        max="1.0"
+                        step="0.01"
+                        value={gpuUtilization}
+                        onChange={(e) => setGpuUtilization(parseFloat(e.target.value))}
+                        className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                      />
+                      <div className="flex justify-between text-xs text-gray-400 mt-1">
+                        <span>2%</span>
+                        <span>25%</span>
+                        <span>50%</span>
+                        <span>75%</span>
+                        <span>100%</span>
+                      </div>
+                    </div>
+                    
                     <div>
                       <label className="block text-sm font-medium mb-2 text-white">
                         Extra Jobs Income: {serviceRevenueTokens.toLocaleString()} tokens/month
@@ -639,57 +680,50 @@ const PowerNodePage = () => {
           >
             <h2 className="font-mono text-4xl md:text-5xl font-bold mb-12">
               Frequently Asked <span className="text-[#32f932]">Questions</span>
-                      min="0.02"
-                      max="1.0"
-                      step="0.01"
-                      value={gpuUtilization}
-                      onChange={(e) => setGpuUtilization(parseFloat(e.target.value))}
-                        onClick={() => setActiveTooltip(activeTooltip === 'gpu' ? null : 'gpu')}
+            </h2>
+            
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-black/50 border border-[#32f932]/20 rounded-lg overflow-hidden">
+                  <button
                     onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                     className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-green-500/5 transition-colors"
-                      <span>2%</span>
-                      <span>25%</span>
-                      <span>50%</span>
-                      <span>75%</span>
-                      <span>100%</span>
+                  >
+                    <span className="font-semibold text-lg">{faq.question}</span>
+                    {openFAQ === index ? (
                       <ChevronUp className="h-5 w-5 text-green-500" />
-                  </div>
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-green-500" />
+                    )}
+                  </button>
                   {openFAQ === index && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-            {/* KPI Cards */}
-            <div className="grid md:grid-cols-5 gap-6 mb-8">
+                      exit={{ opacity: 0, height: 0 }}
                       className="px-6 pb-4"
-                <div className="text-2xl font-bold text-[#32f932]">{formatCurrency(kpis.daily)}</div>
+                    >
                       <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                     </motion.div>
-                  gross (avg over 3 years)
+                  )}
                 </div>
               ))}
             </div>
-                <div className="text-2xl font-bold text-[#32f932]">{formatCurrency(kpis.monthly)}</div>
-                <div className="text-sm text-gray-400">Monthly Earnings</div>
+          </motion.div>
+        </div>
       </section>
-                  gross
+
       {/* Final CTA */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4">
-                <div className="text-2xl font-bold text-[#32f932]">{formatCurrency(kpis.yearly)}</div>
-                <div className="text-sm text-gray-400">Yearly Earnings</div>
-                <div className="text-xs text-gray-500">
-                  gross average
-                </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-                <div className="text-2xl font-bold text-[#32f932]">{formatCurrency(kpis.total3yr)}</div>
-                <div className="text-sm text-gray-400">Total (3-Year)</div>
-                <div className="text-xs text-gray-500">gross</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#32f932]">{kpis.roiPct.toFixed(1)}%</div>
-                <div className="text-sm text-gray-400">ROI %</div>
-                <div className="text-xs text-gray-500">(3-year total − node cost) ÷ node cost</div>
+            className="text-center"
+          >
+            <h2 className="font-mono text-4xl md:text-5xl font-bold mb-12">
               Own the Future of <span className="text-green-500">AI Infrastructure.</span>
             </h2>
             
