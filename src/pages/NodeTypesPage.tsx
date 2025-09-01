@@ -260,6 +260,7 @@ const NodeTypesPage = () => {
             </div>
           </motion.div>
         </div>
+      </motion.div>
       </section>
 
       {/* Why own a PAI3 Node Section */}
