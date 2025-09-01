@@ -281,79 +281,38 @@ const NodeTypesPage = () => {
                 onTap={() => setCubeHovered(!cubeHovered)}
                 whileHover={{ scale: 1.05 }}
               >
-                {/* 3D Cube */}
+                {/* Flat Node Card */}
                 <motion.div
-                  className="relative w-full h-full"
-                  style={{ 
-                    transformStyle: "preserve-3d",
-                    perspective: "1000px"
+                  className="relative w-full h-full bg-gradient-to-br from-[#32f932]/20 to-[#32f932]/10 border-2 border-[#32f932]/60 rounded-2xl flex items-center justify-center backdrop-blur-sm"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, delay: 0.8 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    borderColor: "rgba(50, 249, 50, 0.8)",
+                    boxShadow: "0 0 30px rgba(50, 249, 50, 0.3)"
                   }}
-                  animate={{ 
-                    rotateX: cubeHovered ? 15 : 10,
-                    rotateY: cubeHovered ? 45 : 25,
-                    rotateZ: cubeHovered ? 5 : 0
-                  }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                  {/* Cube faces */}
                   <motion.div
-                    className="absolute inset-0 border-2 border-[#32f932]/60 bg-[#32f932]/10 backdrop-blur-sm rounded-lg flex items-center justify-center"
-                    style={{ 
-                      transform: "translateZ(80px)",
-                      transformStyle: "preserve-3d"
-                    }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 1 }}
+                    className="text-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 1.2 }}
                   >
-                    <motion.span 
-                      className="text-2xl font-bold text-[#32f932]"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 1.5 }}
-                    >
-                      Your Node
-                    </motion.span>
-                  </motion.div>
-                  
-                  <motion.div
-                    className="absolute inset-0 border-2 border-[#32f932]/40 bg-[#32f932]/5 backdrop-blur-sm rounded-lg flex items-center justify-center"
-                    style={{ 
-                      transform: "rotateY(-90deg) translateZ(80px)",
-                      transformStyle: "preserve-3d"
-                    }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 1.2 }}
-                  >
-                    <motion.span 
-                      className="text-xl font-bold text-[#32f932]/80"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 2 }}
-                    >
-                      Your Data
-                    </motion.span>
-                  </motion.div>
-                  
-                  <motion.div
-                    className="absolute inset-0 border-2 border-[#32f932]/40 bg-[#32f932]/5 backdrop-blur-sm rounded-lg flex items-center justify-center"
-                    style={{ 
-                      transform: "rotateY(90deg) translateZ(80px)",
-                      transformStyle: "preserve-3d"
-                    }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 1.4 }}
-                  >
-                    <motion.span 
-                      className="text-xl font-bold text-[#32f932]/80"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 2.5 }}
+                    <motion.h3 
+                      className="text-3xl md:text-4xl font-bold text-[#32f932] mb-4"
+                      style={{ fontFamily: 'Fira Code, monospace' }}
                     >
                       Run Agents
-                    </motion.span>
+                    </motion.h3>
+                    <motion.div 
+                      className="space-y-2 text-lg text-[#32f932]/80"
+                      style={{ fontFamily: 'Fira Code, monospace' }}
+                    >
+                      <div>Your Node</div>
+                      <div>Your Data</div>
+                      <div>Your Control</div>
+                    </motion.div>
                   </motion.div>
                 </motion.div>
                 
