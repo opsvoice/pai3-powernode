@@ -14,6 +14,7 @@ export type RoiOutput = {
     monthly: number;
     yearly: number;
     total3yr: number;
+    objectiveReturnPct: number;
   };
   breakdown: {
     baseTokens3yrUSD: number;
@@ -67,9 +68,13 @@ export function computeRoi({
   const daily = total3yr / (3 * 365);
   const monthly = total3yr / months;
   const yearly = total3yr / 3;
+  
+  // Node cost for ROI calculation
+  const nodeCost = 31415;
+  const objectiveReturnPct = ((total3yr - nodeCost) / nodeCost) * 100;
 
   return {
-    kpis: { daily, monthly, yearly, total3yr },
+    kpis: { daily, monthly, yearly, total3yr, objectiveReturnPct },
     breakdown: {
       baseTokens3yrUSD,
       cabinets3yrUSD,
