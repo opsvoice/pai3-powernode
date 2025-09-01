@@ -10,7 +10,7 @@ function App() {
       <div className="min-h-screen bg-black text-white">
         <Header />
         <Routes>
-          <Route path="/" element={<PowerNodePage />} />
+          <Route path="/" element={<NodeTypesPage />} />
           <Route path="/nodes" element={<PowerNodePage />} />
           <Route path="/node-types" element={<NodeTypesPage />} />
         </Routes>
