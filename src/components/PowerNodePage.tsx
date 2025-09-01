@@ -528,7 +528,7 @@ const PowerNodePage = () => {
                 )}
               </div>
               
-              {/* ROI Estimates - Moved above disclaimer */}
+              {/* ROI Estimates */}
               <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg">
                 <h3 className="text-[#32f932] font-semibold text-lg">ROI Estimates (3-Year Model)</h3>
                 <p className="text-xs opacity-70 -mt-1 mb-6">
@@ -537,17 +537,17 @@ const PowerNodePage = () => {
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
                   <div>
                     <div className="text-4xl font-bold text-white">${Math.round(kpis.daily).toLocaleString()}</div>
-                    <div className="text-sm text-gray-400">Daily</div>
+                    <div className="text-sm text-gray-400">Daily Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average daily revenue (gross, over 3 years)</div>
                   </div>
                   <div>
                     <div className="text-4xl font-bold text-white">${Math.round(kpis.monthly).toLocaleString()}</div>
-                    <div className="text-sm text-gray-400">Monthly</div>
+                    <div className="text-sm text-gray-400">Monthly Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average monthly revenue (gross, over 3 years)</div>
                   </div>
                   <div>
                     <div className="text-4xl font-bold text-white">${Math.round(kpis.yearly).toLocaleString()}</div>
-                    <div className="text-sm text-gray-400">Yearly</div>
+                    <div className="text-sm text-gray-400">Yearly Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average annual revenue (gross)</div>
                   </div>
                   <div>
