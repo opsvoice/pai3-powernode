@@ -546,14 +546,6 @@ const NodeTypesPage = () => {
                 </div>
               ))}
             </div>
-            
-            {/* Conversion Note */}
-            <div className="mt-8 p-6 bg-[#32f932]/10 border border-[#32f932]/20 rounded-xl">
-              <p className="text-sm text-gray-300 leading-relaxed">
-                <strong className="text-[#32f932]">Note:</strong> A Power Node NFT can be "blown up" into 100 Professional Node NFTs. 
-                Pooling 100 Professional Nodes into a Power Node is no longer offered due to hardware logistics.
-              </p>
-            </div>
           </div>
         </motion.section>
       )}
