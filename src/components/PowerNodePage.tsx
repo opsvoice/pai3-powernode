@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, HardDrive, Zap, Server, ChevronDown, ChevronUp, Check, Award, Calculator, Box, Wifi, Settings, Shield } from 'lucide-react';
+import { computeRoi, type RoiInputs } from '../utils/roiCalculations';
 
 const PowerNodePage = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [specsOpen, setSpecsOpen] = useState(false);
+  const [advancedOpen, setAdvancedOpen] = useState(false);
   const [tokenPrice, setTokenPrice] = useState(0.21);
   const [cabinetCount, setCabinetCount] = useState(0);
-
-  // ROI Calculations
-  const guaranteedTokens = 150000;
-  const tokensPerYear = guaranteedTokens / 3;
-  const tokensPerDay = guaranteedTokens / (3 * 365);
-  const nodeCost = 31415;
   
-  const baseDailyRewards = tokensPerDay * tokenPrice;
-  const baseAnnualRewards = tokensPerYear * tokenPrice;
-  const cabinetAnnualRevenue = cabinetCount * 2;
-  const dailyRewards = baseDailyRewards + (cabinetAnnualRevenue / 365);
-  const annualRewards = baseAnnualRewards + cabinetAnnualRevenue;
-  const totalThreeYearRewards = guaranteedTokens * tokenPrice;
-  const breakEvenDays = nodeCost / dailyRewards;
+  // Advanced inputs
+  const [reputationMultiplier, setReputationMultiplier] = useState(1.0);
+  const [serviceRevenueTokens, setServiceRevenueTokens] = useState(0);
+  const [deflationPct, setDeflationPct] = useState(0.30);
+
+  // Compute ROI using new advanced logic
+  const roiInputs: RoiInputs = {
+    tokenPrice,
+    cabinetCount,
+    reputationMultiplier,
+    serviceRevenueTokens,
+    deflationPct,
+  };
+  
+  const roiResult = computeRoi(roiInputs);
 
   const specs = [
     { icon: Cpu, label: "CPU", value: "12-Core AMD Ryzen", detail: "High-performance processing for AI workloads" },
@@ -346,30 +350,143 @@ const PowerNodePage = () => {
                 </div>
               </div>
               
+              {/* Advanced Settings */}
+              <div className="mb-8">
+                <button
+                  onClick={() => setAdvancedOpen(!advancedOpen)}
+                  className="w-full flex items-center justify-between text-left text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                >
+                  <span>Advanced Settings</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform ${advancedOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {advancedOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="mt-4 space-y-6 p-4 bg-gray-800/30 rounded-lg border border-[#32f932]/10"
+                  >
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Reputation Multiplier: {reputationMultiplier.toFixed(1)}x</label>
+                      <input
+                        type="range"
+                        min="1.0"
+                        max="2.0"
+                        step="0.1"
+                        value={reputationMultiplier}
+                        onChange={(e) => setReputationMultiplier(parseFloat(e.target.value))}
+                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                      />
+                      <div className="flex justify-between text-xs text-gray-400 mt-1">
+                        <span>1.0x (base)</span>
+                        <span>1.5x</span>
+                        <span>2.0x (max)</span>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Service Revenue: {serviceRevenueTokens.toLocaleString()} tokens/month</label>
+                      <input
+                        type="range"
+                        min="0"
+                        max="10000"
+                        step="100"
+                        value={serviceRevenueTokens}
+                        onChange={(e) => setServiceRevenueTokens(parseInt(e.target.value))}
+                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                      />
+                      <div className="flex justify-between text-xs text-gray-400 mt-1">
+                        <span>0 tokens</span>
+                        <span>5,000 tokens</span>
+                        <span>10,000 tokens</span>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Deflation Rate: {(deflationPct * 100).toFixed(0)}%</label>
+                      <input
+                        type="range"
+                        min="0"
+                        max="0.5"
+                        step="0.05"
+                        value={deflationPct}
+                        onChange={(e) => setDeflationPct(parseFloat(e.target.value))}
+                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                      />
+                      <div className="flex justify-between text-xs text-gray-400 mt-1">
+                        <span>0% (no deflation)</span>
+                        <span>25%</span>
+                        <span>50%</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+              
               <div className="grid md:grid-cols-4 gap-6 mb-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#32f932]">${dailyRewards.toFixed(2)}</div>
+                  <div className="text-2xl font-bold text-[#32f932]">${(roiResult.net3yr / (3 * 365)).toFixed(2)}</div>
                   <div className="text-sm text-gray-400">Daily Rewards</div>
                   <div className="text-xs text-gray-500">
-                    ~137 tokens/day{cabinetCount > 0 ? ` + ${cabinetCount.toLocaleString()} cabinets` : ''}
+                    Net after deflation{cabinetCount > 0 ? ` + cabinets` : ''}
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#32f932]">${annualRewards.toLocaleString()}</div>
+                  <div className="text-2xl font-bold text-[#32f932]">${(roiResult.net3yr / 3).toLocaleString()}</div>
                   <div className="text-sm text-gray-400">Annual Rewards</div>
                   <div className="text-xs text-gray-500">
-                    ~50,000 tokens/year{cabinetCount > 0 ? ` + $${(cabinetCount * 2).toLocaleString()} cabinets` : ''}
+                    Net annual average{cabinetCount > 0 ? ` + cabinets` : ''}
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#32f932]">${(totalThreeYearRewards + (cabinetAnnualRevenue * 3)).toLocaleString()}</div>
+                  <div className="text-2xl font-bold text-[#32f932]">${roiResult.net3yr.toLocaleString()}</div>
                   <div className="text-sm text-gray-400">Total 3-Year Rewards</div>
-                  <div className="text-xs text-gray-500">150,000 tokens{cabinetCount > 0 ? ` + 3yr cabinets` : ''}</div>
+                  <div className="text-xs text-gray-500">Net after {(deflationPct * 100).toFixed(0)}% deflation</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#32f932]">{Math.ceil(breakEvenDays)}</div>
+                  <div className="text-2xl font-bold text-[#32f932]">{Number.isFinite(roiResult.breakEvenDays) ? Math.ceil(roiResult.breakEvenDays) : "—"}</div>
                   <div className="text-sm text-gray-400">Break-Even (Days)</div>
                   <div className="text-xs text-gray-500">Node cost ÷ daily rewards</div>
+                </div>
+              </div>
+              
+              {/* Revenue Breakdown */}
+              <div className="mb-8 p-4 bg-gray-800/30 rounded-lg">
+                <h4 className="text-lg font-semibold text-[#32f932] mb-4 text-center">Revenue Breakdown (3 Years)</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-white">${roiResult.breakdown.baseTokenValue.toLocaleString()}</div>
+                    <div className="text-xs text-gray-400">Base Tokens</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-white">${roiResult.breakdown.reputationBonusValue.toLocaleString()}</div>
+                    <div className="text-xs text-gray-400">Reputation Bonus</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-white">${roiResult.breakdown.serviceRevenueValue.toLocaleString()}</div>
+                    <div className="text-xs text-gray-400">Service Revenue</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-white">${roiResult.breakdown.cabinets3yr.toLocaleString()}</div>
+                    <div className="text-xs text-gray-400">Cabinets</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-white">${roiResult.breakdown.compute3yr.toLocaleString()}</div>
+                    <div className="text-xs text-gray-400">Compute</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-white">${roiResult.breakdown.tx3yr.toLocaleString()}</div>
+                    <div className="text-xs text-gray-400">TX Boost</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-white">${roiResult.breakdown.stakingValue3yr.toLocaleString()}</div>
+                    <div className="text-xs text-gray-400">Staking</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-[#32f932]">${roiResult.gross3yr.toLocaleString()}</div>
+                    <div className="text-xs text-gray-400">Gross Total</div>
+                  </div>
                 </div>
               </div>
               
@@ -377,6 +494,9 @@ const PowerNodePage = () => {
                 onClick={() => {
                   setTokenPrice(0.21);
                   setCabinetCount(0);
+                  setReputationMultiplier(1.0);
+                  setServiceRevenueTokens(0);
+                  setDeflationPct(0.30);
                 }}
                 className="bg-[#32f932]/20 text-[#32f932] px-4 py-2 rounded-lg text-sm hover:bg-[#32f932]/30 transition-colors"
               >
@@ -387,6 +507,15 @@ const PowerNodePage = () => {
                 <strong>Disclaimer:</strong> This is not financial advice. Rewards are projected based on token emissions schedule and TGE price. 
                 Actual earnings may vary depending on network growth, fees, and token price.
               </p>
+              
+              <div className="mt-4 p-4 bg-[#32f932]/5 border border-[#32f932]/20 rounded-lg">
+                <h4 className="text-lg font-semibold text-[#32f932] mb-2">Advanced Revenue Sources</h4>
+                <p className="text-sm text-gray-300">
+                  Includes GPU compute revenue (${(10 * 24 * 0.5 * 365 * 3).toLocaleString()}/3yr), CPU services (${(500 * 12 * 3).toLocaleString()}/3yr), 
+                  12% APR staking rewards, transaction fee boosts, and reputation multipliers. 
+                  Net values account for {(deflationPct * 100).toFixed(0)}% deflation (burns + locks).
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
