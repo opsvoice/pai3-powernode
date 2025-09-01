@@ -288,16 +288,46 @@ const NodeTypesPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
                 >
-                  <img 
-                    src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=400&fit=crop&crop=center" 
-                    alt="PAI3 Node Ecosystem" 
-                    className="w-full h-full object-contain drop-shadow-2xl rounded-lg"
-                    onError={(e) => {
-                      console.log('Image failed to load');
-                      e.currentTarget.style.display = 'none';
-                    }}
-                    onLoad={() => console.log('Image loaded successfully')}
-                  />
+                  {/* Green Glowing Cube Visual */}
+                  <div className="relative w-80 h-80">
+                    {/* Main Cube */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#32f932]/30 to-[#32f932]/10 border-2 border-[#32f932]/60 rounded-2xl backdrop-blur-sm transform rotate-12 shadow-2xl shadow-[#32f932]/20">
+                      <div className="absolute inset-4 bg-gradient-to-br from-[#32f932]/20 to-transparent rounded-xl">
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#32f932] font-bold text-xl">
+                          Your Node
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Floating Labels */}
+                    <motion.div
+                      className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-[#32f932]/20 border border-[#32f932]/60 px-4 py-2 rounded-lg backdrop-blur-sm"
+                      animate={{ y: [-5, 5, -5] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <span className="text-[#32f932] font-semibold text-sm">RUN AGENTS</span>
+                    </motion.div>
+                    
+                    <motion.div
+                      className="absolute top-1/2 -left-16 transform -translate-y-1/2 bg-[#32f932]/20 border border-[#32f932]/60 px-4 py-2 rounded-lg backdrop-blur-sm"
+                      animate={{ x: [-5, 5, -5] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    >
+                      <span className="text-[#32f932] font-semibold text-sm">SECURE YOUR DATA</span>
+                    </motion.div>
+                    
+                    <motion.div
+                      className="absolute top-1/2 -right-16 transform -translate-y-1/2 bg-[#32f932]/20 border border-[#32f932]/60 px-4 py-2 rounded-lg backdrop-blur-sm"
+                      animate={{ x: [5, -5, 5] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                    >
+                      <span className="text-[#32f932] font-semibold text-sm">EARN REWARDS</span>
+                    </motion.div>
+                    
+                    {/* Bottom Labels */}
+                    <div className="absolute -bottom-12 left-8 text-[#32f932] font-semibold text-sm">Your Data</div>
+                    <div className="absolute -bottom-12 right-8 text-[#32f932] font-semibold text-sm">Your Agents</div>
+                  </div>
                 </motion.div>
                 
                 {/* Hover overlay text */}
