@@ -295,7 +295,7 @@ const NodeTypesPage = () => {
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">5TB storage with cabinet rentals</span>
+                  <span className="text-gray-300">5TB storage with 25,000 data cabinet rentals</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
@@ -345,7 +345,7 @@ const NodeTypesPage = () => {
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Data cabinets + enterprise connectors</span>
+                  <span className="text-gray-300">50GB with 250 data cabinets</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
