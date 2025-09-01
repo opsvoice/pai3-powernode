@@ -336,8 +336,8 @@ const PowerNodePage = () => {
                 <input
                   type="range"
                   min="0.21"
-                  max="10.00"
-                  step="0.1"
+                  max="10"
+                  step="0.01"
                   value={tokenPrice}
                   onChange={(e) => setTokenPrice(parseFloat(e.target.value))}
                   className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
