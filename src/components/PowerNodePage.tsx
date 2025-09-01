@@ -375,16 +375,16 @@ const PowerNodePage = () => {
               </div>
               
               {/* Advanced Settings */}
-              <div className="mb-8 bg-gradient-to-r from-[#32f932]/20 to-[#32f932]/10 border border-[#32f932]/50 rounded-xl p-6 shadow-lg">
+              <div className="mb-8 bg-gradient-to-r from-[#32f932]/10 to-[#32f932]/5 border border-[#32f932]/30 rounded-lg p-4">
                 <button
                   onClick={() => setAdvancedOpen(!advancedOpen)}
-                  className="w-full flex items-center justify-between text-left hover:bg-[#32f932]/10 transition-colors p-4 rounded-xl"
+                  className="w-full flex items-center justify-between text-left hover:bg-[#32f932]/10 transition-colors p-3 rounded-lg"
                 >
                   <div>
-                    <span className="text-xl font-bold text-[#32f932]">⚙️ Advanced Earnings Settings</span>
-                    <p className="text-base text-white mt-2">Customize your node's earning potential</p>
+                    <span className="text-lg font-semibold text-[#32f932]">⚙️ Advanced Earnings Settings</span>
+                    <p className="text-sm text-gray-300 mt-1">Customize your node's earning potential</p>
                   </div>
-                  <ChevronDown className={`h-6 w-6 text-[#32f932] transition-transform ${advancedOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`h-5 w-5 text-[#32f932] transition-transform ${advancedOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {advancedOpen && (
@@ -392,13 +392,13 @@ const PowerNodePage = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-6 space-y-6 p-6 bg-black/30 rounded-lg border border-[#32f932]/20"
+                    className="mt-4 space-y-4 p-4 bg-black/30 rounded-lg border border-[#32f932]/20"
                   >
                     <div>
-                      <label className="block text-lg font-medium mb-3 text-white">
+                      <label className="block text-sm font-medium mb-2 text-white">
                         Performance Bonus: {reputationMultiplier.toFixed(1)}x
                         <span
-                          className="ml-2 text-sm text-[#32f932] cursor-help"
+                          className="ml-1 text-xs text-[#32f932] cursor-help"
                           title="Extra bonus tokens if your node earns high reputation. A top score can double your guaranteed rewards."
                         >ℹ️</span>
                       </label>
@@ -419,10 +419,10 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-lg font-medium mb-3 text-white">
+                      <label className="block text-sm font-medium mb-2 text-white">
                         Extra Jobs Income: {serviceRevenueTokens.toLocaleString()} tokens/month
                         <span
-                          className="ml-2 text-sm text-[#32f932] cursor-help"
+                          className="ml-1 text-xs text-[#32f932] cursor-help"
                           title="Tokens you can earn each month from extra jobs like hosting AI agents, providing storage, or running inference."
                         >ℹ️</span>
                       </label>
@@ -446,10 +446,10 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-lg font-medium mb-3 text-white">
+                      <label className="block text-sm font-medium mb-2 text-white">
                         Network Fees & Locks: {(deflationPct * 100).toFixed(0)}%
                         <span
-                          className="ml-2 text-sm text-[#32f932] cursor-help"
+                          className="ml-1 text-xs text-[#32f932] cursor-help"
                           title="The network burns 5% and time-locks 25% of revenue. That means ~70% is immediately available."
                         >ℹ️</span>
                       </label>
