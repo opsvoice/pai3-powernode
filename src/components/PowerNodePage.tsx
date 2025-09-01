@@ -92,8 +92,8 @@ const PowerNodePage = () => {
       value: "$2/cabinet/yr"
     },
     {
-      title: "Gas & transaction fees",
-      subtitle: "from models + agents run on your node",
+      title: "Variable: Network fees",
+      subtitle: "from models + agents run on your node (varies with demand)",
       value: "Variable"
     }
   ];
