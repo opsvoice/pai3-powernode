@@ -648,7 +648,121 @@ const NodeTypesPage = () => {
         </div>
       </section>
 
+      {/* Who should own a PAI3 Node Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Fira Code, monospace' }}>
+              Who should own a <span className="text-[#32f932]">PAI3 Node?</span>
+            </h2>
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto" style={{ fontFamily: 'Fira Code, monospace' }}>
+              Different people, different needs. Here's who each node is built for:
+            </p>
+          </motion.div>
 
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Power Node Column */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-black/50 border border-[#32f932]/20 rounded-2xl p-8 hover:border-[#32f932]/40 transition-all"
+            >
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-16 bg-[#32f932]/20 rounded-2xl flex items-center justify-center">
+                  <Server className="h-8 w-8 text-[#32f932]" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Power Node</h3>
+                  <p className="text-gray-400">Crypto/Web3 investors, infra buyers, affiliates/agencies</p>
+                </div>
+              </div>
+              
+              <p className="text-gray-300 mb-8 leading-relaxed">
+                "The Power Node is a triple-exposure investment: the AI revolution, the Web3 economy, and the infrastructure boom — all in one scarce asset. You're not just buying hardware, you're securing a piece of the future internet."
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl">💰</div>
+                  <div>
+                    <h4 className="font-bold text-white">Big Rewards</h4>
+                    <p className="text-sm text-gray-400">150,000 tokens + fee share + rentals</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl">🖥️</div>
+                  <div>
+                    <h4 className="font-bold text-white">Own Infrastructure</h4>
+                    <p className="text-sm text-gray-400">Physical computer + 25,000 cabinets</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl">🌍</div>
+                  <div>
+                    <h4 className="font-bold text-white">Scarce Asset</h4>
+                    <p className="text-sm text-gray-400">Only 3,141 units</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Professional Node Column */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-black/50 border border-gray-500/20 rounded-2xl p-8 hover:border-gray-500/40 transition-all"
+            >
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-16 bg-gray-500/20 rounded-2xl flex items-center justify-center">
+                  <Laptop className="h-8 w-8 text-gray-500" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Professional Node</h3>
+                  <p className="text-gray-400">Professionals, SMEs, privacy-critical industries</p>
+                </div>
+              </div>
+              
+              <p className="text-gray-300 mb-8 leading-relaxed">
+                "The Professional Node is your private AI workspace. It's built for businesses that need AI to run securely on their own data — without sending anything to the cloud."
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl">🛠️</div>
+                  <div>
+                    <h4 className="font-bold text-white">Custom Agents</h4>
+                    <p className="text-sm text-gray-400">Train & fine-tune workflows</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl">🔒</div>
+                  <div>
+                    <h4 className="font-bold text-white">Privacy First</h4>
+                    <p className="text-sm text-gray-400">Local, auditable data</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl">💼</div>
+                  <div>
+                    <h4 className="font-bold text-white">Business Ready</h4>
+                    <p className="text-sm text-gray-400">Ideal for healthcare, law, finance</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
       {/* FAQ Section */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
