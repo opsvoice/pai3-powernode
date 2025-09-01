@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import AnimatedNodeGraphic from '../components/AnimatedNodeGraphic';
 import { 
   Server, 
   Laptop, 
@@ -26,6 +26,8 @@ const NodeTypesPage = () => {
   const [fullComparisonOpen, setFullComparisonOpen] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [showWaitlist, setShowWaitlist] = useState(false);
+  const [currentTagline, setCurrentTagline] = useState(0);
+  const [cubeHovered, setCubeHovered] = useState(false);
   const [waitlistForm, setWaitlistForm] = useState({
     name: '',
     email: '',
@@ -33,6 +35,20 @@ const NodeTypesPage = () => {
     submitted: false,
     loading: false
   });
+
+  const taglines = [
+    "Secure your data.",
+    "Run agents.", 
+    "Earn rewards."
+  ];
+
+  // Rotate taglines every 2.5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTagline((prev) => (prev + 1) % taglines.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleWaitlistSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -155,88 +171,241 @@ const NodeTypesPage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden w-full bg-[#0A0F14]">
-        {/* Green Grid Background */}
-        <div className="absolute inset-0 w-full h-full">
-          <svg className="w-full h-full opacity-40" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <section className="relative pt-32 pb-32 overflow-hidden w-full bg-gradient-to-b from-[#0A0F14] via-[#0F1A0F] to-[#0A0F14] min-h-screen flex items-center">
+        {/* Animated Grid Background */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <svg className="w-full h-full opacity-30" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
             <defs>
-              <pattern id="heroGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#32f932" strokeWidth="0.8" opacity="0.6"/>
+              <pattern id="animatedGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#32f932" strokeWidth="1" opacity="0.4"/>
               </pattern>
-              <linearGradient id="heroGridGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#32f932" stopOpacity="0.1" />
-                <stop offset="50%" stopColor="#32f932" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#32f932" stopOpacity="0.1" />
+              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#32f932" stopOpacity="0.05" />
+                <stop offset="50%" stopColor="#32f932" stopOpacity="0.15" />
+                <stop offset="100%" stopColor="#32f932" stopOpacity="0.05" />
               </linearGradient>
             </defs>
-            <rect width="100%" height="100%" fill="url(#heroGrid)" />
-            <rect width="100%" height="100%" fill="url(#heroGridGlow)" />
+            <rect width="100%" height="100%" fill="url(#animatedGrid)" />
+            <rect width="100%" height="100%" fill="url(#waveGradient)" />
           </svg>
           
-          {/* Animated grid lines */}
-          {[...Array(8)].map((_, i) => (
-            <div
+          {/* Wave motion lines */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
               key={i}
-              className="absolute w-full h-px bg-gradient-to-r from-transparent via-[#32f932]/50 to-transparent animate-pulse"
+              className="absolute w-full h-px bg-gradient-to-r from-transparent via-[#32f932]/30 to-transparent"
               style={{ 
-                top: `${12.5 * (i + 1)}%`,
-                animationDelay: `${i * 0.3}s`,
-                animationDuration: `${3 + Math.random() * 2}s`
+                top: `${15 * (i + 1)}%`
+              }}
+              animate={{
+                opacity: [0.2, 0.6, 0.2],
+                scaleX: [0.8, 1.2, 0.8],
+              }}
+              transition={{
+                duration: 4,
+                delay: i * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut"
               }}
             />
           ))}
           
-          {[...Array(12)].map((_, i) => (
-            <div
-              key={`v-${i}`}
-              className="absolute h-full w-px bg-gradient-to-b from-transparent via-[#32f932]/50 to-transparent animate-pulse"
+          {/* Drifting glowing dots */}
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={`dot-${i}`}
+              className="absolute w-2 h-2 bg-[#32f932] rounded-full opacity-40"
               style={{ 
-                left: `${8.33 * (i + 1)}%`,
-                animationDelay: `${i * 0.2}s`,
-                animationDuration: `${4 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-          
-          {/* Glowing nodes at intersections */}
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={`node-${i}`}
-              className="absolute w-2 h-2 bg-[#32f932] rounded-full animate-pulse opacity-60"
-              style={{
                 left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
+                top: `${Math.random() * 100}%`
+              }}
+              animate={{
+                x: [0, Math.random() * 100 - 50],
+                y: [0, Math.random() * 100 - 50],
+                opacity: [0.2, 0.8, 0.2],
+                scale: [0.5, 1.2, 0.5],
+              }}
+              transition={{
+                duration: 8 + Math.random() * 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: Math.random() * 5
               }}
             />
           ))}
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative z-10"
           >
+            {/* Headline */}
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight" style={{ fontFamily: 'Fira Code, monospace' }}>
-              Get to know <span className="text-[#32f932]">PAI3 Nodes</span>
+              <motion.span
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Get to know <span className="text-[#32f932]">PAI3 Nodes</span>
+              </motion.span>
             </h1>
 
-            {/* Animated Node Graphic */}
+            {/* Subheading with staggered word animation */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="mb-16"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto"
+              style={{ fontFamily: 'Fira Code, monospace' }}
             >
-              <AnimatedNodeGraphic />
+              {["Two", "ways", "to", "own", "your", "share", "of", "the", "AI", "future:", "infrastructure", "that", "earns,", "or", "software", "that", "empowers", "your", "business."].map((word, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
+                  className="inline-block mr-2"
+                >
+                  {word}
+                </motion.span>
+              ))}
             </motion.div>
 
-            <p className="text-lg text-gray-400 mb-12 max-w-4xl mx-auto" style={{ fontFamily: 'Fira Code, monospace' }}>
-              Choose between high-performance infrastructure (Power Node) or a software workspace for private AI workflows (Professional Node).
-            </p>
+            {/* 3D Cube Centerpiece */}
+            <div className="mb-12 flex justify-center">
+              <motion.div
+                className="relative w-80 h-80 cursor-pointer"
+                onHoverStart={() => setCubeHovered(true)}
+                onHoverEnd={() => setCubeHovered(false)}
+                onTap={() => setCubeHovered(!cubeHovered)}
+                whileHover={{ scale: 1.05 }}
+              >
+                {/* 3D Cube */}
+                <motion.div
+                  className="relative w-full h-full"
+                  style={{ 
+                    transformStyle: "preserve-3d",
+                    perspective: "1000px"
+                  }}
+                  animate={{ 
+                    rotateX: cubeHovered ? 15 : 10,
+                    rotateY: cubeHovered ? 45 : 25,
+                    rotateZ: cubeHovered ? 5 : 0
+                  }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  {/* Cube faces */}
+                  <motion.div
+                    className="absolute inset-0 border-2 border-[#32f932]/60 bg-[#32f932]/10 backdrop-blur-sm rounded-lg flex items-center justify-center"
+                    style={{ 
+                      transform: "translateZ(80px)",
+                      transformStyle: "preserve-3d"
+                    }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 1 }}
+                  >
+                    <motion.span 
+                      className="text-2xl font-bold text-[#32f932]"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 1.5 }}
+                    >
+                      Your Node
+                    </motion.span>
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute inset-0 border-2 border-[#32f932]/40 bg-[#32f932]/5 backdrop-blur-sm rounded-lg flex items-center justify-center"
+                    style={{ 
+                      transform: "rotateY(-90deg) translateZ(80px)",
+                      transformStyle: "preserve-3d"
+                    }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 1.2 }}
+                  >
+                    <motion.span 
+                      className="text-xl font-bold text-[#32f932]/80"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 2 }}
+                    >
+                      Your Data
+                    </motion.span>
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute inset-0 border-2 border-[#32f932]/40 bg-[#32f932]/5 backdrop-blur-sm rounded-lg flex items-center justify-center"
+                    style={{ 
+                      transform: "rotateY(90deg) translateZ(80px)",
+                      transformStyle: "preserve-3d"
+                    }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 1.4 }}
+                  >
+                    <motion.span 
+                      className="text-xl font-bold text-[#32f932]/80"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 2.5 }}
+                    >
+                      Run Agents
+                    </motion.span>
+                  </motion.div>
+                </motion.div>
+                
+                {/* Hover overlay text */}
+                {cubeHovered && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    className="absolute -top-16 left-1/2 transform -translate-x-1/2 text-2xl font-bold text-[#32f932] whitespace-nowrap"
+                    style={{ fontFamily: 'Fira Code, monospace' }}
+                  >
+                    Own your node. Own your future.
+                  </motion.div>
+                )}
+                
+                {/* Pulsing glow effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-lg"
+                  style={{
+                    background: "radial-gradient(circle, rgba(50, 249, 50, 0.1) 0%, transparent 70%)",
+                    filter: "blur(20px)"
+                  }}
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.6, 0.3]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </motion.div>
+            </div>
+            
+            {/* Rotating Tagline */}
+            <motion.div
+              className="text-2xl md:text-3xl font-bold text-[#32f932] h-12 flex items-center justify-center"
+              style={{ fontFamily: 'Fira Code, monospace' }}
+            >
+              <motion.span
+                key={currentTagline}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                {taglines[currentTagline]}
+              </motion.span>
+            </motion.div>
           </motion.div>
         </div>
       </section>
