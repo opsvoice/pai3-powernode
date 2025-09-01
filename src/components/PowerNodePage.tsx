@@ -9,6 +9,7 @@ const PowerNodePage = () => {
   const [specsOpen, setSpecsOpen] = useState(false);
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [showBreakdown, setShowBreakdown] = useState(false);
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [tokenPrice, setTokenPrice] = useState(0.21);
   const [cabinetCount, setCabinetCount] = useState(0);
   
@@ -353,11 +354,18 @@ const PowerNodePage = () => {
               <div className="mb-8">
                 <label className="block text-sm font-medium mb-2">
                   Cabinet Leasing: {cabinetCount.toLocaleString()} cabinets (${(cabinetCount * 2).toLocaleString()}/year)
-                  <span 
-                    className="ml-2 text-sm text-[#32f932] cursor-help" 
-                    title="Each cabinet generates $2/year. Power Nodes support up to 25,000 cabinets"
-                  >ℹ️</span>
+                  <button
+                    className="ml-2 text-sm text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                    onClick={() => setActiveTooltip(activeTooltip === 'cabinets' ? null : 'cabinets')}
+                  >
+                    ℹ️
+                  </button>
                 </label>
+                {activeTooltip === 'cabinets' && (
+                  <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-sm text-gray-300">
+                    Each cabinet generates $2/year. Power Nodes support up to 25,000 cabinets for maximum earning potential.
+                  </div>
+                )}
                 <input
                   type="range"
                   min="0"
@@ -397,11 +405,18 @@ const PowerNodePage = () => {
                     <div>
                       <label className="block text-sm font-medium mb-2 text-white">
                         Performance Bonus: {reputationMultiplier.toFixed(1)}x
-                        <span
-                          className="ml-1 text-xs text-[#32f932] cursor-help"
-                          title="Extra bonus tokens if your node earns high reputation. A top score can double your guaranteed rewards."
-                        >ℹ️</span>
+                        <button
+                          className="ml-1 text-xs text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                          onClick={() => setActiveTooltip(activeTooltip === 'reputation' ? null : 'reputation')}
+                        >
+                          ℹ️
+                        </button>
                       </label>
+                      {activeTooltip === 'reputation' && (
+                        <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-xs text-gray-300">
+                          Extra bonus tokens if your node earns high reputation. A top score can double your guaranteed rewards.
+                        </div>
+                      )}
                       <input
                         type="range"
                         min="1.0"
@@ -421,11 +436,18 @@ const PowerNodePage = () => {
                     <div>
                       <label className="block text-sm font-medium mb-2 text-white">
                         Extra Jobs Income: {serviceRevenueTokens.toLocaleString()} tokens/month
-                        <span
-                          className="ml-1 text-xs text-[#32f932] cursor-help"
-                          title="Tokens you can earn each month from extra jobs like hosting AI agents, providing storage, or running inference."
-                        >ℹ️</span>
+                        <button
+                          className="ml-1 text-xs text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                          onClick={() => setActiveTooltip(activeTooltip === 'jobs' ? null : 'jobs')}
+                        >
+                          ℹ️
+                        </button>
                       </label>
+                      {activeTooltip === 'jobs' && (
+                        <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-xs text-gray-300">
+                          Tokens you can earn each month from extra jobs like hosting AI agents, providing storage, or running inference.
+                        </div>
+                      )}
                       <input
                         type="range"
                         min="0"
@@ -448,11 +470,18 @@ const PowerNodePage = () => {
                     <div>
                       <label className="block text-sm font-medium mb-2 text-white">
                         Network Fees & Locks: {(deflationPct * 100).toFixed(0)}%
-                        <span
-                          className="ml-1 text-xs text-[#32f932] cursor-help"
-                          title="The network burns 5% and time-locks 25% of revenue. That means ~70% is immediately available."
-                        >ℹ️</span>
+                        <button
+                          className="ml-1 text-xs text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                          onClick={() => setActiveTooltip(activeTooltip === 'fees' ? null : 'fees')}
+                        >
+                          ℹ️
+                        </button>
                       </label>
+                      {activeTooltip === 'fees' && (
+                        <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-xs text-gray-300">
+                          The network burns 5% and time-locks 25% of revenue. That means ~70% is immediately available.
+                        </div>
+                      )}
                       <input
                         type="range"
                         min="0"
@@ -517,71 +546,120 @@ const PowerNodePage = () => {
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.baseTokenValue.toLocaleString()}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           Base Tokens
-                          <span 
-                            className="ml-1 text-[#32f932] cursor-help" 
-                            title="Guaranteed 150,000 tokens over 36 months (≈4,167/month)"
-                          >ℹ️</span>
+                          <button
+                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                            onClick={() => setActiveTooltip(activeTooltip === 'base' ? null : 'base')}
+                          >
+                            ℹ️
+                          </button>
                         </div>
+                        {activeTooltip === 'base' && (
+                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
+                            Guaranteed 150,000 tokens over 36 months (≈4,167/month)
+                          </div>
+                        )}
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.reputationBonusValue.toLocaleString()}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           Performance Bonus
-                          <span 
-                            className="ml-1 text-[#32f932] cursor-help" 
-                            title="Extra bonus tokens if your node achieves high reputation (up to 2×)"
-                          >ℹ️</span>
+                          <button
+                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                            onClick={() => setActiveTooltip(activeTooltip === 'performance' ? null : 'performance')}
+                          >
+                            ℹ️
+                          </button>
                         </div>
+                        {activeTooltip === 'performance' && (
+                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
+                            Extra bonus tokens if your node achieves high reputation (up to 2×)
+                          </div>
+                        )}
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.serviceRevenueValue.toLocaleString()}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           Extra Jobs Income
-                          <span 
-                            className="ml-1 text-[#32f932] cursor-help" 
-                            title="Tokens earned each month from hosting agents, storage, or inference workloads"
-                          >ℹ️</span>
+                          <button
+                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                            onClick={() => setActiveTooltip(activeTooltip === 'jobs-breakdown' ? null : 'jobs-breakdown')}
+                          >
+                            ℹ️
+                          </button>
                         </div>
+                        {activeTooltip === 'jobs-breakdown' && (
+                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
+                            Tokens earned each month from hosting agents, storage, or inference workloads
+                          </div>
+                        )}
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.cabinets3yr.toLocaleString()}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           Cabinets
-                          <span 
-                            className="ml-1 text-[#32f932] cursor-help" 
-                            title="Each cabinet generates $2/year. Power Nodes support up to 25,000 cabinets"
-                          >ℹ️</span>
+                          <button
+                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                            onClick={() => setActiveTooltip(activeTooltip === 'cabinets-breakdown' ? null : 'cabinets-breakdown')}
+                          >
+                            ℹ️
+                          </button>
                         </div>
+                        {activeTooltip === 'cabinets-breakdown' && (
+                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
+                            Each cabinet generates $2/year. Power Nodes support up to 25,000 cabinets
+                          </div>
+                        )}
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.compute3yr.toLocaleString()}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           Compute
-                          <span 
-                            className="ml-1 text-[#32f932] cursor-help" 
-                            title="Revenue from GPU ($10/hr baseline) + CPU ($500/mo). Defaults assume 50% GPU utilization"
-                          >ℹ️</span>
+                          <button
+                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                            onClick={() => setActiveTooltip(activeTooltip === 'compute' ? null : 'compute')}
+                          >
+                            ℹ️
+                          </button>
                         </div>
+                        {activeTooltip === 'compute' && (
+                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
+                            Revenue from GPU ($10/hr baseline) + CPU ($500/mo). Defaults assume 50% GPU utilization
+                          </div>
+                        )}
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.tx3yr.toLocaleString()}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           TX Boost
-                          <span 
-                            className="ml-1 text-[#32f932] cursor-help" 
-                            title="Modeled as a % of token value representing transaction/network activity"
-                          >ℹ️</span>
+                          <button
+                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                            onClick={() => setActiveTooltip(activeTooltip === 'tx' ? null : 'tx')}
+                          >
+                            ℹ️
+                          </button>
                         </div>
+                        {activeTooltip === 'tx' && (
+                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
+                            Modeled as a % of token value representing transaction/network activity
+                          </div>
+                        )}
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">${roiResult.breakdown.stakingValue3yr.toLocaleString()}</div>
                         <div className="text-xs text-gray-400 flex items-center justify-center">
                           Staking
-                          <span 
-                            className="ml-1 text-[#32f932] cursor-help" 
-                            title="12% APR auto-compounded monthly over 36 months adds ~29,500 tokens"
-                          >ℹ️</span>
+                          <button
+                            className="ml-1 text-[#32f932] cursor-pointer hover:text-[#32f932]/80"
+                            onClick={() => setActiveTooltip(activeTooltip === 'staking' ? null : 'staking')}
+                          >
+                            ℹ️
+                          </button>
                         </div>
+                        {activeTooltip === 'staking' && (
+                          <div className="absolute z-10 mt-2 p-2 bg-black border border-[#32f932]/30 rounded text-xs text-gray-300 w-48">
+                            12% APR auto-compounded monthly over 36 months adds ~29,500 tokens
+                          </div>
+                        )}
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-[#32f932]">${roiResult.gross3yr.toLocaleString()}</div>
