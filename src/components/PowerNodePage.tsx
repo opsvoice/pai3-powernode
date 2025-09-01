@@ -342,7 +342,7 @@ const PowerNodePage = () => {
                     {activeTooltip === `card-${index}` && (
                       <div className="absolute z-50 top-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
-                          {index === 0 && "Fixed token allocation distributed daily over 36 months. This is guaranteed regardless of network performance."}
+                          Generate revenue from encrypted data storage cabinets at $2/cabinet/year. Up to 25,000 cabinets per node.
                           {index === 1 && "Automatic compounding of your token rewards at 12% APR. Tokens are auto-staked for maximum growth."}
                           {index === 2 && "Rent out encrypted data storage cabinets to other users at $2/cabinet/year. Up to 25,000 cabinets per node."}
                           {index === 3 && "Revenue from AI model inference and agent execution fees. Varies based on network usage and demand."}
@@ -401,16 +401,16 @@ const PowerNodePage = () => {
               
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-medium text-white">Cabinet Leasing: {cabinetCount.toLocaleString()} cabinets</label>
+                  <label className="text-sm font-medium text-white">Cabinet Revenue: {cabinetCount.toLocaleString()} cabinets</label>
                   <div className="relative">
                     <button
                       type="button"
                       className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
-                      onClick={() => handleTooltipToggle('cabinet-leasing')}
+                      onClick={() => handleTooltipToggle('cabinet-revenue')}
                     >
                       i
                     </button>
-                    {activeTooltip === 'cabinet-leasing' && (
+                    {activeTooltip === 'cabinet-revenue' && (
                       <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
                           Rent out encrypted data storage cabinets to other users at $2/cabinet/year. Each Power Node can host up to 25,000 cabinets, providing potential passive income.
@@ -670,12 +670,12 @@ const PowerNodePage = () => {
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
                     <div className="text-sm text-white font-semibold">Avg Daily Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average over 3 years</div>
+                    <div className="text-xs text-gray-400 mt-1">Gross average over 36 months</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
                     <div className="text-sm text-white font-semibold">Avg Monthly Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average over 3 years</div>
+                    <div className="text-xs text-gray-400 mt-1">Gross average over 36 months</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
@@ -684,7 +684,7 @@ const PowerNodePage = () => {
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
-                    <div className="text-sm text-white font-semibold">Projected 3-Year Total</div>
+                    <div className="text-sm text-white font-semibold">Projected 36-Month Total</div>
                     <div className="text-xs text-gray-400 mt-1">Tokens × $PAI3 + cabinets + agent + model + staking</div>
                   </div>
                 </div>
