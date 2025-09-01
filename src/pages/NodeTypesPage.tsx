@@ -334,6 +334,7 @@ const NodeTypesPage = () => {
                         Your Agents
                       </span>
                     </motion.div>
+                  </div>
                 </motion.div>
                 </motion.div>
                 
