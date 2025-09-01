@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, HardDrive, Zap, Server, ChevronDown, ChevronUp, Check, Award, Calculator, Box, Wifi, Settings, Shield } from 'lucide-react';
 import { computeRoi, type RoiInputs } from '../utils/roiCalculations';
@@ -24,7 +25,23 @@ const PowerNodePage = () => {
     deflationPct,
   };
   
-  const roiResult = computeRoi(roiInputs);
+  const roiResult = useMemo(
+    () => computeRoi({
+      tokenPrice,
+      cabinetCount,
+      reputationMultiplier,
+      serviceRevenueTokens,
+      deflationPct,
+      // defaults (no UI change yet)
+      gpuHourly: 10,
+      gpuUtilization: 0.5,
+      cpuMonthly: 500,
+      stakingOn: true,
+      apr: 0.12,
+      txBoostPct: 0.05,
+    }),
+    [tokenPrice, cabinetCount, reputationMultiplier, serviceRevenueTokens, deflationPct]
+  );
 
   const specs = [
     { icon: Cpu, label: "CPU", value: "12-Core AMD Ryzen", detail: "High-performance processing for AI workloads" },
@@ -400,6 +417,9 @@ const PowerNodePage = () => {
                         <span>0 tokens</span>
                         <span>5,000 tokens</span>
                         <span>10,000 tokens</span>
+                      </div>
+                      <div className="text-xs text-gray-400 mt-1">
+                        Converts to $ = tokens × 36 × token price
                       </div>
                     </div>
                     
