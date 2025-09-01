@@ -664,16 +664,16 @@ const PowerNodePage = () => {
               
               {/* ROI Estimates */}
               <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg text-center">
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
                     <div className="text-sm text-white font-semibold">Avg Daily Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average</div>
+                    <div className="text-xs text-gray-400 mt-1">Gross average over 36 months</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
                     <div className="text-sm text-white font-semibold">Avg Monthly Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average</div>
+                    <div className="text-xs text-gray-400 mt-1">Gross average over 36 months</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
@@ -724,7 +724,7 @@ const PowerNodePage = () => {
                     </div>
                     
                     <p className="text-xs text-gray-400 mt-6 text-center">
-                      Token rewards and staking are guaranteed for the first 36 months.
+                      Token rewards and staking rewards are guaranteed for the first 36 months.
                     </p>
                   </div>
                 )}
@@ -734,7 +734,7 @@ const PowerNodePage = () => {
                 Power Node electricity ~ $10/month (US rates).
               </p>
               
-              <div className="mt-6 p-4 bg-gray-800/50 border border-gray-500/20 rounded-lg text-center">
+              <div className="mt-6 p-4 bg-gray-800/50 border border-gray-500/20 rounded-lg">
                 <p className="text-sm text-gray-400 text-center">
                   <strong>Disclaimer:</strong> These ROI estimates are modeled projections, not financial advice. They assume standard operating conditions.
                 </p>
