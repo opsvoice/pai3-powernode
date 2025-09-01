@@ -555,7 +555,7 @@ const NodeTypesPage = () => {
               {/* Value Proposition */}
               <div className="mb-6 p-4 bg-[#32f932]/5 border border-[#32f932]/20 rounded-xl">
                 <p className="text-gray-300 text-sm italic text-center">
-                  "Triple exposure: AI revolution, Web3 economy, and infrastructure boom — all in one scarce asset."
+                  Triple exposure: AI revolution, Web3 economy, and infrastructure boom — all in one scarce asset.
                 </p>
               </div>
               
