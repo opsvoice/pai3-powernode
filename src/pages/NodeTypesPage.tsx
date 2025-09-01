@@ -108,23 +108,23 @@ const NodeTypesPage = () => {
   const faqs = [
     {
       question: "Which node should I choose?",
-      answer: "Power = hardware + earning; Professional = software for teams to run private AI workflows."
+      answer: "Choose a Power Node if you want physical infrastructure that earns significant token rewards, rents cabinets, and provides scarce ownership in the PAI3 network. Choose a Professional Node if you want a lower-cost software workspace to train, verify, and run AI agents for your business or practice."
+    },
+    {
+      question: "Do both nodes earn tokens?",
+      answer: "Yes — both nodes earn PAI3 tokens, but on very different scales: Power Node: 150,000 PAI3 over 3 years, plus additional rewards from network activity and cabinet rentals. Professional Node: 1,500 PAI3 over 3 years. Rewards may be phased out in future versions as we position Professional Nodes more as a business utility."
     },
     {
       question: "Do I need technical skills?",
-      answer: "No. Both are designed to be user-friendly and managed via PAIneer."
+      answer: "No. Both nodes are designed to be simple: Power Node is plug-and-play hardware with preloaded software. Professional Node runs on your existing computer or cloud with a guided setup."
     },
     {
       question: "How does privacy work?",
-      answer: "Your data stays in your cabinets; agents run under your control on your node or borrowed compute."
+      answer: "All your data is stored inside encrypted cabinets on your node. Agents run locally (on your hardware or cloud for Professional Nodes, or directly on the Power Node), so your information never leaves your control."
     },
     {
       question: "What's PAIneer?",
-      answer: "The unified web app to manage nodes, data, and rewards."
-    },
-    {
-      question: "Can I convert nodes?",
-      answer: "Power Node NFT can be split into 100 Professional Node NFTs; the reverse is no longer offered."
+      answer: "PAIneer is the unified web app that lets you manage your node, cabinets, agents, and token rewards from one simple dashboard."
     }
   ];
 
