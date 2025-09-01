@@ -8,6 +8,7 @@ const PowerNodePage = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [specsOpen, setSpecsOpen] = useState(false);
   const [advancedOpen, setAdvancedOpen] = useState(false);
+  const [showBreakdown, setShowBreakdown] = useState(false);
   const [tokenPrice, setTokenPrice] = useState(0.21);
   const [cabinetCount, setCabinetCount] = useState(0);
   
@@ -350,7 +351,13 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2">Cabinet Leasing: {cabinetCount.toLocaleString()} cabinets (${(cabinetCount * 2).toLocaleString()}/year)</label>
+                <label className="block text-sm font-medium mb-2">
+                  Cabinet Leasing: {cabinetCount.toLocaleString()} cabinets (${(cabinetCount * 2).toLocaleString()}/year)
+                  <span 
+                    className="ml-2 text-sm text-[#32f932] cursor-help" 
+                    title="Each cabinet generates $2/year. Power Nodes support up to 25,000 cabinets"
+                  >ℹ️</span>
+                </label>
                 <input
                   type="range"
                   min="0"
@@ -368,16 +375,16 @@ const PowerNodePage = () => {
               </div>
               
               {/* Advanced Settings */}
-              <div className="mb-8 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg p-6">
+              <div className="mb-8 bg-gradient-to-r from-[#32f932]/20 to-[#32f932]/10 border-2 border-[#32f932]/50 rounded-xl p-8 shadow-lg">
                 <button
                   onClick={() => setAdvancedOpen(!advancedOpen)}
-                  className="w-full flex items-center justify-between text-left hover:bg-[#32f932]/5 transition-colors p-2 rounded-lg"
+                  className="w-full flex items-center justify-between text-left hover:bg-[#32f932]/10 transition-colors p-4 rounded-xl"
                 >
                   <div>
-                    <span className="text-lg font-semibold text-[#32f932]">⚙️ Advanced Earnings Settings</span>
-                    <p className="text-sm text-gray-300 mt-1">Customize your node's earning potential</p>
+                    <span className="text-2xl font-bold text-[#32f932]">⚙️ Advanced Earnings Settings</span>
+                    <p className="text-lg text-white mt-2">Customize your node's earning potential</p>
                   </div>
-                  <ChevronDown className={`h-6 w-6 text-[#32f932] transition-transform ${advancedOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`h-8 w-8 text-[#32f932] transition-transform ${advancedOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {advancedOpen && (
@@ -388,10 +395,10 @@ const PowerNodePage = () => {
                     className="mt-6 space-y-6 p-6 bg-black/30 rounded-lg border border-[#32f932]/20"
                   >
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white">
+                      <label className="block text-lg font-medium mb-3 text-white">
                         Performance Bonus: {reputationMultiplier.toFixed(1)}x
                         <span
-                          className="ml-2 text-xs text-gray-400 cursor-help"
+                          className="ml-2 text-sm text-[#32f932] cursor-help"
                           title="Extra bonus tokens if your node earns high reputation. A top score can double your guaranteed rewards."
                         >ℹ️</span>
                       </label>
@@ -412,10 +419,10 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white">
+                      <label className="block text-lg font-medium mb-3 text-white">
                         Extra Jobs Income: {serviceRevenueTokens.toLocaleString()} tokens/month
                         <span
-                          className="ml-2 text-xs text-gray-400 cursor-help"
+                          className="ml-2 text-sm text-[#32f932] cursor-help"
                           title="Tokens you can earn each month from extra jobs like hosting AI agents, providing storage, or running inference."
                         >ℹ️</span>
                       </label>
@@ -439,10 +446,10 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white">
+                      <label className="block text-lg font-medium mb-3 text-white">
                         Network Fees & Locks: {(deflationPct * 100).toFixed(0)}%
                         <span
-                          className="ml-2 text-xs text-gray-400 cursor-help"
+                          className="ml-2 text-sm text-[#32f932] cursor-help"
                           title="The network burns 5% and time-locks 25% of revenue. That means ~70% is immediately available."
                         >ℹ️</span>
                       </label>
@@ -494,44 +501,99 @@ const PowerNodePage = () => {
                 </div>
               </div>
               
-              {/* Revenue Breakdown */}
-              <div className="mb-8 p-4 bg-gray-800/30 rounded-lg">
-                <h4 className="text-lg font-semibold text-[#32f932] mb-4 text-center">Earnings Breakdown (3 Years)</h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-white">${roiResult.breakdown.baseTokenValue.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">Base Tokens</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-white">${roiResult.breakdown.reputationBonusValue.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">Performance Bonus</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-white">${roiResult.breakdown.serviceRevenueValue.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">Extra Jobs Income</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-white">${roiResult.breakdown.cabinets3yr.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">Cabinets</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-white">${roiResult.breakdown.compute3yr.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">Compute</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-white">${roiResult.breakdown.tx3yr.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">TX Boost</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-white">${roiResult.breakdown.stakingValue3yr.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">Staking</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-[#32f932]">${roiResult.gross3yr.toLocaleString()}</div>
-                    <div className="text-xs text-gray-400">Gross Total</div>
-                  </div>
-                </div>
-              </div>
+              {/* Collapsible Breakdown */}
+              <div className="mb-8">
+                <button
+                  onClick={() => setShowBreakdown(!showBreakdown)}
+                  className="text-lg text-[#32f932] underline hover:text-[#32f932]/80 transition-colors"
+                >
+                  {showBreakdown ? "Hide detailed revenue sources" : "Show detailed revenue sources"}
+                </button>
+                
+                {showBreakdown && (
+                  <div className="mt-4 p-6 bg-black/30 border border-[#32f932]/20 rounded-xl">
+                    <h4 className="text-lg font-semibold text-[#32f932] mb-4 text-center">Earnings Breakdown (3 Years)</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-white">${roiResult.breakdown.baseTokenValue.toLocaleString()}</div>
+                        <div className="text-xs text-gray-400 flex items-center justify-center">
+                          Base Tokens
+                          <span 
+                            className="ml-1 text-[#32f932] cursor-help" 
+                            title="Guaranteed 150,000 tokens over 36 months (≈4,167/month)"
+                          >ℹ️</span>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-white">${roiResult.breakdown.reputationBonusValue.toLocaleString()}</div>
+                        <div className="text-xs text-gray-400 flex items-center justify-center">
+                          Performance Bonus
+                          <span 
+                            className="ml-1 text-[#32f932] cursor-help" 
+                            title="Extra bonus tokens if your node achieves high reputation (up to 2×)"
+                          >ℹ️</span>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-white">${roiResult.breakdown.serviceRevenueValue.toLocaleString()}</div>
+                        <div className="text-xs text-gray-400 flex items-center justify-center">
+                          Extra Jobs Income
+                          <span 
+                            className="ml-1 text-[#32f932] cursor-help" 
+                            title="Tokens earned each month from hosting agents, storage, or inference workloads"
+                          >ℹ️</span>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-white">${roiResult.breakdown.cabinets3yr.toLocaleString()}</div>
+                        <div className="text-xs text-gray-400 flex items-center justify-center">
+                          Cabinets
+                          <span 
+                            className="ml-1 text-[#32f932] cursor-help" 
+                            title="Each cabinet generates $2/year. Power Nodes support up to 25,000 cabinets"
+                          >ℹ️</span>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-white">${roiResult.breakdown.compute3yr.toLocaleString()}</div>
+                        <div className="text-xs text-gray-400 flex items-center justify-center">
+                          Compute
+                          <span 
+                            className="ml-1 text-[#32f932] cursor-help" 
+                            title="Revenue from GPU ($10/hr baseline) + CPU ($500/mo). Defaults assume 50% GPU utilization"
+                          >ℹ️</span>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-white">${roiResult.breakdown.tx3yr.toLocaleString()}</div>
+                        <div className="text-xs text-gray-400 flex items-center justify-center">
+                          TX Boost
+                          <span 
+                            className="ml-1 text-[#32f932] cursor-help" 
+                            title="Modeled as a % of token value representing transaction/network activity"
+                          >ℹ️</span>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-white">${roiResult.breakdown.stakingValue3yr.toLocaleString()}</div>
+                        <div className="text-xs text-gray-400 flex items-center justify-center">
+                          Staking
+                          <span 
+                            className="ml-1 text-[#32f932] cursor-help" 
+                            title="12% APR auto-compounded monthly over 36 months adds ~29,500 tokens"
+                          >ℹ️</span>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-[#32f932]">${roiResult.gross3yr.toLocaleString()}</div>
+                        <div className="text-xs text-gray-400">Gross Total</div>
+                      </div>
+                    </div>
+                    
+                    <p className="text-xs text-gray-400 mt-4 p-3 bg-gray-800/50 rounded-lg">
+                      <strong>Note:</strong> Token rewards and staking are guaranteed for the first 36 months. 
+                      Future earnings depend on network adoption and tokenomics updates.
+                    </p>
               
               <button 
                 onClick={() => {
