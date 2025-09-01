@@ -702,7 +702,7 @@ const NodeTypesPage = () => {
           </div>
 
           {/* Toggle Full Comparison */}
-          <div className="text-center">
+          <div className="text-center mb-12">
             <button
               onClick={() => setFullComparisonOpen(!fullComparisonOpen)}
               className="inline-flex items-center space-x-2 text-[#32f932] hover:text-[#32f932]/80 transition-colors"
@@ -715,6 +715,34 @@ const NodeTypesPage = () => {
               )}
             </button>
           </div>
+          
+          {/* CTA Before FAQ */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-[#32f932]/10 to-[#32f932]/5 border border-[#32f932]/30 rounded-2xl p-8 text-center"
+          >
+            <h3 className="text-3xl font-bold text-white mb-4">
+              Power Nodes Are <span className="text-[#32f932]">Limited & Scarce!</span>
+            </h3>
+            <p className="text-xl text-gray-300 mb-6">
+              Only 3,141 Power Nodes will ever exist. Once they sell out, they're gone forever. 
+              Power Nodes power the entire network.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="bg-[#32f932] text-black px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#32f932]/80 transition-all">
+                Buy Power Node Now
+              </button>
+              <Link 
+                to="/nodes#calculator"
+                className="border-2 border-[#32f932] text-[#32f932] px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#32f932]/10 transition-all"
+              >
+                See ROI Calculator
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
