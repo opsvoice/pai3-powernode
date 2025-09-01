@@ -68,10 +68,10 @@ const AnimatedNodeGraphic = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-8"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 font-mono">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Fira Code, monospace' }}>
             PAI3 node makes AI personal
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300">
+          <p className="text-lg md:text-xl text-gray-300" style={{ fontFamily: 'Fira Code, monospace' }}>
             Personal, business and sharing
           </p>
         </motion.div>
@@ -85,7 +85,7 @@ const AnimatedNodeGraphic = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="text-center lg:text-right"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+            <h3 className="text-xl md:text-2xl font-bold text-white leading-tight" style={{ fontFamily: 'Fira Code, monospace' }}>
               Secure your data on<br />the node
             </h3>
           </motion.div>
@@ -133,7 +133,7 @@ const AnimatedNodeGraphic = () => {
             transition={{ duration: 1, delay: 0.7 }}
             className="text-center lg:text-left"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+            <h3 className="text-xl md:text-2xl font-bold text-white leading-tight" style={{ fontFamily: 'Fira Code, monospace' }}>
               Allow agents to run<br />on your node
             </h3>
           </motion.div>
