@@ -289,9 +289,14 @@ const NodeTypesPage = () => {
                   transition={{ duration: 0.8, delay: 0.3 }}
                 >
                   <img 
-                    src="/Gemini_Generated_Image_h9w7lwh9w7lwh9w7.png" 
+                    src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=400&fit=crop&crop=center" 
                     alt="PAI3 Node Ecosystem" 
-                    className="w-full h-full object-contain drop-shadow-2xl"
+                    className="w-full h-full object-contain drop-shadow-2xl rounded-lg"
+                    onError={(e) => {
+                      console.log('Image failed to load');
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={() => console.log('Image loaded successfully')}
                   />
                 </motion.div>
                 
@@ -301,10 +306,10 @@ const NodeTypesPage = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
-                    className="absolute -top-32 left-1/2 transform -translate-x-1/2 text-2xl font-bold text-[#32f932] whitespace-nowrap z-50"
+                    className="absolute -top-16 left-1/2 transform -translate-x-1/2 text-2xl font-bold text-[#32f932] whitespace-nowrap z-50 bg-black/80 px-4 py-2 rounded-lg"
                     style={{ fontFamily: 'Fira Code, monospace' }}
                   >
-                    Own your node, own your future.
+                    Own your node, own your future
                   </motion.div>
                 )}
                 
