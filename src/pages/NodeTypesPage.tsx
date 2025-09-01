@@ -444,7 +444,7 @@ const NodeTypesPage = () => {
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Ideal for privacy-critical businesses</span>
+                  <span className="text-gray-300">Perfect for privacy-critical businesses</span>
                 </li>
               </ul>
               
@@ -459,11 +459,11 @@ const NodeTypesPage = () => {
             </motion.div>
           </div>
 
-          {/* Comparison Toggle */}
+          {/* Toggle Full Comparison */}
           <div className="text-center">
             <button
               onClick={() => setFullComparisonOpen(!fullComparisonOpen)}
-              className="inline-flex items-center space-x-2 bg-black/50 border border-gray-500/20 text-gray-400 px-6 py-3 rounded-xl hover:border-[#32f932]/20 hover:text-[#32f932] transition-all"
+              className="inline-flex items-center space-x-2 text-[#32f932] hover:text-[#32f932]/80 transition-colors"
             >
               <span>See detailed comparison</span>
               {fullComparisonOpen ? (
@@ -742,6 +742,7 @@ const NodeTypesPage = () => {
           </div>
         </div>
       </section>
+
       {/* FAQ Section */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -816,7 +817,6 @@ const NodeTypesPage = () => {
           </div>
         </div>
       </section>
-      </motion.div>
     </div>
   );
 };
