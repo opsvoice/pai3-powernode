@@ -588,13 +588,13 @@ const PowerNodePage = () => {
                         <div className="relative">
                           <button
                             type="button"
-                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors ml-2"
                             onClick={() => handleTooltipToggle('model-revenue')}
                           >
                             i
                           </button>
                           {activeTooltip === 'model-revenue' && (
-                            <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                            <div className="absolute z-50 bottom-8 right-0 w-72 sm:w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                               <div className="text-sm text-white leading-relaxed">
                                 Hourly revenue rate for AI model inference and compute services. Higher rates reflect premium models or specialized AI services your node provides.
                               </div>
@@ -627,15 +627,15 @@ const PowerNodePage = () => {
                         <div className="relative">
                           <button
                             type="button"
-                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors ml-2"
                             onClick={() => handleTooltipToggle('staking-pct')}
                           >
                             i
                           </button>
                           {activeTooltip === 'staking-pct' && (
-                            <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                            <div className="absolute z-50 bottom-8 right-0 w-72 sm:w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                               <div className="text-sm text-white leading-relaxed">
-                                Percentage of your token rewards automatically staked at 12% APR with 1-year lock periods. Higher staking percentages generate more compound growth.
+                                Portion of monthly token emissions you restake. 12% APR, compounded monthly. No lock periods. The final deposit compounds one extra month.
                               </div>
                               <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                             </div>
@@ -664,16 +664,16 @@ const PowerNodePage = () => {
               
               {/* ROI Estimates */}
               <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg text-center">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
                     <div className="text-sm text-white font-semibold">Avg Daily Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average over 36 months</div>
+                    <div className="text-xs text-gray-400 mt-1">Gross average</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
                     <div className="text-sm text-white font-semibold">Avg Monthly Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average over 36 months</div>
+                    <div className="text-xs text-gray-400 mt-1">Gross average</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
@@ -724,7 +724,7 @@ const PowerNodePage = () => {
                     </div>
                     
                     <p className="text-xs text-gray-400 mt-6 text-center">
-                      Token rewards and staking rewards are guaranteed for the first 36 months.
+                      Token rewards and staking are guaranteed for the first 36 months.
                     </p>
                   </div>
                 )}
@@ -734,7 +734,7 @@ const PowerNodePage = () => {
                 Power Node electricity ~ $10/month (US rates).
               </p>
               
-              <div className="mt-6 p-4 bg-gray-800/50 border border-gray-500/20 rounded-lg">
+              <div className="mt-6 p-4 bg-gray-800/50 border border-gray-500/20 rounded-lg text-center">
                 <p className="text-sm text-gray-400 text-center">
                   <strong>Disclaimer:</strong> These ROI estimates are modeled projections, not financial advice. They assume standard operating conditions.
                 </p>
