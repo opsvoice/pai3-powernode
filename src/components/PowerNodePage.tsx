@@ -358,13 +358,13 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2 text-white">
+                <label className="block text-sm font-medium mb-2 text-white flex items-center">
                   Cabinet Leasing @ $2/year: {cabinetCount.toLocaleString()} cabinets
-                  <span 
-                    title="Each cabinet contributes $2 per year. Power Nodes support up to 25,000 cabinets." 
-                    className="ml-1 cursor-help text-gray-400"
+                  <span
+                    className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                    title="Each cabinet contributes $2 per year. Power Nodes support up to 25,000 cabinets."
                   >
-                    ℹ️
+                    i
                   </span>
                 </label>
                 <input
@@ -384,13 +384,13 @@ const PowerNodePage = () => {
               </div>
               
               <div className="mb-8">
-                <label className="block text-sm font-medium mb-2 text-white">
+                <label className="block text-sm font-medium mb-2 text-white flex items-center">
                   Agent Income (per month): ${agentMonthlyUSD.toLocaleString()}
-                  <span 
-                    title="Income from CPU/agent services. Flat monthly amount." 
-                    className="ml-1 cursor-help text-gray-400"
+                  <span
+                    className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                    title="Income from CPU/agent services. Flat monthly amount."
                   >
-                    ℹ️
+                    i
                   </span>
                 </label>
                 <input
@@ -475,13 +475,13 @@ const PowerNodePage = () => {
                     className="mt-4 space-y-4 p-4 bg-black/30 rounded-lg border border-[#32f932]/20"
                   >
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white">
+                      <label className="block text-sm font-medium mb-2 text-white flex items-center">
                         GPU Price ($/hr): ${gpuHourly}
-                        <span 
-                          title="Conservative baseline is $10/hr (L40 ballpark). Higher-demand workloads can clear $15–$50/hr depending on hardware class and market." 
-                          className="ml-1 cursor-help text-gray-400"
+                        <span
+                          className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                          title="Conservative baseline is $10/hr (L40 ballpark). Higher-demand workloads can clear $15–$50/hr depending on hardware class and market."
                         >
-                          ℹ️
+                          i
                         </span>
                       </label>
                       <input
@@ -507,13 +507,13 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white">
+                      <label className="block text-sm font-medium mb-2 text-white flex items-center">
                         GPU Utilization: {(gpuUtilization * 100).toFixed(0)}%
-                        <span 
-                          title="GPU revenue = ($/hr) × 24 × utilization × 365. Utilization reflects demand; reputation (age, uptime, stake, history) helps over time." 
-                          className="ml-1 cursor-help text-gray-400"
+                        <span
+                          className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                          title="GPU revenue = ($/hr) × 24 × utilization × 365. Utilization reflects demand; reputation (age, uptime, stake, history) helps over time."
                         >
-                          ℹ️
+                          i
                         </span>
                       </label>
                       <input
@@ -535,13 +535,13 @@ const PowerNodePage = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-white">
+                      <label className="block text-sm font-medium mb-2 text-white flex items-center">
                         Staking % of Rewards: {(stakingPct * 100).toFixed(0)}%
-                        <span 
-                          title="Portion of monthly token emissions you restake. 12% APR, monthly compounding. Includes one extra month on the final deposit." 
-                          className="ml-1 cursor-help text-gray-400"
+                        <span
+                          className="ml-2 w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help"
+                          title="Portion of monthly token emissions you restake. 12% APR, monthly compounding. Includes one extra month on the final deposit."
                         >
-                          ℹ️
+                          i
                         </span>
                       </label>
                       <input
@@ -572,27 +572,27 @@ const PowerNodePage = () => {
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.daily).toLocaleString()}</div>
+                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.daily).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Daily Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average daily revenue</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
+                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Monthly Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average monthly revenue</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
+                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Yearly Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average annual revenue</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
+                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">3-Year Total</div>
                     <div className="text-xs text-gray-500 mt-1">Total projected earnings</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">{kpis.roiPct.toFixed(1)}%</div>
+                    <div className="text-3xl font-bold text-[#32f932]">{kpis.roiPct.toFixed(1)}%</div>
                     <div className="text-sm text-gray-400">ROI %</div>
                     <div className="text-xs text-gray-500 mt-1">Return on investment</div>
                   </div>
