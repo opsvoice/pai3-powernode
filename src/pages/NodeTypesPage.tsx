@@ -399,8 +399,6 @@ const NodeTypesPage = () => {
                 </li>
               </ul>
               
-                <li className="flex items-start space-x-3">
-
       {/* Full Comparison Accordion */}
       {fullComparisonOpen && (
         <motion.section
