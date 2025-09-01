@@ -588,13 +588,13 @@ const PowerNodePage = () => {
                         <div className="relative">
                           <button
                             type="button"
-                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors ml-2"
+                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
                             onClick={() => handleTooltipToggle('model-revenue')}
                           >
                             i
                           </button>
                           {activeTooltip === 'model-revenue' && (
-                            <div className="absolute z-50 bottom-8 right-0 w-72 sm:w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                            <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                               <div className="text-sm text-white leading-relaxed">
                                 Hourly revenue rate for AI model inference and compute services. Higher rates reflect premium models or specialized AI services your node provides.
                               </div>
@@ -627,15 +627,15 @@ const PowerNodePage = () => {
                         <div className="relative">
                           <button
                             type="button"
-                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors ml-2"
+                            className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
                             onClick={() => handleTooltipToggle('staking-pct')}
                           >
                             i
                           </button>
                           {activeTooltip === 'staking-pct' && (
-                            <div className="absolute z-50 bottom-8 right-0 w-72 sm:w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                            <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                               <div className="text-sm text-white leading-relaxed">
-                                Portion of monthly token emissions you restake. 12% APR, compounded monthly. No lock periods. The final deposit compounds one extra month.
+                                Percentage of your token rewards automatically staked at 12% APR with 1-year lock periods. Higher staking percentages generate more compound growth.
                               </div>
                               <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                             </div>
