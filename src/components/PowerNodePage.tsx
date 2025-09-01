@@ -621,33 +621,33 @@ const PowerNodePage = () => {
               
               {/* ROI Estimates */}
               <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg">
-                <h3 className="text-[#32f932] font-semibold text-lg">ROI Estimates</h3>
+                <h3 className="text-[#32f932] font-semibold text-2xl">ROI Estimates</h3>
                 <p className="text-xs opacity-70 -mt-1 mb-4">
                   Projected earnings based on current settings. Actual results vary with token price, utilization, and demand.
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
                   <div>
-                    <div className="text-5xl font-bold text-[#32f932]">${Math.round(kpis.daily).toLocaleString()}</div>
+                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.daily).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Daily Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average daily revenue</div>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
+                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Monthly Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average monthly revenue</div>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
+                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">Yearly Earnings</div>
                     <div className="text-xs text-gray-500 mt-1">Average annual revenue</div>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
+                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
                     <div className="text-sm text-gray-400">3-Year Total</div>
                     <div className="text-xs text-gray-500 mt-1">Total projected earnings</div>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold text-[#32f932]">{kpis.roiPct.toFixed(1)}%</div>
+                    <div className="text-3xl font-bold text-[#32f932]">{kpis.roiPct.toFixed(1)}%</div>
                     <div className="text-sm text-gray-400">ROI %</div>
                     <div className="text-xs text-gray-500 mt-1">Return on investment</div>
                   </div>
