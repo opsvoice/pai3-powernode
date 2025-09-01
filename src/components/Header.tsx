@@ -14,14 +14,13 @@ const Header = () => {
           
           <nav className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-white hover:text-green-400 transition-colors">Home</Link>
-            <Link to="/powernode" className="text-white hover:text-green-400 transition-colors">Power Nodes</Link>
-            <Link to="/ecosystem" className="text-white hover:text-green-400 transition-colors">Ecosystem</Link>
-            <Link to="/about" className="text-white hover:text-green-400 transition-colors">About</Link>
+            <Link to="/nodes" className="text-white hover:text-green-400 transition-colors">Power Node</Link>
+            <Link to="/node-types" className="text-white hover:text-green-400 transition-colors">Node Types</Link>
           </nav>
 
           <div className="flex items-center space-x-4">
             <Link 
-              to="/powernode"
+              to="/nodes"
               className="bg-gradient-to-r from-green-500 to-green-600 text-black px-6 py-2 rounded-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all"
             >
               Own a Power Node
