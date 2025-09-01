@@ -343,7 +343,7 @@ const PowerNodePage = () => {
                       <div className="absolute z-50 top-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
                           {index === 0 && "Fixed token allocation distributed daily over 36 months. This is guaranteed regardless of network performance."}
-                          {index === 1 && "Automatic compounding of your token rewards at 12% APR with 1-year lock periods for maximum growth."}
+                          {index === 1 && "Automatic compounding of your token rewards at 12% APR. Tokens are auto-staked for maximum growth."}
                           {index === 2 && "Rent out encrypted data storage cabinets to other users at $2/cabinet/year. Up to 25,000 cabinets per node."}
                           {index === 3 && "Revenue from AI model inference and agent execution fees. Varies based on network usage and demand."}
                         </div>
