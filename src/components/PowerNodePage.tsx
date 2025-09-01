@@ -555,26 +555,8 @@ const PowerNodePage = () => {
                 )}
               </div>
               
-              <button 
-                onClick={() => {
-                  setTokenPrice(0.21);
-                  setCabinetCount(0);
-                  setAgentMonthlyUSD(500);
-                  setGpuUtilization(0.30);
-                  setStakingPct(1.0);
-                }}
-                className="bg-[#32f932]/20 text-[#32f932] px-4 py-2 rounded-lg text-sm hover:bg-[#32f932]/30 transition-colors"
-              >
-                Reset to Baseline
-              </button>
-              
-              <p className="text-xs text-gray-400 mt-6 p-4 bg-gray-800/50 rounded-lg">
-                Disclaimer: This is not financial advice. Rewards are projected based on token emissions schedule and TGE price. 
-                Actual earnings may vary depending on network growth, fees, and token price.
-              </p>
-              
-              {/* Big Takeaways */}
-              <div className="mt-8 p-6 bg-[#32f932]/5 border border-[#32f932]/20 rounded-lg">
+              {/* Big Takeaways - Moved above disclaimer */}
+              <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg">
                 <h4 className="text-2xl font-semibold text-[#32f932] mb-6 text-center">Big Takeaways</h4>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
                   <div>
@@ -599,6 +581,24 @@ const PowerNodePage = () => {
                   </div>
                 </div>
               </div>
+              
+              <button 
+                onClick={() => {
+                  setTokenPrice(0.21);
+                  setCabinetCount(0);
+                  setAgentMonthlyUSD(500);
+                  setGpuUtilization(0.30);
+                  setStakingPct(1.0);
+                }}
+                className="bg-[#32f932]/20 text-[#32f932] px-4 py-2 rounded-lg text-sm hover:bg-[#32f932]/30 transition-colors mt-6"
+              >
+                Reset to Baseline
+              </button>
+              
+              <p className="text-xs text-gray-400 mt-6 p-4 bg-gray-800/50 rounded-lg">
+                Disclaimer: This is not financial advice. Rewards are projected based on token emissions schedule and TGE price. 
+                Actual earnings may vary depending on network growth, fees, and token price.
+              </p>
             </div>
           </motion.div>
         </div>
