@@ -375,16 +375,16 @@ const PowerNodePage = () => {
               </div>
               
               {/* Advanced Settings */}
-              <div className="mb-8 bg-gradient-to-r from-[#32f932]/20 to-[#32f932]/10 border-2 border-[#32f932]/50 rounded-xl p-8 shadow-lg">
+              <div className="mb-8 bg-gradient-to-r from-[#32f932]/20 to-[#32f932]/10 border border-[#32f932]/50 rounded-xl p-6 shadow-lg">
                 <button
                   onClick={() => setAdvancedOpen(!advancedOpen)}
                   className="w-full flex items-center justify-between text-left hover:bg-[#32f932]/10 transition-colors p-4 rounded-xl"
                 >
                   <div>
-                    <span className="text-2xl font-bold text-[#32f932]">⚙️ Advanced Earnings Settings</span>
-                    <p className="text-lg text-white mt-2">Customize your node's earning potential</p>
+                    <span className="text-xl font-bold text-[#32f932]">⚙️ Advanced Earnings Settings</span>
+                    <p className="text-base text-white mt-2">Customize your node's earning potential</p>
                   </div>
-                  <ChevronDown className={`h-8 w-8 text-[#32f932] transition-transform ${advancedOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`h-6 w-6 text-[#32f932] transition-transform ${advancedOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {advancedOpen && (
@@ -473,11 +473,6 @@ const PowerNodePage = () => {
                   </motion.div>
                 )}
               </div>
-            </div>
-            
-            <div className="space-y-4">
-            
-            <div className="space-y-6">
               <div className="grid md:grid-cols-4 gap-6 mb-8">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#32f932]">${(roiResult.net3yr / (3 * 365)).toFixed(2)}</div>
@@ -504,9 +499,7 @@ const PowerNodePage = () => {
                   <div className="text-xs text-gray-500">node cost ÷ daily earnings</div>
                 </div>
               </div>
-            </div>
-            
-            <div className="space-y-4">
+              
               {/* Collapsible Breakdown */}
               <div className="mb-8">
                 <button
@@ -600,6 +593,9 @@ const PowerNodePage = () => {
                       <strong>Note:</strong> Token rewards and staking are guaranteed for the first 36 months. 
                       Future earnings depend on network adoption and tokenomics updates.
                     </p>
+                  </div>
+                )}
+              </div>
               
               <button 
                 onClick={() => {
@@ -627,10 +623,6 @@ const PowerNodePage = () => {
                   Net values account for {(deflationPct * 100).toFixed(0)}% network fees & locks.
                 </p>
               </div>
-                  </div>
-                )}
-              </div>
-            </div>
             </div>
           </motion.div>
         </div>
