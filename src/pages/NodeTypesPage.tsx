@@ -18,7 +18,10 @@ import {
   DollarSign,
   HardDrive,
   Cpu,
-  Globe
+  Globe,
+  Building2,
+  Wrench,
+  Lightbulb
 } from 'lucide-react';
 
 const NodeTypesPage = () => {
@@ -71,44 +74,43 @@ const NodeTypesPage = () => {
     },
     {
       feature: "Type",
-      power: "Physical hardware",
-      professional: "Software/virtual"
+      power: "Hardware",
+      professional: "Software"
     },
     {
       feature: "Specs",
       power: "12-core CPU, 20-core GPU, 64GB RAM, 5TB SSD RAID",
-      professional: "Runs on user/cloud or borrows compute"
+      professional: "Runs on your laptop, desktop, in your cloud account, or on Power Nodes"
     },
     {
       feature: "Primary Purpose",
       power: "Network infra + inference mining",
-      professional: "Build/run/manage AI agents for business"
+      professional: "Build, run, manage AI agents for your life and your business"
     },
     {
       feature: "Token Rewards",
-      power: "150,000 PAI3 over 3 yrs",
-      professional: "1,500 PAI3 over 3 yrs"
+      power: "150,000 $PAI3 over 3 yrs",
+      professional: "1,500 $PAI3 over 3 yrs"
     },
     {
-      feature: "Earnings",
-      power: "Gas/tx fees + cabinet rentals",
-      power: "Agent, model and cabinet revenue",
-      professional: "Agent publishing/usage; no direct compute earnings"
+      feature: "Earnings Model",
+      power: "Agent, cabinet, and model revenue",
+      professional: "Agent revenue"
     },
     {
       feature: "Operating Cost",
-      power: "~$10/mo electricity",
-      professional: "Varies (your device/cloud)"
+      power: "~$10/month electricity (US rates)",
+      professional: "Varies by your device or cloud account"
     },
     {
       feature: "Storage",
       power: "25,000 cabinets (5TB, expandable)",
-      professional: "250 cabinets"
+      professional: "250 cabinets (50GB, expandable)"
     },
     {
       feature: "Management",
-      power: "Via PAIneer",
-      professional: "Via PAIneer"
+      power: "Managed via PAIneer",
+      professional: "Managed via PAIneer"
     },
     {
       feature: "Scarcity",
@@ -116,9 +118,9 @@ const NodeTypesPage = () => {
       professional: "314,159 max (reduced by 100 per Power Node sold)"
     },
     {
-      feature: "Audience",
-      power: "Web3/infra buyers",
-      professional: "SMEs in privacy-critical fields"
+      feature: "Conversion",
+      power: "Power Node NFT → 100 Professional Node NFTs",
+      professional: "Reverse not supported"
     }
   ];
 
@@ -129,7 +131,7 @@ const NodeTypesPage = () => {
     },
     {
       question: "Do both nodes earn tokens?",
-      answer: "Yes — both nodes earn PAI3 tokens, but on very different scales: Power Node: 150,000 PAI3 over 3 years, plus additional rewards from network activity and cabinet rentals. Professional Node: 1,500 PAI3 over 3 years. Rewards may be phased out in future versions as we position Professional Nodes more as a business utility."
+      answer: "Yes — both nodes earn $PAI3 tokens, but on very different scales: Power Node: 150,000 $PAI3 over 3 years, plus additional rewards from network activity and cabinet rentals. Professional Node: 1,500 $PAI3 over 3 years. Rewards may be phased out in future versions as we position Professional Nodes more as a business utility."
     },
     {
       question: "Do I need technical skills?",
@@ -251,7 +253,7 @@ const NodeTypesPage = () => {
               </motion.span>
             </h1>
 
-            {/* Subheading with staggered word animation */}
+            {/* Updated Subheading */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -259,17 +261,7 @@ const NodeTypesPage = () => {
               className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto"
               style={{ fontFamily: 'Fira Code, monospace' }}
             >
-              {["Two", "ways", "to", "own", "your", "share", "of", "the", "AI", "future:", "infrastructure", "that", "earns,", "or", "software", "that", "empowers", "your", "business."].map((word, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
-                  className="inline-block mr-2"
-                >
-                  {word}
-                </motion.span>
-              ))}
+              Two ways to own AI: hardware that earns, or software that empowers.
             </motion.div>
 
             {/* 3D Cube Centerpiece */}
@@ -444,7 +436,7 @@ const NodeTypesPage = () => {
                     Earn Tokens
                   </h3>
                   <p className="text-sm text-gray-400" style={{ fontFamily: 'Fira Code, monospace' }}>
-                    Earn PAI3 tokens by running or contributing your node to the network
+                    Earn $PAI3 tokens by running or contributing your node to the network
                   </p>
                 </div>
               </div>
@@ -465,36 +457,41 @@ const NodeTypesPage = () => {
               </p>
 
               <div className="space-y-6">
-                {/* Power Node Users */}
+                {/* Target Audience Categories */}
                 <div className="bg-black/30 border border-[#32f932]/20 rounded-xl p-6 hover:border-[#32f932]/40 transition-all">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="w-12 h-12 bg-[#32f932]/20 rounded-xl flex items-center justify-center">
-                      <Server className="h-6 w-6 text-[#32f932]" />
+                      <Building2 className="h-6 w-6 text-[#32f932]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Power Node</h3>
-                      <p className="text-gray-400 text-sm">Professionals, SMEs, enterprises, infrastructure operators and Web3/AI leaders</p>
+                      <h3 className="text-xl font-bold text-white">Professionals, SMEs, enterprises</h3>
+                      <p className="text-gray-400 text-sm">Business leaders and organizations</p>
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    "For professionals, SMEs, enterprises, infrastructure operators and Web3/AI leaders who want to be part of a scarce asset. AI revolution, Web3 growth, infrastructure boom - triple asset all in one investment."
-                  </p>
                 </div>
 
-                {/* Professional Node Users */}
-                <div className="bg-black/30 border border-gray-500/20 rounded-xl p-6 hover:border-gray-500/40 transition-all">
+                <div className="bg-black/30 border border-[#32f932]/20 rounded-xl p-6 hover:border-[#32f932]/40 transition-all">
                   <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 bg-gray-500/20 rounded-xl flex items-center justify-center">
-                      <Laptop className="h-6 w-6 text-gray-500" />
+                    <div className="w-12 h-12 bg-[#32f932]/20 rounded-xl flex items-center justify-center">
+                      <Wrench className="h-6 w-6 text-[#32f932]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Professional Node</h3>
-                      <p className="text-gray-400 text-sm">Professionals, SMEs, privacy-critical industries</p>
+                      <h3 className="text-xl font-bold text-white">Infrastructure operatives, node operatives</h3>
+                      <p className="text-gray-400 text-sm">Technical operators and infrastructure specialists</p>
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    "The Professional Node is your private AI workspace. It's built for businesses that need AI to run securely on their own data."
-                  </p>
+                </div>
+
+                <div className="bg-black/30 border border-[#32f932]/20 rounded-xl p-6 hover:border-[#32f932]/40 transition-all">
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="w-12 h-12 bg-[#32f932]/20 rounded-xl flex items-center justify-center">
+                      <Lightbulb className="h-6 w-6 text-[#32f932]" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white">Visionaries and thought leaders</h3>
+                      <p className="text-gray-400 text-sm">Forward-thinking innovators and AI pioneers</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -502,10 +499,50 @@ const NodeTypesPage = () => {
         </div>
       </section>
 
-      {/* Compact Comparison */}
+      {/* Which Node to Own Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8" style={{ fontFamily: 'Fira Code, monospace' }}>
+              Which Node to <span className="text-[#32f932]">Own?</span>
+            </h2>
+          </motion.div>
+
+          {/* Quick Comparison Strip */}
+          <div className="bg-black/30 border border-[#32f932]/20 rounded-2xl p-8 mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Quick Comparison</h3>
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="flex items-center justify-center space-x-4">
+                <DollarSign className="h-8 w-8 text-[#32f932]" />
+                <div>
+                  <div className="text-sm text-gray-400">Cost</div>
+                  <div className="text-xl font-bold text-white">$31,415 | $314</div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-4">
+                <Database className="h-8 w-8 text-[#32f932]" />
+                <div>
+                  <div className="text-sm text-gray-400">Rewards (3 yrs)</div>
+                  <div className="text-xl font-bold text-white">150,000 $PAI3 | 1,500 $PAI3</div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-4">
+                <Zap className="h-8 w-8 text-[#32f932]" />
+                <div>
+                  <div className="text-sm text-gray-400">Scarcity</div>
+                  <div className="text-xl font-bold text-white">3,141 units | 314,159 units</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
             {/* Power Node Card */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -521,6 +558,7 @@ const NodeTypesPage = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-white">Power Node</h3>
                   <p className="text-gray-400">Hardware</p>
+                  <p className="text-sm text-[#32f932] font-semibold">Everyone can run a Power Node</p>
                 </div>
               </div>
               
@@ -531,11 +569,11 @@ const NodeTypesPage = () => {
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300"><strong className="text-[#32f932]">150,000 PAI3 token rewards</strong> over 3 years</span>
+                  <span className="text-gray-300"><strong className="text-[#32f932]">150,000 $PAI3 token rewards</strong> over 3 years</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Earning-ready: inference mining, fees, and cabinet rentals</span>
+                  <span className="text-gray-300">Agent, model and cabinet revenue</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-[#32f932] mt-0.5 flex-shrink-0" />
@@ -546,8 +584,17 @@ const NodeTypesPage = () => {
                   <span className="text-gray-300">Scarce: only 3,141 units</span>
                 </li>
               </ul>
+
+              {/* Who it's for */}
+              <div className="mb-6 p-4 bg-[#32f932]/5 border border-[#32f932]/20 rounded-xl">
+                <h4 className="text-lg font-bold text-[#32f932] mb-3">Who it's for:</h4>
+                <p className="text-gray-300 text-sm mb-3">Professionals, SMEs, enterprises, infrastructure operators, and Web3/AI leaders</p>
+                <p className="text-gray-300 text-sm italic">
+                  "Triple exposure: AI revolution, Web3 economy, and infrastructure boom — all in one scarce asset."
+                </p>
+              </div>
               
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3 mb-4">
                 <button className="bg-[#32f932] text-black py-4 rounded-xl text-lg font-bold hover:bg-[#32f932]/80 transition-all">
                   Buy Now
                 </button>
@@ -556,6 +603,16 @@ const NodeTypesPage = () => {
                   className="border-2 border-[#32f932] text-[#32f932] py-4 rounded-xl text-lg font-bold hover:bg-[#32f932]/10 transition-all text-center flex items-center justify-center"
                 >
                   Learn More
+                </Link>
+              </div>
+
+              {/* ROI Calculator Link */}
+              <div className="text-center">
+                <Link 
+                  to="/nodes#calculator"
+                  className="text-[#32f932] hover:text-[#32f932]/80 transition-colors text-sm underline"
+                >
+                  See Objective ROI Calculator
                 </Link>
               </div>
             </motion.div>
@@ -574,13 +631,14 @@ const NodeTypesPage = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white">Professional Node</h3>
-                  <p className="text-gray-400">(Next-Gen Coming Q4 2025)</p>
+                  <p className="text-gray-400">Software</p>
+                  <p className="text-sm text-gray-400 font-semibold">Professional Node best fits professionals/SMEs in privacy-critical fields</p>
                 </div>
               </div>
               
               <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-4 mb-6">
                 <p className="text-gray-300 text-sm">
-                  Sales are paused until the next-gen release. Current operators and users remain fully supported with no interruptions.
+                  Sales are paused until the next-gen release in Q4 2025. Current operators and users remain fully supported with no interruptions.
                 </p>
               </div>
               
@@ -591,7 +649,7 @@ const NodeTypesPage = () => {
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">1,500 PAI3 token rewards over 3 years</span>
+                  <span className="text-gray-300">1,500 $PAI3 token rewards over 3 years</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Check className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
@@ -814,8 +872,6 @@ const NodeTypesPage = () => {
           </div>
         </motion.section>
       )}
-
-      {/* Professional Node Waitlist */}
 
       {/* FAQ Section */}
       <section className="py-20">
