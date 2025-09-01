@@ -389,7 +389,8 @@ const PowerNodePage = () => {
               <div className="mb-8 bg-gradient-to-r from-[#32f932]/10 to-[#32f932]/5 border border-[#32f932]/30 rounded-lg p-4">
                 <button
                   onClick={() => setAdvancedOpen(!advancedOpen)}
-                  className="w-full flex items-center justify-between text-left hover:bg-[#32f932]/10 transition-colors p-3 rounded-lg"
+        
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
                 >
                   <div>
                     <span className="text-lg font-semibold text-[#32f932]">⚙️ Advanced Earnings Settings</span>
