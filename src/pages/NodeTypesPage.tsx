@@ -729,8 +729,8 @@ const NodeTypesPage = () => {
             </motion.div>
           </div>
 
-          {/* Toggle Full Comparison */}
-          <div className="text-center mb-12">
+          {/* Toggle Full Comparison - moved here */}
+          <div className="text-center mt-12 mb-8">
             <button
               onClick={() => setFullComparisonOpen(!fullComparisonOpen)}
               className="inline-flex items-center space-x-2 text-[#32f932] hover:text-[#32f932]/80 transition-colors"
@@ -743,6 +743,75 @@ const NodeTypesPage = () => {
               )}
             </button>
           </div>
+          
+          {/* Full Comparison Accordion - moved here */}
+          {fullComparisonOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="mb-12"
+            >
+              <div className="max-w-7xl mx-auto">
+                <h3 className="text-3xl font-bold text-center mb-8">Detailed Comparison</h3>
+                
+                {/* Desktop Table */}
+                <div className="hidden lg:block overflow-x-auto">
+                  <table className="w-full bg-black/50 border border-gray-500/20 rounded-2xl overflow-hidden">
+                    <caption className="sr-only">Comparison between Power Node and Professional Node features</caption>
+                    <thead className="bg-black sticky top-0">
+                      <tr>
+                        <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-gray-400 uppercase tracking-wider">
+                          Feature
+                        </th>
+                        <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-[#32f932] uppercase tracking-wider">
+                          Power Node
+                        </th>
+                        <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-gray-400 uppercase tracking-wider">
+                          Professional Node
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-500/20">
+                      {comparisonData.map((row, index) => (
+                        <tr key={index} className={index % 2 === 0 ? 'bg-black/50' : 'bg-black'}>
+                          <th scope="row" className="px-6 py-4 text-sm font-medium text-white">
+                            {row.feature}
+                          </th>
+                          <td className="px-6 py-4 text-sm text-gray-300">
+                            {row.power}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-300">
+                            {row.professional}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                
+                {/* Mobile Stacked Cards */}
+                <div className="lg:hidden space-y-6">
+                  {comparisonData.map((row, index) => (
+                    <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl p-6">
+                      <h4 className="text-lg font-semibold text-white mb-4">{row.feature}</h4>
+                      <div className="space-y-3">
+                        <div>
+                          <div className="text-sm font-medium text-[#32f932] mb-1">Power Node</div>
+                          <div className="text-sm text-gray-300">{row.power}</div>
+                        </div>
+                        <div>
+                          <div className="text-sm font-medium text-gray-400 mb-1">Professional Node</div>
+                          <div className="text-sm text-gray-300">{row.professional}</div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
           
           {/* CTA Before FAQ */}
           <motion.div
@@ -773,75 +842,6 @@ const NodeTypesPage = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Full Comparison Accordion */}
-      {fullComparisonOpen && (
-        <motion.section
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="py-20 bg-[#0F1620]/50"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-12">Detailed Comparison</h2>
-            
-            {/* Desktop Table */}
-            <div className="hidden lg:block overflow-x-auto">
-              <table className="w-full bg-black/50 border border-gray-500/20 rounded-2xl overflow-hidden">
-                <caption className="sr-only">Comparison between Power Node and Professional Node features</caption>
-                <thead className="bg-black sticky top-0">
-                  <tr>
-                    <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                      Feature
-                    </th>
-                    <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-[#32f932] uppercase tracking-wider">
-                      Power Node
-                    </th>
-                    <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                      Professional Node
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-500/20">
-                  {comparisonData.map((row, index) => (
-                    <tr key={index} className={index % 2 === 0 ? 'bg-black/50' : 'bg-black'}>
-                      <th scope="row" className="px-6 py-4 text-sm font-medium text-white">
-                        {row.feature}
-                      </th>
-                      <td className="px-6 py-4 text-sm text-gray-300">
-                        {row.power}
-                      </td>
-                      <td className="px-6 py-4 text-sm text-gray-300">
-                        {row.professional}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            
-            {/* Mobile Stacked Cards */}
-            <div className="lg:hidden space-y-6">
-              {comparisonData.map((row, index) => (
-                <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">{row.feature}</h3>
-                  <div className="space-y-3">
-                    <div>
-                      <div className="text-sm font-medium text-[#32f932] mb-1">Power Node</div>
-                      <div className="text-sm text-gray-300">{row.power}</div>
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium text-gray-400 mb-1">Professional Node</div>
-                      <div className="text-sm text-gray-300">{row.professional}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-      )}
 
       {/* FAQ Section */}
       <section className="py-20">
