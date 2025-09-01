@@ -166,6 +166,12 @@ const PowerNodePage = () => {
             </div>
             <span className="font-mono text-xl font-bold">PAI3</span>
           </div>
+          
+          <nav className="hidden md:flex items-center space-x-8">
+            <a href="/nodes" className="text-white hover:text-[#32f932] transition-colors font-semibold">Power Node</a>
+            <a href="/node-types" className="text-white hover:text-[#32f932] transition-colors">Node Types</a>
+          </nav>
+          
           <button className="bg-[#32f932] text-black px-6 py-2 rounded-lg font-semibold hover:bg-[#32f932]/80 transition-colors">
             Buy a Power Node
           </button>
