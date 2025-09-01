@@ -12,6 +12,7 @@ const PowerNodePage = () => {
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [tokenPrice, setTokenPrice] = useState(0.21);
   const [cabinetCount, setCabinetCount] = useState(0);
+  const [reputationMultiplier, setReputationMultiplier] = useState(1.0);
   
   // Advanced inputs
   const [serviceRevenueTokens, setServiceRevenueTokens] = useState(0);
@@ -389,8 +390,7 @@ const PowerNodePage = () => {
               <div className="mb-8 bg-gradient-to-r from-[#32f932]/10 to-[#32f932]/5 border border-[#32f932]/30 rounded-lg p-4">
                 <button
                   onClick={() => setAdvancedOpen(!advancedOpen)}
-        
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
+                  className="flex items-center justify-between w-full"
                 >
                   <div>
                     <span className="text-lg font-semibold text-[#32f932]">⚙️ Advanced Earnings Settings</span>
@@ -419,6 +419,8 @@ const PowerNodePage = () => {
                       {activeTooltip === 'reputation' && (
                         <div className="mb-2 p-3 bg-[#32f932]/10 border border-[#32f932]/30 rounded-lg text-xs text-gray-300">
                           Extra bonus tokens if your node earns high reputation. A top score can double your guaranteed rewards.
+                        </div>
+                      )}
                       <input
                         type="range"
                         min="1.0"
@@ -504,6 +506,7 @@ const PowerNodePage = () => {
                   </motion.div>
                 )}
               </div>
+              
               <div className="grid md:grid-cols-4 gap-6 mb-8">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#32f932]">${(roiResult.net3yr / (3 * 365)).toFixed(2)}</div>
@@ -683,6 +686,7 @@ const PowerNodePage = () => {
                   setCabinetCount(0);
                   setServiceRevenueTokens(0);
                   setDeflationPct(0.30);
+                  setReputationMultiplier(1.0);
                 }}
                 className="bg-[#32f932]/20 text-[#32f932] px-4 py-2 rounded-lg text-sm hover:bg-[#32f932]/30 transition-colors"
               >
