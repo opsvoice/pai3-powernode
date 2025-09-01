@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import AnimatedNodeGraphic from '../components/AnimatedNodeGraphic';
 import { 
   Server, 
   Laptop, 
@@ -174,6 +175,33 @@ const NodeTypesPage = () => {
             <p className="text-lg text-gray-400 mb-12 max-w-4xl mx-auto">
               Choose between high-performance infrastructure (Power Node) or a software workspace for private AI workflows (Professional Node).
             </p>
+            
+            {/* Animated Node Graphic */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="mb-16"
+            >
+              <AnimatedNodeGraphic />
+            </motion.div>
+            
+            {/* Feature descriptions */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-[#32f932] mb-3">Secure your data on the node</h3>
+                <p className="text-gray-400">Your sensitive information stays completely private and under your control</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-[#32f932] mb-3">Allow agents to run on your node</h3>
+                <p className="text-gray-400">Deploy AI agents that work with your data without compromising security</p>
+              </div>
+            </motion.div>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link 
