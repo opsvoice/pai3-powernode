@@ -472,7 +472,7 @@ const NodeTypesPage = () => {
                 aria-expanded={showWaitlist}
                 aria-controls="pro-node-waitlist"
               >
-                Get Notified for Relaunch
+                Get Notified
               </button>
               
               {/* Inline Waitlist Form */}
