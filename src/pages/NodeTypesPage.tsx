@@ -514,34 +514,6 @@ const NodeTypesPage = () => {
             </h2>
           </motion.div>
 
-          {/* Quick Comparison Strip */}
-          <div className="bg-black/30 border border-[#32f932]/20 rounded-2xl p-8 mb-12">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">Quick Comparison</h3>
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div className="flex items-center justify-center space-x-4">
-                <DollarSign className="h-8 w-8 text-[#32f932]" />
-                <div>
-                  <div className="text-sm text-gray-400">Cost</div>
-                  <div className="text-xl font-bold text-white">$31,415 | $314</div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center space-x-4">
-                <Database className="h-8 w-8 text-[#32f932]" />
-                <div>
-                  <div className="text-sm text-gray-400">Rewards (3 yrs)</div>
-                  <div className="text-xl font-bold text-white">150,000 $PAI3 | 1,500 $PAI3</div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center space-x-4">
-                <Zap className="h-8 w-8 text-[#32f932]" />
-                <div>
-                  <div className="text-sm text-gray-400">Scarcity</div>
-                  <div className="text-xl font-bold text-white">3,141 units | 314,159 units</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Power Node Card */}
             <motion.div
@@ -585,11 +557,9 @@ const NodeTypesPage = () => {
                 </li>
               </ul>
 
-              {/* Who it's for */}
+              {/* Value Proposition */}
               <div className="mb-6 p-4 bg-[#32f932]/5 border border-[#32f932]/20 rounded-xl">
-                <h4 className="text-lg font-bold text-[#32f932] mb-3">Who it's for:</h4>
-                <p className="text-gray-300 text-sm mb-3">Professionals, SMEs, enterprises, infrastructure operators, and Web3/AI leaders</p>
-                <p className="text-gray-300 text-sm italic">
+                <p className="text-gray-300 text-sm italic text-center">
                   "Triple exposure: AI revolution, Web3 economy, and infrastructure boom — all in one scarce asset."
                 </p>
               </div>
@@ -612,7 +582,7 @@ const NodeTypesPage = () => {
                   to="/nodes#calculator"
                   className="text-[#32f932] hover:text-[#32f932]/80 transition-colors text-sm underline"
                 >
-                  See Objective ROI Calculator
+                  See ROI Calculator
                 </Link>
               </div>
             </motion.div>
