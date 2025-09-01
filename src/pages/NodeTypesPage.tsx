@@ -70,7 +70,7 @@ const NodeTypesPage = () => {
     },
     {
       feature: "Token Rewards",
-      power: "150,000 PAI3/FIO over 3 yrs",
+      power: "150,000 PAI3 over 3 yrs",
       professional: "1,500 PAI3 over 3 yrs"
     },
     {
