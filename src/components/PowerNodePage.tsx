@@ -670,17 +670,17 @@ const PowerNodePage = () => {
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
                     <div className="text-sm text-white font-semibold">Avg Daily Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average over 36 months</div>
+                    <div className="text-xs text-gray-400 mt-1">Gross average (per day)</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
                     <div className="text-sm text-white font-semibold">Avg Monthly Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average over 36 months</div>
+                    <div className="text-xs text-gray-400 mt-1">Gross average (per month)</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
                     <div className="text-sm text-white font-semibold">Avg Annual Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average</div>
+                    <div className="text-xs text-gray-400 mt-1">Gross average (per year)</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
