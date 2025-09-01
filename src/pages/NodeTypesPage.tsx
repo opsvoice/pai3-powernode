@@ -816,7 +816,7 @@ const NodeTypesPage = () => {
             </div>
           </div>
         </div>
-    </div>
+    </section>
   );
 };
 
