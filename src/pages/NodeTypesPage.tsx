@@ -122,7 +122,7 @@ const NodeTypesPage = () => {
   const faqs = [
     {
       question: "Which node should I choose?",
-      answer: "Choose a Power Node if you want physical infrastructure that earns significant token rewards, rents cabinets, and provides scarce ownership in the PAI3 network. Choose a Professional Node if you want a lower-cost software workspace to train, verify, and run AI agents for your life, business, or practice."
+      answer: "Choose a Power Node if you want physical infrastructure that earns significant token rewards, rents cabinets, and provides scarce ownership in the PAI3 network. Choose a Professional Node if you want a lower-cost software workspace to train, verify, and run AI agents for your business or practice."
     },
     {
       question: "Do both nodes earn tokens?",
@@ -460,10 +460,10 @@ const NodeTypesPage = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">Professionals, SMEs, enterprises</h3>
-                    Professionals, Small and Medium Enterprises
+                      <p className="text-gray-400 text-sm">Doctors, lawyers, accountants, dentists, chiropractors, real estate agents, and other professionals who handle sensitive data</p>
                     </div>
                   </div>
-                    Doctors, lawyers, accountants, dentists, chiropractors, real estate agents, and other professionals who handle sensitive data
+                </div>
 
                 <div className="bg-black/30 border border-[#32f932]/20 rounded-xl p-6 hover:border-[#32f932]/40 transition-all">
                   <div className="flex items-center space-x-4 mb-4">
@@ -471,9 +471,9 @@ const NodeTypesPage = () => {
                       <Wrench className="h-6 w-6 text-[#32f932]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Infrastructure operatives, node operatives</h3>
-                    <h3 className="text-xl font-bold text-white">Infrastructure Operators, node operatives</h3>
-                    <p className="text-gray-400 text-sm">Web3 node operators, compute providers, and DePIN providers</p>
+                      <h3 className="text-xl font-bold text-white">Infrastructure Operators, node operatives</h3>
+                      <p className="text-gray-400 text-sm">Web3 node operators, compute providers, and DePIN providers</p>
+                    </div>
                   </div>
                 </div>
 
@@ -817,7 +817,7 @@ const NodeTypesPage = () => {
             className="bg-gradient-to-r from-[#32f932]/10 to-[#32f932]/5 border border-[#32f932]/30 rounded-2xl p-8 text-center"
           >
             <h3 className="text-3xl font-bold text-white mb-4">
-              Power Nodes Are <span className="text-[#32f932]">Scarce!</span>
+              Power Nodes Are <span className="text-[#32f932]">Limited & Scarce!</span>
             </h3>
             <p className="text-xl text-gray-300 mb-6">
               Only 3,141 Power Nodes will ever exist. Once they sell out, they're gone forever. 
