@@ -671,7 +671,8 @@ const PowerNodePage = () => {
               </div>
               
               {/* ROI Estimates */}
-              <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg text-center">
+              <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg">
+                <h4 className="text-2xl font-bold text-[#32f932] mb-6 text-center">How You Earn with Power Nodes</h4>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
                   <div>
                     <div className="relative">
