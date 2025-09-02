@@ -383,7 +383,7 @@ const PowerNodePage = () => {
                     {activeTooltip === 'pai3-price' && (
                       <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
-                          The projected market price of $PAI3 tokens. TGE (Token Generation Event) price is $0.21. Higher token prices increase the USD value of your rewards.
+                          Current or future market price of $PAI3. This sets the value of your token rewards.
                         </div>
                         <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                       </div>
@@ -419,7 +419,7 @@ const PowerNodePage = () => {
                     {activeTooltip === 'cabinet-revenue' && (
                       <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
-                          Each cabinet earns $2/year. Rent out encrypted data storage cabinets to other users. Each Power Node can host up to 25,000 cabinets, providing potential passive income.
+                          Each cabinet earns $2 per year. You can lease up to 25,000 cabinets per Power Node.
                         </div>
                         <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                       </div>
@@ -457,7 +457,7 @@ const PowerNodePage = () => {
                     {activeTooltip === 'agent-revenue' && (
                       <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
-                          Revenue earned from running agents on your node. This includes fees from agent execution, data processing, and specialized AI services you provide to the network.
+                          Monthly income from running AI agents on your node. Varies by demand.
                         </div>
                         <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                       </div>
@@ -494,7 +494,7 @@ const PowerNodePage = () => {
                     {activeTooltip === 'utilization' && (
                       <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
-                          % of compute allocated to models. Driven by (1) network demand (job distribution) and (2) reputation (age, uptime, history, stake).
+                          % of time your node is running AI models. Not user-controlled—grows with network demand and reputation.
                         </div>
                         <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                       </div>
@@ -602,7 +602,7 @@ const PowerNodePage = () => {
                           {activeTooltip === 'model-hourly-rate' && (
                             <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                               <div className="text-sm text-white leading-relaxed">
-                                Revenue rate per model hour. Higher rates reflect premium models or specialized AI services your node provides.
+                                Estimated hourly rate for AI model compute. $10/hr is conservative; higher demand can push rates to $15–30/hr.
                               </div>
                               <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                             </div>
@@ -641,7 +641,7 @@ const PowerNodePage = () => {
                           {activeTooltip === 'staking-pct' && (
                             <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                               <div className="text-sm text-white leading-relaxed">
-                                12% APR, compounded monthly on monthly emissions. No lock periods. Final deposit accrues one extra month of interest. Higher staking percentages generate more compound growth.
+                                Portion of your token rewards automatically restaked. 12% APR, compounded monthly. Higher % = more growth.
                               </div>
                               <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                             </div>
@@ -673,28 +673,28 @@ const PowerNodePage = () => {
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
                   <div>
                     <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
-                    <div className="text-xs text-white font-semibold">Avg Daily Earnings</div>
-                    <div className="text-xs text-gray-400">Gross average (per day)</div>
+                    <div className="text-xs text-white font-semibold">Avg Daily Revenue</div>
+                    <div className="text-xs text-gray-400">Average daily income based on all selected assumptions. Gross projection before expenses.</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
-                    <div className="text-xs text-white font-semibold">Avg Monthly Earnings</div>
-                    <div className="text-xs text-gray-400">Gross average (per month)</div>
+                    <div className="text-xs text-white font-semibold">Avg Monthly Revenue</div>
+                    <div className="text-xs text-gray-400">Average monthly income based on all selected assumptions. Gross projection before expenses.</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
-                    <div className="text-xs text-white font-semibold">Avg Annual Earnings</div>
-                    <div className="text-xs text-gray-400">Gross average (per year)</div>
+                    <div className="text-xs text-white font-semibold">Avg Annual Revenue</div>
+                    <div className="text-xs text-gray-400">Average yearly income based on all selected assumptions. Gross projection before expenses.</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
                     <div className="text-xs text-white font-semibold">Projected 3-Year Total</div>
-                    <div className="text-xs text-gray-400">Tokens × $PAI3 + cabinets + agent + model + staking</div>
+                    <div className="text-xs text-gray-400">Total modeled income over 3 years. Includes token rewards, cabinet leasing, agent revenue, model compute, and staking. Gross projection before expenses.</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-[#32f932]">{Math.round(kpis.objectiveReturnPct)}%</div>
                     <div className="text-xs text-white font-semibold">Objective Return %</div>
-                    <div className="text-xs text-gray-400">Modeled 3-year return vs node cost</div>
+                    <div className="text-xs text-gray-400">Calculated as (Projected 3-Year Total − Node Cost) ÷ Node Cost. Gross return before expenses.</div>
                   </div>
                 </div>
               </div>
