@@ -668,29 +668,29 @@ const PowerNodePage = () => {
               <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg text-center">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
-                    <div className="text-sm text-white font-semibold">Avg Daily Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average (per day)</div>
+                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
+                    <div className="text-xs text-white font-semibold">Avg Daily Earnings</div>
+                    <div className="text-xs text-gray-400">Gross average (per day)</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
-                    <div className="text-sm text-white font-semibold">Avg Monthly Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average (per month)</div>
+                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
+                    <div className="text-xs text-white font-semibold">Avg Monthly Earnings</div>
+                    <div className="text-xs text-gray-400">Gross average (per month)</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
-                    <div className="text-sm text-white font-semibold">Avg Annual Earnings</div>
-                    <div className="text-xs text-gray-400 mt-1">Gross average (per year)</div>
+                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
+                    <div className="text-xs text-white font-semibold">Avg Annual Earnings</div>
+                    <div className="text-xs text-gray-400">Gross average (per year)</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
-                    <div className="text-sm text-white font-semibold">Projected 36-Month Total</div>
-                    <div className="text-xs text-gray-400 mt-1">Tokens × $PAI3 + cabinets + agent + model + staking</div>
+                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
+                    <div className="text-xs text-white font-semibold">Projected 36-Month Total</div>
+                    <div className="text-xs text-gray-400">Tokens × $PAI3 + cabinets + agent + model + staking</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-[#32f932]">{kpis.objectiveReturnPct.toFixed(1)}%</div>
-                    <div className="text-sm text-white font-semibold">Objective Return %</div>
-                    <div className="text-xs text-gray-400 mt-1">Modeled 3-year return vs node cost</div>
+                    <div className="text-2xl font-bold text-[#32f932]">{kpis.objectiveReturnPct.toFixed(1)}%</div>
+                    <div className="text-xs text-white font-semibold">Objective Return %</div>
+                    <div className="text-xs text-gray-400">Modeled 3-year return vs node cost</div>
                   </div>
                 </div>
               </div>
