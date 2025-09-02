@@ -122,7 +122,7 @@ const NodeTypesPage = () => {
   const faqs = [
     {
       question: "Which node should I choose?",
-      answer: "Choose a Power Node if you want physical infrastructure that earns significant token rewards, rents cabinets, and provides scarce ownership in the PAI3 network. Choose a Professional Node if you want a lower-cost software workspace to train, verify, and run AI agents for your business or practice."
+      answer: "Choose a Power Node if you want physical infrastructure that earns significant token rewards, rents cabinets, and provides scarce ownership in the PAI3 network. Choose a Professional Node if you want a lower-cost software workspace to train, verify, and run AI agents for your life, business, or practice."
     },
     {
       question: "Do both nodes earn tokens?",
@@ -460,10 +460,10 @@ const NodeTypesPage = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">Professionals, SMEs, enterprises</h3>
-                      <p className="text-gray-400 text-sm">Business leaders and organizations</p>
+                    Professionals, Small and Medium Enterprises
                     </div>
                   </div>
-                </div>
+                    Doctors, lawyers, accountants, dentists, chiropractors, real estate agents, and other professionals who handle sensitive data
 
                 <div className="bg-black/30 border border-[#32f932]/20 rounded-xl p-6 hover:border-[#32f932]/40 transition-all">
                   <div className="flex items-center space-x-4 mb-4">
@@ -472,8 +472,8 @@ const NodeTypesPage = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">Infrastructure operatives, node operatives</h3>
-                      <p className="text-gray-400 text-sm">Technical operators and infrastructure specialists</p>
-                    </div>
+                    <h3 className="text-xl font-bold text-white">Infrastructure Operators, node operatives</h3>
+                    <p className="text-gray-400 text-sm">Web3 node operators, compute providers, and DePIN providers</p>
                   </div>
                 </div>
 
@@ -483,8 +483,8 @@ const NodeTypesPage = () => {
                       <Lightbulb className="h-6 w-6 text-[#32f932]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Visionaries and thought leaders</h3>
-                      <p className="text-gray-400 text-sm">Forward-thinking innovators and AI pioneers</p>
+                      <h3 className="text-xl font-bold text-white">Visionaries and Thought Leaders</h3>
+                      <p className="text-gray-400 text-sm">People at the forefront of AI, Web3 decentralization, and data sovereignty</p>
                     </div>
                   </div>
                 </div>
@@ -555,7 +555,7 @@ const NodeTypesPage = () => {
               {/* Value Proposition */}
               <div className="mb-6 p-4 bg-[#32f932]/5 border border-[#32f932]/20 rounded-xl">
                 <p className="text-gray-300 text-sm italic text-center">
-                  Triple exposure: AI revolution, Web3 economy, and infrastructure boom — all in one scarce asset.
+                  Own your AI infrastructure. Run AI privately on your own node. Earn from AI.
                 </p>
               </div>
               
@@ -597,13 +597,13 @@ const NodeTypesPage = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-white">Professional Node</h3>
                   <p className="text-gray-400">Software</p>
-                  <p className="text-sm text-gray-400 font-semibold">Professional Node best fits professionals/SMEs in privacy-critical fields</p>
+                  <p className="text-sm text-[#32f932] font-semibold">Professionals and Enterprises that purpose built agents, chose of models, and data security</p>
                 </div>
               </div>
               
               <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-4 mb-6">
                 <p className="text-gray-300 text-sm">
-                  Sales are paused until the next-gen release in Q4 2025. Current operators and users remain fully supported with no interruptions.
+                  Next-gen Professional Node coming Q4 2025. Current operators and users remain fully supported with no interruptions.
                 </p>
               </div>
               
@@ -651,9 +651,9 @@ const NodeTypesPage = () => {
                   role="region"
                   aria-label="Professional Node waitlist signup"
                 >
-                  <h3 className="text-xl font-bold text-white mb-4">Professional Node — Next-Gen Coming Q4 2025</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">Professional Node — Coming Q4 2025</h3>
                   <p className="text-gray-400 mb-6">
-                    We're developing the next generation of Professional Nodes. Enter your email to get first access when it launches.
+                    Enter your email to get immediate access when it launches.
                   </p>
                   
                   {!waitlistForm.submitted ? (
@@ -763,21 +763,21 @@ const NodeTypesPage = () => {
                         <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-[#32f932] uppercase tracking-wider">
                           Power Node
                         </th>
-                        <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-gray-400 uppercase tracking-wider">
+                        <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-[#32f932] uppercase tracking-wider">
                           Professional Node
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-500/20">
+                    <tbody className="divide-y divide-gray-500/40">
                       {comparisonData.map((row, index) => (
-                        <tr key={index} className={index % 2 === 0 ? 'bg-black/50' : 'bg-black'}>
+                        <tr key={index} className={index % 2 === 0 ? 'bg-black/50' : 'bg-black hover:bg-gray-800/30 transition-colors'}>
                           <th scope="row" className="px-6 py-4 text-sm font-medium text-white">
                             {row.feature}
                           </th>
-                          <td className="px-6 py-4 text-sm text-gray-300">
+                          <td className="px-6 py-4 text-sm text-gray-300 leading-relaxed">
                             {row.power}
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-300">
+                          <td className="px-6 py-4 text-sm text-gray-300 leading-relaxed">
                             {row.professional}
                           </td>
                         </tr>
@@ -787,18 +787,18 @@ const NodeTypesPage = () => {
                 </div>
                 
                 {/* Mobile Stacked Cards */}
-                <div className="lg:hidden space-y-6">
+                <div className="lg:hidden space-y-4">
                   {comparisonData.map((row, index) => (
-                    <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl p-6">
-                      <h4 className="text-lg font-semibold text-white mb-4">{row.feature}</h4>
-                      <div className="space-y-3">
+                    <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl p-4 hover:border-gray-500/40 transition-colors">
+                      <h4 className="text-base font-semibold text-white mb-3 leading-tight">{row.feature}</h4>
+                      <div className="space-y-3 min-h-[44px]">
                         <div>
                           <div className="text-sm font-medium text-[#32f932] mb-1">Power Node</div>
-                          <div className="text-sm text-gray-300">{row.power}</div>
+                          <div className="text-sm text-gray-300 leading-relaxed">{row.power}</div>
                         </div>
                         <div>
-                          <div className="text-sm font-medium text-gray-400 mb-1">Professional Node</div>
-                          <div className="text-sm text-gray-300">{row.professional}</div>
+                          <div className="text-sm font-medium text-[#32f932] mb-1">Professional Node</div>
+                          <div className="text-sm text-gray-300 leading-relaxed">{row.professional}</div>
                         </div>
                       </div>
                     </div>
@@ -817,7 +817,7 @@ const NodeTypesPage = () => {
             className="bg-gradient-to-r from-[#32f932]/10 to-[#32f932]/5 border border-[#32f932]/30 rounded-2xl p-8 text-center"
           >
             <h3 className="text-3xl font-bold text-white mb-4">
-              Power Nodes Are <span className="text-[#32f932]">Limited & Scarce!</span>
+              Power Nodes Are <span className="text-[#32f932]">Scarce!</span>
             </h3>
             <p className="text-xl text-gray-300 mb-6">
               Only 3,141 Power Nodes will ever exist. Once they sell out, they're gone forever. 
