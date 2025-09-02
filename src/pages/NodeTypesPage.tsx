@@ -787,18 +787,18 @@ const NodeTypesPage = () => {
                 </div>
                 
                 {/* Mobile Stacked Cards */}
-                <div className="lg:hidden space-y-6">
+                <div className="lg:hidden space-y-4">
                   {comparisonData.map((row, index) => (
-                    <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl p-6">
-                      <h4 className="text-lg font-semibold text-white mb-4">{row.feature}</h4>
-                      <div className="space-y-3">
+                    <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl p-4 hover:border-gray-500/40 transition-colors">
+                      <h4 className="text-base font-semibold text-white mb-3 leading-tight">{row.feature}</h4>
+                      <div className="space-y-3 min-h-[44px]">
                         <div>
                           <div className="text-sm font-medium text-[#32f932] mb-1">Power Node</div>
-                          <div className="text-sm text-gray-300">{row.power}</div>
+                          <div className="text-sm text-gray-300 leading-relaxed">{row.power}</div>
                         </div>
                         <div>
-                          <div className="text-sm font-medium text-gray-400 mb-1">Professional Node</div>
-                          <div className="text-sm text-gray-300">{row.professional}</div>
+                          <div className="text-sm font-medium text-[#32f932] mb-1">Professional Node</div>
+                          <div className="text-sm text-gray-300 leading-relaxed">{row.professional}</div>
                         </div>
                       </div>
                     </div>
@@ -817,7 +817,7 @@ const NodeTypesPage = () => {
             className="bg-gradient-to-r from-[#32f932]/10 to-[#32f932]/5 border border-[#32f932]/30 rounded-2xl p-8 text-center"
           >
             <h3 className="text-3xl font-bold text-white mb-4">
-              Power Nodes Are <span className="text-[#32f932]">Limited & Scarce!</span>
+              Power Nodes Are <span className="text-[#32f932]">Scarce!</span>
             </h3>
             <p className="text-xl text-gray-300 mb-6">
               Only 3,141 Power Nodes will ever exist. Once they sell out, they're gone forever. 
