@@ -460,7 +460,7 @@ const NodeTypesPage = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">Professionals, SMEs, enterprises</h3>
-                      <p className="text-gray-400 text-sm">Doctors, lawyers, accountants, dentists, chiropractors, real estate agents, and other professionals who handle sensitive data</p>
+                      <p className="text-gray-400 text-sm">Professionals, Small and Medium Enterprises</p>
                     </div>
                   </div>
                 </div>
@@ -471,7 +471,7 @@ const NodeTypesPage = () => {
                       <Wrench className="h-6 w-6 text-[#32f932]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Infrastructure Operators, node operatives</h3>
+                      <h3 className="text-xl font-bold text-white">Infrastructure Operators</h3>
                       <p className="text-gray-400 text-sm">Web3 node operators, compute providers, and DePIN providers</p>
                     </div>
                   </div>
