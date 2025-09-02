@@ -459,7 +459,7 @@ const NodeTypesPage = () => {
                       <Building2 className="h-6 w-6 text-[#32f932]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Professionals, Small and Medium Enterprises</h3>
+                      <h3 className="text-xl font-bold text-white">Professionals and Small and Medium Enterprises</h3>
                       <p className="text-gray-400 text-sm">Doctors, lawyers, accountants, dentists, chiropractors, real estate agents, and other professionals who handle sensitive data.</p>
                     </div>
                   </div>
