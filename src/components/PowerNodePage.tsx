@@ -407,10 +407,7 @@ const PowerNodePage = () => {
               
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center space-x-4">
-                    <label className="text-sm font-medium text-white">Cabinet Revenue: {cabinetCount.toLocaleString()} cabinets</label>
-                    <span className="text-sm text-gray-400">≈ ${(cabinetCount * 2).toLocaleString()}/year</span>
-                  </div>
+                  <label className="text-sm font-medium text-white">Cabinet Revenue: {cabinetCount.toLocaleString()} cabinets</label>
                   <div className="relative">
                     <button
                       type="button"
@@ -438,6 +435,7 @@ const PowerNodePage = () => {
                   onChange={(e) => setCabinetCount(parseInt(e.target.value))}
                   className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
                 />
+                <div className="text-center text-sm text-gray-400 mt-1">≈ ${(cabinetCount * 2).toLocaleString()}/year</div>
                 <div className="flex justify-between text-xs text-gray-400 mt-1">
                   <span>0 cabinets</span>
                   <span>12,500 cabinets</span>
@@ -674,29 +672,119 @@ const PowerNodePage = () => {
               <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg text-center">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
-                    <div className="text-xs text-white font-semibold">Avg Daily Revenue</div>
-                    <div className="text-xs text-gray-400">Average daily income based on all selected assumptions. Gross projection before expenses.</div>
+                    <div className="relative">
+                      <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
+                      <div className="flex items-center justify-center space-x-2">
+                        <div className="text-xs text-white font-semibold">Avg Daily Revenue</div>
+                        <button
+                          type="button"
+                          className="w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                          onClick={() => handleTooltipToggle('daily-revenue')}
+                        >
+                          i
+                        </button>
+                      </div>
+                      {activeTooltip === 'daily-revenue' && (
+                        <div className="absolute z-50 bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-64 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                          <div className="text-sm text-white leading-relaxed">
+                            Average daily income based on all selected assumptions. Gross projection before expenses.
+                          </div>
+                          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 rotate-45"></div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
-                    <div className="text-xs text-white font-semibold">Avg Monthly Revenue</div>
-                    <div className="text-xs text-gray-400">Average monthly income based on all selected assumptions. Gross projection before expenses.</div>
+                    <div className="relative">
+                      <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.monthly).toLocaleString()}</div>
+                      <div className="flex items-center justify-center space-x-2">
+                        <div className="text-xs text-white font-semibold">Avg Monthly Revenue</div>
+                        <button
+                          type="button"
+                          className="w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                          onClick={() => handleTooltipToggle('monthly-revenue')}
+                        >
+                          i
+                        </button>
+                      </div>
+                      {activeTooltip === 'monthly-revenue' && (
+                        <div className="absolute z-50 bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-64 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                          <div className="text-sm text-white leading-relaxed">
+                            Average monthly income based on all selected assumptions. Gross projection before expenses.
+                          </div>
+                          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 rotate-45"></div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
-                    <div className="text-xs text-white font-semibold">Avg Annual Revenue</div>
-                    <div className="text-xs text-gray-400">Average yearly income based on all selected assumptions. Gross projection before expenses.</div>
+                    <div className="relative">
+                      <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.yearly).toLocaleString()}</div>
+                      <div className="flex items-center justify-center space-x-2">
+                        <div className="text-xs text-white font-semibold">Avg Annual Revenue</div>
+                        <button
+                          type="button"
+                          className="w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                          onClick={() => handleTooltipToggle('annual-revenue')}
+                        >
+                          i
+                        </button>
+                      </div>
+                      {activeTooltip === 'annual-revenue' && (
+                        <div className="absolute z-50 bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-64 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                          <div className="text-sm text-white leading-relaxed">
+                            Average yearly income based on all selected assumptions. Gross projection before expenses.
+                          </div>
+                          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 rotate-45"></div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
-                    <div className="text-xs text-white font-semibold">Projected 3-Year Total</div>
-                    <div className="text-xs text-gray-400">Total modeled income over 3 years. Includes token rewards, cabinet leasing, agent revenue, model compute, and staking. Gross projection before expenses.</div>
+                    <div className="relative">
+                      <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
+                      <div className="flex items-center justify-center space-x-2">
+                        <div className="text-xs text-white font-semibold">Projected 3-Year Total</div>
+                        <button
+                          type="button"
+                          className="w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                          onClick={() => handleTooltipToggle('total-3yr')}
+                        >
+                          i
+                        </button>
+                      </div>
+                      {activeTooltip === 'total-3yr' && (
+                        <div className="absolute z-50 bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-64 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                          <div className="text-sm text-white leading-relaxed">
+                            Total modeled income over 3 years. Includes token rewards, cabinet leasing, agent revenue, model compute, and staking. Gross projection before expenses.
+                          </div>
+                          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 rotate-45"></div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">{Math.round(kpis.objectiveReturnPct)}%</div>
-                    <div className="text-xs text-white font-semibold">Objective Return %</div>
-                    <div className="text-xs text-gray-400">Calculated as (Projected 3-Year Total − Node Cost) ÷ Node Cost. Gross return before expenses.</div>
+                    <div className="relative">
+                      <div className="text-2xl font-bold text-[#32f932]">{Math.round(kpis.objectiveReturnPct)}%</div>
+                      <div className="flex items-center justify-center space-x-2">
+                        <div className="text-xs text-white font-semibold">Objective Return %</div>
+                        <button
+                          type="button"
+                          className="w-4 h-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
+                          onClick={() => handleTooltipToggle('objective-return')}
+                        >
+                          i
+                        </button>
+                      </div>
+                      {activeTooltip === 'objective-return' && (
+                        <div className="absolute z-50 bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-64 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
+                          <div className="text-sm text-white leading-relaxed">
+                            Calculated as (Projected 3-Year Total − Node Cost) ÷ Node Cost. Gross return before expenses.
+                          </div>
+                          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 rotate-45"></div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
