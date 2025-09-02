@@ -89,7 +89,9 @@ const PowerNodePage = () => {
     {
       title: "annual revenue potential",
       subtitle: "25,000 cabinets available per node",
-      value: "$2 / cabinet"
+      value: "$2 / cabinet",
+      whiteText: "annual rate → $50,000 / year",
+      grayText: "at full capacity (25,000 cabinets)"
     },
     {
       title: "demand-based earnings",
@@ -331,8 +333,8 @@ const PowerNodePage = () => {
               {earningCards.map((card, index) => (
                 <div key={index} className="bg-black/50 border border-[#32f932]/20 p-6 rounded-lg relative">
                   <div className="text-2xl font-bold text-[#32f932] mb-2">{card.value}</div>
-                  <h3 className="font-semibold mb-2 text-white">{card.title}</h3>
-                  <p className="text-sm text-gray-400">{card.subtitle}</p>
+                  <h3 className="font-semibold mb-2 text-white">{card.whiteText || card.title}</h3>
+                  <p className="text-sm text-gray-400">{card.grayText || card.subtitle}</p>
                   
                   {/* Info icon and tooltip */}
                   <div className="absolute top-4 right-4">
