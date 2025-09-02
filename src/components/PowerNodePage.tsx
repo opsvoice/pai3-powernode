@@ -637,7 +637,7 @@ const PowerNodePage = () => {
                           {activeTooltip === 'staking-pct' && (
                             <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                               <div className="text-sm text-white leading-relaxed">
-                                Percentage of your token rewards automatically staked at 12% APR with 1-year lock periods. Higher staking percentages generate more compound growth.
+                                Percentage of your token rewards automatically staked at 12% APR. No lock periods. Higher staking percentages generate more compound growth.
                               </div>
                               <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                             </div>
@@ -666,7 +666,7 @@ const PowerNodePage = () => {
               
               {/* ROI Estimates */}
               <div className="mt-8 p-8 bg-[#32f932]/5 border-2 border-[#32f932]/20 rounded-lg text-center">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
                   <div>
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.daily)}</div>
                     <div className="text-sm text-white font-semibold">Avg Daily Earnings</div>
@@ -686,6 +686,11 @@ const PowerNodePage = () => {
                     <div className="text-3xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
                     <div className="text-sm text-white font-semibold">Projected 36-Month Total</div>
                     <div className="text-xs text-gray-400 mt-1">Tokens × $PAI3 + cabinets + agent + model + staking</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-[#32f932]">{kpis.objectiveReturnPct.toFixed(1)}%</div>
+                    <div className="text-sm text-white font-semibold">Objective Return %</div>
+                    <div className="text-xs text-gray-400 mt-1">Modeled 3-year return vs node cost</div>
                   </div>
                 </div>
               </div>
