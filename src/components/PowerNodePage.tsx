@@ -78,22 +78,22 @@ const PowerNodePage = () => {
   const earningCards = [
     {
       title: "150,000 guaranteed $PAI3",
-      subtitle: "over 3 years (≈50,000/year, ~137/day)",
+      subtitle: "over 3 years (~50k/year)",
       value: "150,000"
     },
     {
-      title: "12% APR auto-staking",
-      subtitle: "compound your earnings automatically with network rewards",
+      title: "12% APR",
+      subtitle: "compounded monthly",
       value: "12%"
     },
     {
-      title: "Cabinet revenue potential",
-      subtitle: "up to 25,000 cabinets available per node",
-      value: "$2/cabinet/yr"
+      title: "$2 per cabinet",
+      subtitle: "annual cabinet revenue potential — up to 25,000 cabinets per node",
+      value: "$2/cabinet"
     },
     {
-      title: "Variable: Network fees",
-      subtitle: "from models + agents run on your node (varies with demand)",
+      title: "Agent & model revenue",
+      subtitle: "Earned by running agents and models; depends on demand",
       value: "Variable"
     }
   ];
