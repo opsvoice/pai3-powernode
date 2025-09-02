@@ -597,7 +597,7 @@ const NodeTypesPage = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-white">Professional Node</h3>
                   <p className="text-gray-400">Software</p>
-                  <p className="text-sm text-[#32f932] font-semibold">Professionals and Enterprises that purpose built agents, chose of models, and data security</p>
+                  <p className="text-sm text-[#32f932] font-semibold">Professionals and enterprises that need purpose-built agents, choice of models, and strong data security</p>
                 </div>
               </div>
               
