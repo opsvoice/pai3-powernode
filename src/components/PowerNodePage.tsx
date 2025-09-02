@@ -77,24 +77,24 @@ const PowerNodePage = () => {
 
   const earningCards = [
     {
-      title: "150,000 guaranteed $PAI3",
+      title: "guaranteed $PAI3",
       subtitle: "over 3 years (~50k/year)",
       value: "150,000"
     },
     {
-      title: "12% APR",
-      subtitle: "compounded monthly",
+      title: "APR compounded monthly",
+      subtitle: "auto staking $PAI3 tokens",
       value: "12%"
     },
     {
-      title: "$2 per cabinet",
-      subtitle: "annual cabinet revenue potential — up to 25,000 cabinets per node",
+      title: "annual revenue potential",
+      subtitle: "25,000 cabinets available per node",
       value: "$2/cabinet"
     },
     {
-      title: "Agent & model revenue",
-      subtitle: "Earned by running agents and models; depends on demand",
-      value: "Variable"
+      title: "earned by running agents and models for others",
+      subtitle: "will depend on demand",
+      value: "Agent and Model Revenue"
     }
   ];
 
@@ -331,7 +331,7 @@ const PowerNodePage = () => {
               {earningCards.map((card, index) => (
                 <div key={index} className="bg-black/50 border border-[#32f932]/20 p-6 rounded-lg relative">
                   <div className="text-2xl font-bold text-[#32f932] mb-2">{card.value}</div>
-                  <h3 className="font-semibold mb-2">{card.title}</h3>
+                  <h3 className="font-semibold mb-2 text-white">{card.title}</h3>
                   <p className="text-sm text-gray-400">{card.subtitle}</p>
                   
                   {/* Info icon and tooltip */}
