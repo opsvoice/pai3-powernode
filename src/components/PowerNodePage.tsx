@@ -445,19 +445,19 @@ const PowerNodePage = () => {
               
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-medium text-white">Agent Income (per month): ${agentMonthlyUSD}</label>
+                  <label className="text-sm font-medium text-white">Monthly Agent Revenue: ${agentMonthlyUSD}</label>
                   <div className="relative">
                     <button
                       type="button"
                       className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
-                      onClick={() => handleTooltipToggle('agent-income')}
+                      onClick={() => handleTooltipToggle('agent-revenue')}
                     >
                       i
                     </button>
-                    {activeTooltip === 'agent-income' && (
+                    {activeTooltip === 'agent-revenue' && (
                       <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
-                          Monthly revenue from AI agents running on your node. This includes fees from agent execution, data processing, and specialized AI services you provide to the network.
+                          Revenue earned from running agents on your node. This includes fees from agent execution, data processing, and specialized AI services you provide to the network.
                         </div>
                         <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                       </div>
