@@ -407,7 +407,10 @@ const PowerNodePage = () => {
               
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-medium text-white">Cabinet Revenue: {cabinetCount.toLocaleString()} cabinets</label>
+                  <div className="flex items-center space-x-4">
+                    <label className="text-sm font-medium text-white">Cabinet Revenue: {cabinetCount.toLocaleString()} cabinets</label>
+                    <span className="text-sm text-gray-400">≈ ${(cabinetCount * 2).toLocaleString()}/year</span>
+                  </div>
                   <div className="relative">
                     <button
                       type="button"
@@ -435,7 +438,6 @@ const PowerNodePage = () => {
                   onChange={(e) => setCabinetCount(parseInt(e.target.value))}
                   className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
                 />
-                <div className="text-center text-sm text-gray-400 mt-1">≈ ${(cabinetCount * 2).toLocaleString()}/year</div>
                 <div className="flex justify-between text-xs text-gray-400 mt-1">
                   <span>0 cabinets</span>
                   <span>12,500 cabinets</span>
