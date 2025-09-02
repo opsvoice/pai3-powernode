@@ -651,9 +651,9 @@ const NodeTypesPage = () => {
                   role="region"
                   aria-label="Professional Node waitlist signup"
                 >
-                  <h3 className="text-xl font-bold text-white mb-4">Professional Node — Coming Q4 2025</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">Professional Node — Next-Gen Coming Q4 2025</h3>
                   <p className="text-gray-400 mb-6">
-                    Enter your email to get immediate access when it launches.
+                    We're developing the next generation of Professional Nodes. Enter your email to get first access when it launches.
                   </p>
                   
                   {!waitlistForm.submitted ? (
