@@ -555,7 +555,7 @@ const NodeTypesPage = () => {
               {/* Value Proposition */}
               <div className="mb-6 p-4 bg-[#32f932]/5 border border-[#32f932]/20 rounded-xl">
                 <p className="text-gray-300 text-sm italic text-center">
-                  Triple exposure: AI revolution, Web3 economy, and infrastructure boom — all in one scarce asset.
+                  Own your AI infrastructure. Run AI privately on your own node. Earn from AI.
                 </p>
               </div>
               
@@ -597,13 +597,13 @@ const NodeTypesPage = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-white">Professional Node</h3>
                   <p className="text-gray-400">Software</p>
-                  <p className="text-sm text-gray-400 font-semibold">Professional Node best fits professionals/SMEs in privacy-critical fields</p>
+                  <p className="text-sm text-[#32f932] font-semibold">Professionals and Enterprises that purpose built agents, chose of models, and data security</p>
                 </div>
               </div>
               
               <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-4 mb-6">
                 <p className="text-gray-300 text-sm">
-                  Sales are paused until the next-gen release in Q4 2025. Current operators and users remain fully supported with no interruptions.
+                  Next-gen Professional Node coming Q4 2025. Current operators and users remain fully supported with no interruptions.
                 </p>
               </div>
               
@@ -651,9 +651,9 @@ const NodeTypesPage = () => {
                   role="region"
                   aria-label="Professional Node waitlist signup"
                 >
-                  <h3 className="text-xl font-bold text-white mb-4">Professional Node — Next-Gen Coming Q4 2025</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">Professional Node — Coming Q4 2025</h3>
                   <p className="text-gray-400 mb-6">
-                    We're developing the next generation of Professional Nodes. Enter your email to get first access when it launches.
+                    Enter your email to get immediate access when it launches.
                   </p>
                   
                   {!waitlistForm.submitted ? (
