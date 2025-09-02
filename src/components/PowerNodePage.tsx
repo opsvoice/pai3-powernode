@@ -419,7 +419,7 @@ const PowerNodePage = () => {
                     {activeTooltip === 'cabinet-revenue' && (
                       <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
-                          Rent out encrypted data storage cabinets to other users at $2/cabinet/year. Each Power Node can host up to 25,000 cabinets, providing potential passive income.
+                          Each cabinet earns $2/year. Rent out encrypted data storage cabinets to other users. Each Power Node can host up to 25,000 cabinets, providing potential passive income.
                         </div>
                         <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                       </div>
@@ -482,9 +482,7 @@ const PowerNodePage = () => {
               
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-medium text-white">
-                    Model utilization (scenario): {(modelUtilization * 100).toFixed(0)}%
-                  </label>
+                  <label className="text-sm font-medium text-white">Annual Model Utilization (scenario): {(modelUtilization * 100).toFixed(0)}%</label>
                   <div className="relative">
                     <button
                       type="button"
@@ -496,7 +494,7 @@ const PowerNodePage = () => {
                     {activeTooltip === 'utilization' && (
                       <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                         <div className="text-sm text-white leading-relaxed">
-                          Driven by (1) network demand (job distribution) and (2) reputation (age, uptime, history, stake).
+                          % of compute allocated to models. Driven by (1) network demand (job distribution) and (2) reputation (age, uptime, history, stake).
                         </div>
                         <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                       </div>
@@ -521,7 +519,7 @@ const PowerNodePage = () => {
                   <span>75%</span>
                 </div>
                 <p className="text-xs text-gray-400 mt-2 italic">
-                  Utilization reflects network growth and allocation. It is not user-controlled.
+                  Not user-controlled; grows with demand + reputation.
                 </p>
               </div>
               
@@ -592,19 +590,19 @@ const PowerNodePage = () => {
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <label className="text-sm font-medium text-white">Model revenue ($/hr): ${modelHourlyUSD}</label>
+                        <label className="text-sm font-medium text-white">Model Hourly Revenue Rate: ${modelHourlyUSD}</label>
                         <div className="relative">
                           <button
                             type="button"
                             className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs cursor-help hover:bg-blue-600 transition-colors"
-                            onClick={() => handleTooltipToggle('model-revenue')}
+                            onClick={() => handleTooltipToggle('model-hourly-rate')}
                           >
                             i
                           </button>
-                          {activeTooltip === 'model-revenue' && (
+                          {activeTooltip === 'model-hourly-rate' && (
                             <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                               <div className="text-sm text-white leading-relaxed">
-                                Hourly revenue rate for AI model inference and compute services. Higher rates reflect premium models or specialized AI services your node provides.
+                                Revenue rate per model hour. Higher rates reflect premium models or specialized AI services your node provides.
                               </div>
                               <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                             </div>
@@ -631,7 +629,7 @@ const PowerNodePage = () => {
                     
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <label className="text-sm font-medium text-white">Staking % of rewards: {(stakingPct * 100).toFixed(1)}%</label>
+                        <label className="text-sm font-medium text-white">% of Tokens Staked: {(stakingPct * 100).toFixed(1)}%</label>
                         <div className="relative">
                           <button
                             type="button"
@@ -643,7 +641,7 @@ const PowerNodePage = () => {
                           {activeTooltip === 'staking-pct' && (
                             <div className="absolute z-50 bottom-8 right-0 w-80 bg-black border border-[#32f932]/30 rounded-lg p-3 shadow-2xl">
                               <div className="text-sm text-white leading-relaxed">
-                                Percentage of your token rewards automatically staked at 12% APR. No lock periods. Higher staking percentages generate more compound growth.
+                                12% APR, compounded monthly on monthly emissions. No lock periods. Final deposit accrues one extra month of interest. Higher staking percentages generate more compound growth.
                               </div>
                               <div className="absolute -bottom-1 right-2 w-2 h-2 bg-black border-r border-b border-[#32f932]/30 transform rotate-45"></div>
                             </div>
@@ -772,11 +770,11 @@ const PowerNodePage = () => {
             </h2>
             
             <div className="space-y-4">
-              {faqs.map((faq, index) => (
+                <label className="text-sm font-medium text-white">Monthly Agent Revenue: ${agentMonthlyUSD}</label>
                 <div key={index} className="bg-black/50 border border-[#32f932]/20 rounded-lg overflow-hidden">
                   <button
                     onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                    className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-green-500/5 transition-colors"
+                    onClick={() => handleTooltipToggle('agent-revenue')}
                   >
                     <span className="font-semibold text-lg">{faq.question}</span>
                     {openFAQ === index ? (
@@ -785,12 +783,12 @@ const PowerNodePage = () => {
                       <ChevronDown className="h-5 w-5 text-green-500" />
                     )}
                   </button>
-                  {openFAQ === index && (
+                  {activeTooltip === 'agent-revenue' && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="px-6 pb-4"
+                        Revenue earned from running agents on your node. This includes fees from agent execution, data processing, and specialized AI services you provide to the network.
                     >
                       <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                     </motion.div>
