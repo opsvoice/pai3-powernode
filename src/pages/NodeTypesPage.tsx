@@ -787,18 +787,18 @@ const NodeTypesPage = () => {
                 </div>
                 
                 {/* Mobile Stacked Cards */}
-                <div className="lg:hidden space-y-4">
+                <div className="lg:hidden space-y-6">
                   {comparisonData.map((row, index) => (
-                    <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl p-4 hover:border-gray-500/40 transition-colors">
-                      <h4 className="text-base font-semibold text-white mb-3 leading-tight">{row.feature}</h4>
-                      <div className="space-y-3 min-h-[44px]">
+                    <div key={index} className="bg-black/50 border border-gray-500/20 rounded-xl p-6">
+                      <h4 className="text-lg font-semibold text-white mb-4">{row.feature}</h4>
+                      <div className="space-y-3">
                         <div>
                           <div className="text-sm font-medium text-[#32f932] mb-1">Power Node</div>
-                          <div className="text-sm text-gray-300 leading-relaxed">{row.power}</div>
+                          <div className="text-sm text-gray-300">{row.power}</div>
                         </div>
                         <div>
-                          <div className="text-sm font-medium text-[#32f932] mb-1">Professional Node</div>
-                          <div className="text-sm text-gray-300 leading-relaxed">{row.professional}</div>
+                          <div className="text-sm font-medium text-gray-400 mb-1">Professional Node</div>
+                          <div className="text-sm text-gray-300">{row.professional}</div>
                         </div>
                       </div>
                     </div>
