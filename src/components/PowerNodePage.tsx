@@ -326,7 +326,7 @@ const PowerNodePage = () => {
             className="text-center mb-16"
           >
             <h2 className="font-mono text-4xl md:text-5xl font-bold mb-12">
-              ROI <span className="text-[#32f932]">Estimates</span>
+              How You Earn with a <span className="text-[#32f932]">Power Node</span>
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
