@@ -256,7 +256,7 @@ const NodeTypesPage = () => {
               className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto"
               style={{ fontFamily: 'Fira Code, monospace' }}
             >
-              Two ways to own AI: hardware that earns, or software that empowers.
+              Two ways to own AI. One future to build.
             </motion.div>
 
             {/* 3D Cube Centerpiece */}
