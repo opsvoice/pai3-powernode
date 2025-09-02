@@ -770,11 +770,11 @@ const PowerNodePage = () => {
             </h2>
             
             <div className="space-y-4">
-                <label className="text-sm font-medium text-white">Monthly Agent Revenue: ${agentMonthlyUSD}</label>
+              {faqs.map((faq, index) => (
                 <div key={index} className="bg-black/50 border border-[#32f932]/20 rounded-lg overflow-hidden">
                   <button
                     onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                    onClick={() => handleTooltipToggle('agent-revenue')}
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-[#32f932]/5 transition-colors"
                   >
                     <span className="font-semibold text-lg">{faq.question}</span>
                     {openFAQ === index ? (
@@ -783,12 +783,12 @@ const PowerNodePage = () => {
                       <ChevronDown className="h-5 w-5 text-green-500" />
                     )}
                   </button>
-                  {activeTooltip === 'agent-revenue' && (
+                  {openFAQ === index && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
-                        Revenue earned from running agents on your node. This includes fees from agent execution, data processing, and specialized AI services you provide to the network.
+                      className="px-6 pb-6"
                     >
                       <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                     </motion.div>
