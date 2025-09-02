@@ -459,8 +459,8 @@ const NodeTypesPage = () => {
                       <Building2 className="h-6 w-6 text-[#32f932]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Professionals, SMEs, enterprises</h3>
-                      <p className="text-gray-400 text-sm">Professionals, Small and Medium Enterprises</p>
+                      <h3 className="text-xl font-bold text-white">Professionals, Small and Medium Enterprises</h3>
+                      <p className="text-gray-400 text-sm">Doctors, lawyers, accountants, dentists, chiropractors, real estate agents, and other professionals who handle sensitive data.</p>
                     </div>
                   </div>
                 </div>
@@ -472,7 +472,7 @@ const NodeTypesPage = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">Infrastructure Operators</h3>
-                      <p className="text-gray-400 text-sm">Web3 node operators, compute providers, and DePIN providers</p>
+                      <p className="text-gray-400 text-sm">Web3 node operators, compute providers, and DePIN providers.</p>
                     </div>
                   </div>
                 </div>
@@ -484,7 +484,7 @@ const NodeTypesPage = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">Visionaries and Thought Leaders</h3>
-                      <p className="text-gray-400 text-sm">People at the forefront of AI, Web3 decentralization, and data sovereignty</p>
+                      <p className="text-gray-400 text-sm">People at the forefront of AI, Web3 decentralization, and data sovereignty.</p>
                     </div>
                   </div>
                 </div>
