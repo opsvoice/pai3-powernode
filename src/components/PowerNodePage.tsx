@@ -324,7 +324,7 @@ const PowerNodePage = () => {
             className="text-center mb-16"
           >
             <h2 className="font-mono text-4xl md:text-5xl font-bold mb-12">
-              ROI <span className="text-[#32f932]">Estimates</span>
+              How the Power Node <span className="text-[#32f932]">Earns</span>
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
@@ -359,7 +359,7 @@ const PowerNodePage = () => {
               ))}
             </div>
 
-            {/* ROI Calculator */}
+            {/* Interactive Calculator */}
             <div className="bg-black/50 border border-[#32f932]/30 rounded-lg p-8 max-w-4xl mx-auto">
               <h3 className="text-2xl font-bold mb-4">Interactive ROI Calculator</h3>
               <p className="text-gray-400 mb-8 text-center">
