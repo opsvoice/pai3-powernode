@@ -89,7 +89,7 @@ const PowerNodePage = () => {
     {
       title: "annual revenue potential",
       subtitle: "25,000 cabinets available per node",
-      value: "$2/cabinet"
+      value: "$2 / cabinet"
     },
     {
       title: "demand-based earnings",
