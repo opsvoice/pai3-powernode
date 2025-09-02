@@ -92,9 +92,9 @@ const PowerNodePage = () => {
       value: "$2/cabinet"
     },
     {
-      title: "earned by running agents and models for others",
-      subtitle: "will depend on demand",
-      value: "Agent and Model Revenue"
+      title: "demand-based earnings",
+      subtitle: "from running AI agents & models",
+      value: "Agent & Model Revenue"
     }
   ];
 
