@@ -300,7 +300,7 @@ const PowerNodePage = () => {
                           <p className="text-sm text-gray-400">{spec.detail}</p>
                         </div>
                       </div>
-                    ))}
+                    Token rewards and staking rewards are guaranteed for the first 3 years.
                   </div>
                 </motion.div>
               )}
@@ -684,11 +684,11 @@ const PowerNodePage = () => {
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-[#32f932]">${Math.round(kpis.total3yr).toLocaleString()}</div>
-                    <div className="text-xs text-white font-semibold">Projected 36-Month Total</div>
+                    <div className="text-xs text-white font-semibold">Projected 3-Year Total</div>
                     <div className="text-xs text-gray-400">Tokens × $PAI3 + cabinets + agent + model + staking</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#32f932]">{kpis.objectiveReturnPct.toFixed(1)}%</div>
+                    <div className="text-2xl font-bold text-[#32f932]">{Math.round(kpis.objectiveReturnPct)}%</div>
                     <div className="text-xs text-white font-semibold">Objective Return %</div>
                     <div className="text-xs text-gray-400">Modeled 3-year return vs node cost</div>
                   </div>
